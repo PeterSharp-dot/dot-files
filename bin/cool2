@@ -1,0 +1,10 @@
+#!/bin/bash
+
+echo "0" >/sys/class/thermal/cooling_device0/cur_state
+echo "0" >/sys/class/thermal/cooling_device1/cur_state
+echo "0" >/sys/class/thermal/cooling_device2/cur_state
+echo "0" >/sys/class/thermal/cooling_device3/cur_state
+
+
+exit 0
+

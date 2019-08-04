@@ -1,0 +1,2 @@
+#!/bin/bash
+curl -s https://www.marketwatch.com/investing/currency/eurusd |grep '<meta name="price" content="' |cut -d'"' -f4
