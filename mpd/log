@@ -1,0 +1,621 @@
+Dec 30 13:29 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Dec 30 13:29 : exception: Failed to open '/home/piotr/.config/mpd/state': No such file or directory
+Dec 30 13:29 : update: added /06 - Colours.flac
+Dec 30 13:29 : update: added /10 - War - Bruce Springsteen and the E-Street Band.ogg
+Dec 30 13:29 : update: added /Skywalker Ambient Mix.opus
+Dec 30 13:29 : update: added /Midnight Oil - Beds Are Burning.opus
+Dec 30 13:29 : update: added Viana/Weronika Bochat - Pół kroku stąd (z filmu 'Vaiana').opus
+Dec 30 13:29 : update: added Viana/Igor Kwiatkowski - Drobnostka (z filmu 'Vaiana').opus
+Dec 30 13:29 : update: added Viana/Natalia Nykiel - Pół kroku stąd (piosenka z filmu „Vaiana - skarb oceanu').opus
+Dec 30 13:29 : update: added Mr Mister/Welcome To The Real World/Mr.  Mister - 3 - Don't Slow Down - Welcome To The Real World (1985).opus
+Dec 30 13:29 : update: added Mr Mister/Welcome To The Real World/Mr.  Mister - 6 - Is It Love - Welcome To The Real World (1985).opus
+Dec 30 13:29 : update: added Mr Mister/Welcome To The Real World/Mr.  Mister - 10 - Welcome To The Real World - Welcome To The Real World (1985).opus
+Dec 30 13:29 : update: added Mr Mister/Welcome To The Real World/Mr.  Mister - 5 - Into My Own Hands - Welcome To The Real World (1985).opus
+Dec 30 13:29 : update: added Mr Mister/Welcome To The Real World/Mr.  Mister - 1 - Black, White - Welcome To The Real World (1985).opus
+Dec 30 13:29 : update: added Mr Mister/Welcome To The Real World/Mr.  Mister - 9 - Tangent Tears - Welcome To The Real World (1985).opus
+Dec 30 13:29 : update: added Mr Mister/Welcome To The Real World/Mr.  Mister - 4 - Run To Her - Welcome To The Real World (1985).opus
+Dec 30 13:29 : update: added Mr Mister/Welcome To The Real World/Mr. Mister - 08 - Broken wings (HQ audio).opus
+Dec 30 13:29 : update: added Mr Mister/Welcome To The Real World/Mr.  Mister - 2 - Uniform Of Youth - Welcome To The Real World (1985).opus
+Dec 30 13:29 : update: added Mr Mister/Welcome To The Real World/Mr.  Mister - 7 - Kyrie - Welcome To The Real World (1985).opus
+Dec 30 13:29 : client: [0] opened from [::1]:39840
+Dec 30 13:37 : client: [1] opened from [::1]:39848
+Dec 30 13:39 : client: [1] closed
+Dec 30 13:39 : client: [2] opened from [::1]:39852
+Dec 30 13:39 : client: [2] closed
+Dec 30 13:40 : client: [3] opened from [::1]:39854
+Dec 30 13:40 : client: [3] closed
+Dec 30 13:41 : client: [4] opened from [::1]:39856
+Dec 30 13:41 : client: [4] closed
+Dec 30 13:41 : client: [5] opened from 127.0.0.1:43948
+Dec 30 13:43 : client: [6] opened from [::1]:39860
+Dec 30 13:44 : client: [6] closed
+Dec 30 13:46 : exception: OutputThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Dec 30 13:50 : player: played "Mr Mister/Welcome To The Real World/Mr.  Mister - 1 - Black, White - Welcome To The Real World (1985).opus"
+Dec 30 13:58 : player: played "Mr Mister/Welcome To The Real World/Mr.  Mister - 1 - Black, White - Welcome To The Real World (1985).opus"
+Dec 30 15:14 : client: [5] closed
+Dec 30 15:14 : client: [7] opened from [::1]:39892
+Dec 30 15:15 : client: [8] opened from 127.0.0.1:43984
+Dec 30 15:15 : client: [7] closed
+Dec 30 15:16 : client: [8] closed
+Dec 30 15:16 : client: [9] opened from 127.0.0.1:43986
+Dec 30 15:16 : player: played "Mr Mister/Welcome To The Real World/Mr.  Mister - 9 - Tangent Tears - Welcome To The Real World (1985).opus"
+Dec 30 15:16 : client: [9] closed
+Dec 30 15:20 : client: [10] opened from 127.0.0.1:43990
+Dec 30 15:23 : player: played "Mr Mister/Welcome To The Real World/Mr.  Mister - 1 - Black, White - Welcome To The Real World (1985).opus"
+Dec 30 15:29 : player: played "Mr Mister/Welcome To The Real World/Mr. Mister - 08 - Broken wings (HQ audio).opus"
+Dec 30 15:30 : player: played "Mr Mister/Welcome To The Real World/Mr.  Mister - 9 - Tangent Tears - Welcome To The Real World (1985).opus"
+Dec 30 15:31 : player: played "Mr Mister/Welcome To The Real World/Mr.  Mister - 1 - Black, White - Welcome To The Real World (1985).opus"
+Dec 30 15:31 : client: [10] closed
+Dec 30 16:41 : client: [11] opened from 127.0.0.1:44216
+Dec 30 16:46 : player: played "Mr Mister/Welcome To The Real World/Mr.  Mister - 10 - Welcome To The Real World - Welcome To The Real World (1985).opus"
+Dec 30 16:48 : player: played "Mr Mister/Welcome To The Real World/Mr.  Mister - 2 - Uniform Of Youth - Welcome To The Real World (1985).opus"
+Dec 30 16:50 : client: [12] opened from [::1]:40162
+Dec 30 16:50 : client: [13] opened from [::1]:40164
+Dec 30 16:50 : client: [0] closed
+Dec 30 16:51 : client: [13] closed
+Dec 31 08:06 : client: [11] closed
+Dec 31 08:06 : client: [12] closed
+Dec 31 08:07 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Dec 31 08:07 : client: [0] opened from [::1]:59958
+Dec 31 08:11 : client: [0] closed
+Dec 31 08:12 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Dec 31 08:12 : client: [0] opened from [::1]:33008
+Dec 31 08:15 : client: [0] closed
+Dec 31 08:16 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Dec 31 08:16 : client: [0] opened from [::1]:36916
+Dec 31 12:08 : client: [1] opened from 127.0.0.1:58280
+Dec 31 12:08 : exception: OutputThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Dec 31 12:08 : exception: OutputThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Dec 31 12:13 : player: played "Mr Mister/Welcome To The Real World/Mr.  Mister - 3 - Don't Slow Down - Welcome To The Real World (1985).opus"
+Dec 31 12:16 : player: played "Mr Mister/Welcome To The Real World/Mr.  Mister - 4 - Run To Her - Welcome To The Real World (1985).opus"
+Dec 31 12:17 : player: played "Mr Mister/Welcome To The Real World/Mr.  Mister - 5 - Into My Own Hands - Welcome To The Real World (1985).opus"
+Dec 31 12:28 : player: played "Mr Mister/Welcome To The Real World/Mr.  Mister - 4 - Run To Her - Welcome To The Real World (1985).opus"
+Dec 31 12:33 : player: played "Mr Mister/Welcome To The Real World/Mr.  Mister - 5 - Into My Own Hands - Welcome To The Real World (1985).opus"
+Dec 31 12:37 : player: played "Mr Mister/Welcome To The Real World/Mr.  Mister - 6 - Is It Love - Welcome To The Real World (1985).opus"
+Dec 31 12:41 : player: played "Mr Mister/Welcome To The Real World/Mr.  Mister - 7 - Kyrie - Welcome To The Real World (1985).opus"
+Dec 31 12:45 : player: played "Mr Mister/Welcome To The Real World/Mr.  Mister - 9 - Tangent Tears - Welcome To The Real World (1985).opus"
+Dec 31 13:11 : player: played "Midnight Oil - Beds Are Burning.opus"
+Dec 31 13:11 : client: [1] closed
+Jan 02 11:05 : client: [0] closed
+Jan 02 11:09 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Jan 02 11:09 : client: [0] opened from [::1]:50820
+Jan 02 14:32 : client: [1] opened from [::1]:48806
+Jan 02 14:32 : client: [2] opened from [::1]:48808
+Jan 02 14:32 : client: [0] closed
+Jan 02 14:33 : client: [2] closed
+Jan 02 14:35 : client: [3] opened from [::1]:50374
+Jan 02 14:35 : client: [4] opened from [::1]:50376
+Jan 02 14:35 : client: [1] closed
+Jan 02 14:36 : client: [4] closed
+Jan 02 15:10 : client: [3] closed
+Jan 02 15:10 : client: [5] opened from 127.0.0.1:39628
+Jan 02 15:12 : client: [5] closed
+Jan 02 15:12 : client: [6] opened from 127.0.0.1:40638
+Jan 02 15:19 : client: [6] closed
+Jan 02 15:19 : client: [7] opened from 127.0.0.1:43996
+Jan 02 15:20 : client: [7] closed
+Jan 02 15:20 : client: [8] opened from 127.0.0.1:44550
+Jan 02 15:22 : client: [8] closed
+Jan 02 15:22 : client: [9] opened from 127.0.0.1:45208
+Jan 02 15:22 : client: [9] closed
+Jan 02 15:22 : client: [10] opened from 127.0.0.1:45306
+Jan 02 15:23 : client: [10] closed
+Jan 02 15:23 : client: [11] opened from 127.0.0.1:45822
+Jan 02 15:24 : client: [11] closed
+Jan 02 15:24 : client: [12] opened from 127.0.0.1:46376
+Jan 02 15:26 : client: [12] closed
+Jan 02 15:26 : client: [13] opened from 127.0.0.1:47370
+Jan 02 15:28 : client: [13] closed
+Jan 02 15:28 : client: [14] opened from 127.0.0.1:48350
+Jan 02 15:30 : client: [14] closed
+Jan 02 15:30 : client: [15] opened from 127.0.0.1:49072
+Jan 02 15:31 : client: [15] closed
+Jan 02 15:33 : client: [16] opened from 127.0.0.1:50546
+Jan 02 15:34 : client: [16] closed
+Jan 02 15:34 : client: [17] opened from 127.0.0.1:50990
+Jan 02 15:35 : client: [17] closed
+Jan 02 15:35 : client: [18] opened from 127.0.0.1:51704
+Jan 02 15:36 : client: [18] closed
+Jan 02 15:36 : client: [19] opened from 127.0.0.1:51930
+Jan 02 15:40 : client: [19] closed
+Jan 02 15:40 : client: [20] opened from 127.0.0.1:53742
+Jan 02 15:42 : client: [20] closed
+Jan 02 15:42 : client: [21] opened from 127.0.0.1:54874
+Jan 02 15:43 : client: [21] closed
+Jan 02 15:44 : client: [22] opened from 127.0.0.1:55758
+Jan 02 15:47 : client: [22] closed
+Jan 02 15:47 : client: [23] opened from 127.0.0.1:57496
+Jan 02 15:55 : client: [23] closed
+Jan 02 15:55 : client: [24] opened from 127.0.0.1:32936
+Jan 02 16:12 : client: [24] closed
+Jan 02 16:12 : client: [25] opened from 127.0.0.1:41102
+Jan 02 16:14 : client: [25] closed
+Jan 02 16:14 : client: [26] opened from 127.0.0.1:41898
+Jan 02 16:15 : client: [26] closed
+Jan 02 16:15 : client: [27] opened from 127.0.0.1:42504
+Jan 02 16:16 : client: [27] closed
+Jan 02 16:16 : client: [28] opened from 127.0.0.1:42858
+Jan 03 12:59 : client: [28] closed
+Jan 03 12:59 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Jan 03 12:59 : client: [0] opened from 127.0.0.1:51724
+Jan 03 13:00 : client: [0] closed
+Jan 03 13:08 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Jan 03 13:08 : client: [0] opened from 127.0.0.1:38304
+Jan 03 15:22 : client: [1] opened from 127.0.0.1:39058
+Jan 03 15:22 : exception: OutputThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Jan 03 15:22 : exception: OutputThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Jan 03 15:23 : client: [1] closed
+Jan 03 15:24 : client: [2] opened from 127.0.0.1:39060
+Jan 03 15:24 : player: played "Midnight Oil - Beds Are Burning.opus"
+Jan 03 15:24 : client: [2] closed
+Jan 03 18:39 : client: [0] closed
+Jan 03 18:39 : client: [3] opened from 127.0.0.1:39478
+Jan 04 17:17 : client: [3] closed
+Jan 04 17:18 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Jan 04 17:18 : client: [0] opened from 127.0.0.1:58576
+Jan 05 16:57 : update: updating Mr Mister/Welcome To The Real World/Mr.  Mister - 3 - Don't Slow Down - Welcome To The Real World (1985).opus
+Jan 05 16:57 : update: updating Mr Mister/Welcome To The Real World/Mr.  Mister - 6 - Is It Love - Welcome To The Real World (1985).opus
+Jan 05 16:57 : update: updating Mr Mister/Welcome To The Real World/Mr.  Mister - 10 - Welcome To The Real World - Welcome To The Real World (1985).opus
+Jan 05 16:57 : update: updating Mr Mister/Welcome To The Real World/Mr.  Mister - 5 - Into My Own Hands - Welcome To The Real World (1985).opus
+Jan 05 16:57 : update: updating Mr Mister/Welcome To The Real World/Mr.  Mister - 1 - Black, White - Welcome To The Real World (1985).opus
+Jan 05 16:57 : update: updating Mr Mister/Welcome To The Real World/Mr.  Mister - 9 - Tangent Tears - Welcome To The Real World (1985).opus
+Jan 05 16:57 : update: updating Mr Mister/Welcome To The Real World/Mr.  Mister - 4 - Run To Her - Welcome To The Real World (1985).opus
+Jan 05 16:57 : update: updating Mr Mister/Welcome To The Real World/Mr. Mister - 08 - Broken wings (HQ audio).opus
+Jan 05 16:57 : update: updating Mr Mister/Welcome To The Real World/Mr.  Mister - 2 - Uniform Of Youth - Welcome To The Real World (1985).opus
+Jan 05 16:57 : update: updating Mr Mister/Welcome To The Real World/Mr.  Mister - 7 - Kyrie - Welcome To The Real World (1985).opus
+Jan 05 17:00 : update: updating Mr Mister/Welcome To The Real World/Mr.  Mister - 3 - Don't Slow Down - Welcome To The Real World (1985).opus
+Jan 05 17:00 : update: updating Mr Mister/Welcome To The Real World/Mr.  Mister - 6 - Is It Love - Welcome To The Real World (1985).opus
+Jan 05 17:00 : update: updating Mr Mister/Welcome To The Real World/Mr.  Mister - 10 - Welcome To The Real World - Welcome To The Real World (1985).opus
+Jan 05 17:00 : update: updating Mr Mister/Welcome To The Real World/Mr.  Mister - 5 - Into My Own Hands - Welcome To The Real World (1985).opus
+Jan 05 17:00 : update: updating Mr Mister/Welcome To The Real World/Mr.  Mister - 1 - Black, White - Welcome To The Real World (1985).opus
+Jan 05 17:00 : update: updating Mr Mister/Welcome To The Real World/Mr.  Mister - 9 - Tangent Tears - Welcome To The Real World (1985).opus
+Jan 05 17:00 : update: updating Mr Mister/Welcome To The Real World/Mr.  Mister - 4 - Run To Her - Welcome To The Real World (1985).opus
+Jan 05 17:00 : update: updating Mr Mister/Welcome To The Real World/Mr. Mister - 08 - Broken wings (HQ audio).opus
+Jan 05 17:00 : update: updating Mr Mister/Welcome To The Real World/Mr.  Mister - 2 - Uniform Of Youth - Welcome To The Real World (1985).opus
+Jan 05 17:00 : update: updating Mr Mister/Welcome To The Real World/Mr.  Mister - 7 - Kyrie - Welcome To The Real World (1985).opus
+Jan 05 17:02 : update: updating Mr Mister/Welcome To The Real World/Mr.  Mister - 3 - Don't Slow Down - Welcome To The Real World (1985).opus
+Jan 05 17:02 : update: updating Mr Mister/Welcome To The Real World/Mr.  Mister - 6 - Is It Love - Welcome To The Real World (1985).opus
+Jan 05 17:02 : update: updating Mr Mister/Welcome To The Real World/Mr.  Mister - 10 - Welcome To The Real World - Welcome To The Real World (1985).opus
+Jan 05 17:02 : update: updating Mr Mister/Welcome To The Real World/Mr.  Mister - 5 - Into My Own Hands - Welcome To The Real World (1985).opus
+Jan 05 17:02 : update: updating Mr Mister/Welcome To The Real World/Mr.  Mister - 1 - Black, White - Welcome To The Real World (1985).opus
+Jan 05 17:02 : update: updating Mr Mister/Welcome To The Real World/Mr.  Mister - 9 - Tangent Tears - Welcome To The Real World (1985).opus
+Jan 05 17:02 : update: updating Mr Mister/Welcome To The Real World/Mr.  Mister - 4 - Run To Her - Welcome To The Real World (1985).opus
+Jan 05 17:02 : update: updating Mr Mister/Welcome To The Real World/Mr. Mister - 08 - Broken wings (HQ audio).opus
+Jan 05 17:02 : update: updating Mr Mister/Welcome To The Real World/Mr.  Mister - 2 - Uniform Of Youth - Welcome To The Real World (1985).opus
+Jan 05 17:02 : update: updating Mr Mister/Welcome To The Real World/Mr.  Mister - 7 - Kyrie - Welcome To The Real World (1985).opus
+Jan 05 19:45 : update: updating /Midnight Oil - Beds Are Burning.opus
+Jan 05 19:52 : update: updating Mr Mister/Welcome To The Real World/Mr.  Mister - 3 - Don't Slow Down - Welcome To The Real World (1985).opus
+Jan 05 19:52 : update: updating Mr Mister/Welcome To The Real World/Mr.  Mister - 6 - Is It Love - Welcome To The Real World (1985).opus
+Jan 05 19:52 : update: updating Mr Mister/Welcome To The Real World/Mr.  Mister - 10 - Welcome To The Real World - Welcome To The Real World (1985).opus
+Jan 05 19:52 : update: updating Mr Mister/Welcome To The Real World/Mr.  Mister - 5 - Into My Own Hands - Welcome To The Real World (1985).opus
+Jan 05 19:52 : update: updating Mr Mister/Welcome To The Real World/Mr.  Mister - 1 - Black, White - Welcome To The Real World (1985).opus
+Jan 05 19:52 : update: updating Mr Mister/Welcome To The Real World/Mr.  Mister - 9 - Tangent Tears - Welcome To The Real World (1985).opus
+Jan 05 19:52 : update: updating Mr Mister/Welcome To The Real World/Mr.  Mister - 4 - Run To Her - Welcome To The Real World (1985).opus
+Jan 05 19:52 : update: updating Mr Mister/Welcome To The Real World/Mr. Mister - 08 - Broken wings (HQ audio).opus
+Jan 05 19:52 : update: updating Mr Mister/Welcome To The Real World/Mr.  Mister - 2 - Uniform Of Youth - Welcome To The Real World (1985).opus
+Jan 05 19:52 : update: updating Mr Mister/Welcome To The Real World/Mr.  Mister - 7 - Kyrie - Welcome To The Real World (1985).opus
+Jan 05 20:16 : update: updating Mr Mister/Welcome To The Real World/Mr.  Mister - 1 - Black, White - Welcome To The Real World (1985).opus
+Jan 06 10:37 : client: [0] closed
+Jan 06 13:31 : client: [1] opened from 127.0.0.1:41498
+Jan 06 14:15 : client: [1] closed
+Jan 06 14:15 : client: [2] opened from 127.0.0.1:41580
+Jan 06 14:17 : client: [2] closed
+Jan 06 14:17 : client: [3] opened from 127.0.0.1:41584
+Jan 06 14:20 : client: [3] closed
+Jan 06 14:20 : client: [4] opened from 127.0.0.1:41586
+Jan 06 14:23 : client: [4] closed
+Jan 06 14:23 : client: [5] opened from 127.0.0.1:41590
+Jan 06 14:24 : client: [5] closed
+Jan 06 14:24 : client: [6] opened from 127.0.0.1:41592
+Jan 06 14:54 : client: [6] closed
+Jan 06 14:54 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Jan 06 14:54 : client: [0] opened from 127.0.0.1:48882
+Jan 06 15:00 : client: [0] closed
+Jan 06 15:00 : client: [1] opened from 127.0.0.1:48924
+Jan 06 15:03 : client: [1] closed
+Jan 06 15:03 : client: [2] opened from 127.0.0.1:48926
+Jan 06 15:04 : client: [2] closed
+Jan 06 15:04 : client: [3] opened from 127.0.0.1:48930
+Jan 06 18:12 : client: [3] closed
+Jan 06 18:12 : client: [4] opened from 127.0.0.1:49056
+Jan 09 13:17 : client: [4] closed
+Jan 09 13:17 : client: [5] opened from 127.0.0.1:34492
+Jan 09 13:18 : client: [5] closed
+Jan 09 13:18 : client: [6] opened from 127.0.0.1:34958
+Jan 09 15:34 : client: [6] closed
+Jan 09 15:37 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Jan 09 15:37 : client: [0] opened from 127.0.0.1:36492
+Jan 10 16:31 : client: [0] closed
+Jan 10 16:31 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Jan 10 16:31 : client: [0] opened from 127.0.0.1:37080
+Jan 11 07:57 : client: [0] closed
+Jan 11 07:57 : client: [1] opened from 127.0.0.1:39382
+Jan 14 15:03 : client: [1] closed
+Jan 14 15:04 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Jan 14 15:04 : client: [0] opened from 127.0.0.1:39420
+Jan 14 19:19 : client: [0] closed
+Jan 15 06:34 : client: [1] opened from 127.0.0.1:58480
+Jan 15 09:07 : client: [1] closed
+Jan 15 09:07 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Jan 15 09:07 : client: [0] opened from 127.0.0.1:56364
+Jan 15 10:02 : client: [0] closed
+Jan 15 10:03 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Jan 15 10:09 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Jan 15 10:09 : client: [0] opened from 127.0.0.1:41818
+Jan 15 10:13 : client: [0] closed
+Jan 15 10:14 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Jan 15 10:17 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Jan 15 10:17 : client: [0] opened from 127.0.0.1:60406
+Jan 15 10:27 : client: [0] closed
+Jan 15 10:28 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Jan 15 10:28 : client: [0] opened from 127.0.0.1:39812
+Jan 16 15:26 : client: [0] closed
+Jan 16 15:26 : client: [1] opened from 127.0.0.1:42436
+Jan 16 15:29 : client: [1] closed
+Jan 16 15:29 : client: [2] opened from 127.0.0.1:42440
+Jan 16 15:42 : client: [2] closed
+Jan 16 15:42 : client: [3] opened from 127.0.0.1:42476
+Jan 16 15:48 : client: [3] closed
+Jan 16 15:48 : client: [4] opened from 127.0.0.1:42510
+Jan 16 17:16 : client: [4] closed
+Jan 16 17:19 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Jan 16 17:19 : client: [0] opened from 127.0.0.1:35466
+Jan 16 17:21 : client: [0] closed
+Jan 16 17:21 : client: [1] opened from 127.0.0.1:35468
+Jan 16 17:24 : client: [1] closed
+Jan 16 17:24 : client: [2] opened from 127.0.0.1:35584
+Jan 16 17:24 : client: [2] closed
+Jan 16 17:24 : client: [3] opened from 127.0.0.1:35586
+Jan 16 17:25 : client: [3] closed
+Jan 16 17:25 : client: [4] opened from 127.0.0.1:35590
+Jan 16 17:26 : client: [4] closed
+Jan 16 17:26 : client: [5] opened from 127.0.0.1:35592
+Jan 16 17:27 : client: [5] closed
+Jan 16 17:27 : client: [6] opened from 127.0.0.1:35594
+Jan 16 17:31 : client: [6] closed
+Jan 16 17:31 : client: [7] opened from 127.0.0.1:35610
+Jan 17 10:26 : client: [7] closed
+Jan 17 10:26 : client: [8] opened from 127.0.0.1:50394
+Jan 17 10:30 : client: [8] closed
+Jan 17 10:30 : client: [9] opened from 127.0.0.1:52230
+Jan 17 11:47 : client: [9] closed
+Jan 17 11:47 : client: [10] opened from 127.0.0.1:43660
+Jan 17 11:49 : client: [10] closed
+Jan 17 11:49 : client: [11] opened from 127.0.0.1:44718
+Jan 17 11:55 : client: [11] closed
+Jan 17 11:55 : client: [12] opened from 127.0.0.1:47542
+Jan 17 11:56 : client: [12] closed
+Jan 17 11:56 : client: [13] opened from 127.0.0.1:48440
+Jan 17 12:08 : client: [13] closed
+Jan 17 12:08 : client: [14] opened from 127.0.0.1:54068
+Jan 17 12:13 : client: [14] closed
+Jan 17 12:13 : client: [15] opened from 127.0.0.1:56472
+Jan 17 12:24 : client: [15] closed
+Jan 17 12:24 : client: [16] opened from 127.0.0.1:33492
+Jan 17 12:25 : client: [16] closed
+Jan 17 12:25 : client: [17] opened from 127.0.0.1:33688
+Jan 17 12:25 : client: [17] closed
+Jan 17 12:25 : client: [18] opened from 127.0.0.1:33828
+Jan 17 12:26 : client: [18] closed
+Jan 17 12:26 : client: [19] opened from 127.0.0.1:34158
+Jan 17 12:26 : client: [19] closed
+Jan 17 12:26 : client: [20] opened from 127.0.0.1:34488
+Jan 17 12:28 : client: [20] closed
+Jan 17 12:28 : client: [21] opened from 127.0.0.1:35318
+Jan 17 12:29 : client: [21] closed
+Jan 17 12:29 : client: [22] opened from 127.0.0.1:35688
+Jan 17 13:13 : client: [22] closed
+Jan 17 13:13 : client: [23] opened from 127.0.0.1:56934
+Jan 17 13:23 : client: [23] closed
+Jan 17 13:23 : client: [24] opened from 127.0.0.1:33620
+Jan 17 13:23 : client: [24] closed
+Jan 17 13:23 : client: [25] opened from 127.0.0.1:33734
+Jan 17 13:29 : client: [25] closed
+Jan 17 13:29 : client: [26] opened from 127.0.0.1:36734
+Jan 17 13:37 : client: [26] closed
+Jan 17 13:37 : client: [27] opened from 127.0.0.1:40474
+Jan 17 13:38 : client: [27] closed
+Jan 17 13:38 : client: [28] opened from 127.0.0.1:40812
+Jan 17 16:54 : client: [28] closed
+Jan 17 16:54 : client: [29] opened from 127.0.0.1:50448
+Jan 18 09:56 : client: [29] closed
+Jan 18 09:56 : client: [30] opened from 127.0.0.1:37634
+Jan 18 14:35 : client: [30] closed
+Jan 18 14:35 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Jan 18 14:35 : client: [0] opened from 127.0.0.1:33236
+Jan 19 17:25 : client: [0] closed
+Jan 19 17:25 : client: [1] opened from 127.0.0.1:47888
+Jan 19 17:25 : client: [1] closed
+Jan 19 17:25 : client: [2] opened from 127.0.0.1:48210
+Jan 20 13:25 : client: [2] closed
+Jan 20 13:26 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Jan 20 13:26 : client: [0] opened from 127.0.0.1:58980
+Jan 22 17:49 : client: [0] closed
+Jan 22 17:49 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Jan 22 17:49 : client: [0] opened from 127.0.0.1:53274
+Jan 25 20:46 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Jan 25 20:46 : client: [0] opened from 127.0.0.1:36102
+Jan 29 08:48 : client: [0] closed
+Jan 29 08:48 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Jan 29 08:48 : client: [0] opened from 127.0.0.1:47152
+Jan 31 11:17 : client: [0] closed
+Jan 31 11:17 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Jan 31 11:17 : client: [0] opened from 127.0.0.1:42514
+Feb 13 19:43 : client: [0] closed
+Feb 13 19:43 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Feb 13 19:43 : client: [0] opened from 127.0.0.1:56878
+Mar 01 08:40 : client: [0] closed
+Mar 01 08:41 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Mar 01 08:41 : client: [0] opened from 127.0.0.1:41590
+Mar 08 22:34 : client: [0] closed
+Mar 08 22:34 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Mar 08 22:34 : client: [0] opened from 127.0.0.1:40420
+Mar 09 08:47 : client: [0] closed
+Mar 09 08:47 : client: [1] opened from 127.0.0.1:40684
+Mar 09 08:47 : client: [1] closed
+Mar 09 08:47 : client: [2] opened from 127.0.0.1:40686
+Mar 09 08:47 : client: [2] closed
+Mar 09 08:47 : client: [3] opened from 127.0.0.1:40688
+Mar 14 07:50 : client: [3] closed
+Mar 14 07:51 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Mar 14 07:51 : client: [0] opened from 127.0.0.1:53450
+Mar 16 21:53 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Mar 16 21:53 : client: [0] opened from 127.0.0.1:35008
+Mar 22 15:58 : client: [0] closed
+Mar 22 16:03 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Mar 22 16:03 : client: [0] opened from 127.0.0.1:48802
+Mar 26 17:33 : client: [0] closed
+Mar 26 17:34 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Mar 26 17:34 : client: [0] opened from 127.0.0.1:60638
+Mar 28 19:53 : client: [0] closed
+Mar 28 19:54 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Mar 28 19:54 : client: [0] opened from 127.0.0.1:58146
+Mar 30 22:56 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Mar 30 22:56 : client: [0] opened from 127.0.0.1:41028
+Apr 05 08:06 : client: [0] closed
+Apr 05 08:07 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Apr 05 08:07 : client: [0] opened from 127.0.0.1:50794
+Apr 11 13:49 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Apr 11 13:49 : client: [0] opened from 127.0.0.1:58096
+Apr 13 23:53 : client: [0] closed
+Apr 13 23:54 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Apr 13 23:54 : client: [0] opened from 127.0.0.1:55282
+Apr 15 14:50 : client: [0] closed
+Apr 15 14:50 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Apr 15 14:50 : client: [0] opened from 127.0.0.1:38692
+Apr 16 10:00 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Apr 16 10:00 : client: [0] opened from 127.0.0.1:42044
+Apr 24 06:18 : client: [0] closed
+Apr 24 06:28 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Apr 24 06:28 : client: [0] opened from 127.0.0.1:41690
+Apr 25 22:36 : client: [0] closed
+Apr 25 22:36 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Apr 25 22:36 : client: [0] opened from 127.0.0.1:48824
+May 05 21:38 : client: [0] closed
+May 05 21:39 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+May 05 21:39 : client: [0] opened from 127.0.0.1:41324
+May 09 14:37 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+May 09 14:37 : client: [0] opened from 127.0.0.1:42310
+May 15 22:41 : client: [0] closed
+May 15 22:41 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+May 15 22:41 : client: [0] opened from 127.0.0.1:49768
+May 17 13:53 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+May 17 13:53 : client: [0] opened from 127.0.0.1:47544
+May 20 10:09 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+May 20 10:09 : client: [0] opened from 127.0.0.1:35582
+May 21 20:12 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+May 21 20:12 : client: [0] opened from 127.0.0.1:46530
+May 21 20:34 : client: [0] closed
+May 21 20:35 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+May 21 20:35 : client: [0] opened from 127.0.0.1:58214
+May 23 12:20 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+May 23 12:20 : client: [0] opened from 127.0.0.1:49758
+May 27 09:16 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+May 27 09:16 : client: [0] opened from 127.0.0.1:45296
+May 27 09:24 : client: [0] closed
+May 27 09:25 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+May 27 09:25 : client: [0] opened from 127.0.0.1:52118
+May 27 12:44 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+May 27 12:44 : client: [0] opened from 127.0.0.1:40544
+May 27 14:22 : client: [0] closed
+May 27 14:22 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+May 27 14:22 : client: [0] opened from 127.0.0.1:44052
+May 28 15:21 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+May 28 15:21 : client: [0] opened from 127.0.0.1:48326
+May 29 18:32 : client: [0] closed
+May 29 18:34 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+May 29 18:34 : client: [0] opened from 127.0.0.1:58078
+May 30 13:30 : client: [0] closed
+May 30 15:28 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+May 30 15:28 : client: [0] opened from 127.0.0.1:45658
+May 30 15:35 : client: [0] closed
+May 30 17:23 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+May 30 17:23 : client: [0] opened from 127.0.0.1:48602
+Jun 03 19:22 : client: [0] closed
+Jun 03 19:23 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Jun 03 19:23 : client: [0] opened from 127.0.0.1:60092
+Jun 06 19:22 : client: [0] closed
+Jun 06 19:23 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Jun 06 19:23 : client: [0] opened from 127.0.0.1:39478
+Jun 07 11:56 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Jun 07 11:56 : client: [0] opened from 127.0.0.1:51484
+Jun 12 13:10 : client: [0] closed
+Jun 12 13:10 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Jun 12 13:10 : client: [0] opened from 127.0.0.1:50418
+Jun 12 22:49 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Jun 12 22:49 : client: [0] opened from 127.0.0.1:47398
+Jun 14 18:37 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Jun 14 18:37 : client: [0] opened from 127.0.0.1:48004
+Jun 17 21:30 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Jun 17 21:30 : client: [0] opened from 127.0.0.1:39406
+Jun 17 21:35 : client: [0] closed
+Jun 17 21:43 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Jun 17 21:43 : client: [0] opened from 127.0.0.1:57910
+Jun 19 13:54 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Jun 19 13:54 : client: [0] opened from 127.0.0.1:37028
+Jun 20 20:47 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Jun 20 20:47 : client: [0] opened from 127.0.0.1:56704
+Jun 23 23:06 : client: [0] closed
+Jun 23 23:07 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Jun 23 23:07 : client: [0] opened from 127.0.0.1:38872
+Jun 26 09:58 : client: [0] closed
+Jun 26 09:59 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Jun 26 09:59 : client: [0] opened from 127.0.0.1:44656
+Jul 02 10:27 : client: [0] closed
+Jul 02 10:28 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Jul 02 10:28 : client: [0] opened from 127.0.0.1:59714
+Jul 08 22:56 : client: [0] closed
+Jul 08 22:57 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Jul 08 22:57 : client: [0] opened from 127.0.0.1:56166
+Jul 09 09:04 : client: [0] closed
+Jul 09 15:18 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Jul 09 15:18 : client: [0] opened from 127.0.0.1:57280
+Jul 10 18:26 : client: [0] closed
+Jul 10 18:26 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Jul 10 18:26 : client: [0] opened from 127.0.0.1:40466
+Jul 10 18:28 : client: [0] closed
+Jul 16 07:18 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Jul 16 07:18 : client: [0] opened from 127.0.0.1:49788
+Jul 16 07:23 : client: [0] closed
+Jul 17 17:11 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Jul 17 17:11 : client: [0] opened from 127.0.0.1:35472
+Jul 17 17:27 : client: [0] closed
+Jul 24 17:16 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Jul 24 17:16 : client: [0] opened from 127.0.0.1:43216
+Jul 24 17:27 : client: [0] closed
+Jul 24 17:28 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Jul 24 17:28 : client: [0] opened from 127.0.0.1:48680
+Jul 24 18:15 : client: [0] closed
+Jul 24 18:15 : client: [1] opened from 127.0.0.1:48820
+Jul 24 18:15 : client: [1] closed
+Jul 24 18:15 : client: [2] opened from 127.0.0.1:48822
+Jul 24 18:17 : client: [2] closed
+Jul 24 18:17 : client: [3] opened from 127.0.0.1:48832
+Jul 24 18:20 : client: [3] closed
+Jul 24 18:20 : client: [4] opened from 127.0.0.1:48874
+Jul 24 18:22 : client: [4] closed
+Jul 24 18:22 : client: [5] opened from 127.0.0.1:48880
+Jul 24 18:29 : client: [5] closed
+Jul 24 18:29 : client: [6] opened from 127.0.0.1:48888
+Jul 24 18:35 : client: [6] closed
+Jul 24 18:35 : client: [7] opened from 127.0.0.1:48892
+Jul 24 18:45 : client: [7] closed
+Jul 24 18:45 : client: [8] opened from 127.0.0.1:48922
+Jul 24 18:46 : client: [8] closed
+Jul 24 18:46 : client: [9] opened from 127.0.0.1:48924
+Jul 24 18:52 : client: [9] closed
+Jul 24 18:52 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Jul 24 18:52 : client: [0] opened from 127.0.0.1:35804
+Jul 24 19:28 : client: [0] closed
+Jul 24 19:28 : client: [1] opened from 127.0.0.1:35848
+Jul 24 20:06 : client: [1] closed
+Jul 28 19:25 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Aug 01 09:16 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Aug 01 09:24 : client: [0] opened from 127.0.0.1:34164
+Aug 01 09:39 : client: [0] closed
+Aug 01 09:39 : client: [1] opened from 127.0.0.1:34224
+Aug 01 09:40 : client: [1] closed
+Aug 01 09:41 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Aug 01 09:41 : client: [0] opened from 127.0.0.1:41966
+Aug 02 07:38 : client: [0] closed
+Aug 02 07:43 : client: [1] opened from 127.0.0.1:42898
+Aug 02 09:23 : client: [1] closed
+Aug 02 09:56 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Aug 02 09:58 : client: [0] opened from 127.0.0.1:38536
+Aug 02 09:59 : client: [0] closed
+Aug 02 09:59 : client: [1] opened from 127.0.0.1:38538
+Aug 02 10:03 : client: [1] closed
+Aug 02 10:03 : client: [2] opened from 127.0.0.1:38604
+Aug 02 10:04 : client: [2] closed
+Aug 02 10:04 : client: [3] opened from 127.0.0.1:38606
+Aug 02 10:04 : client: [3] closed
+Aug 02 10:04 : client: [4] opened from 127.0.0.1:38608
+Aug 02 10:04 : client: [4] closed
+Aug 02 10:04 : client: [5] opened from 127.0.0.1:38610
+Aug 02 10:04 : client: [5] closed
+Aug 02 10:04 : client: [6] opened from 127.0.0.1:38612
+Aug 02 10:07 : client: [6] closed
+Aug 02 10:07 : client: [7] opened from 127.0.0.1:38616
+Aug 02 10:08 : client: [7] closed
+Aug 02 10:08 : client: [8] opened from 127.0.0.1:38618
+Aug 02 10:09 : client: [8] closed
+Aug 02 10:09 : client: [9] opened from 127.0.0.1:38620
+Aug 02 10:09 : client: [9] closed
+Aug 02 10:09 : client: [10] opened from 127.0.0.1:38622
+Aug 02 10:10 : client: [10] closed
+Aug 02 10:10 : client: [11] opened from 127.0.0.1:38624
+Aug 02 10:10 : client: [11] closed
+Aug 02 10:10 : client: [12] opened from 127.0.0.1:38626
+Aug 02 10:14 : client: [12] closed
+Aug 02 10:14 : client: [13] opened from 127.0.0.1:38646
+Aug 02 10:14 : client: [13] closed
+Aug 02 10:14 : client: [14] opened from 127.0.0.1:38648
+Aug 02 10:14 : client: [14] closed
+Aug 02 10:14 : client: [15] opened from 127.0.0.1:38650
+Aug 02 10:15 : client: [15] closed
+Aug 02 10:15 : client: [16] opened from 127.0.0.1:38652
+Aug 02 10:15 : client: [16] closed
+Aug 02 10:15 : client: [17] opened from 127.0.0.1:38654
+Aug 02 10:18 : client: [17] closed
+Aug 02 10:18 : client: [18] opened from 127.0.0.1:38666
+Aug 02 10:21 : client: [18] closed
+Aug 02 10:21 : client: [19] opened from 127.0.0.1:38680
+Aug 02 10:22 : client: [19] closed
+Aug 02 10:22 : client: [20] opened from 127.0.0.1:38684
+Aug 02 10:22 : client: [20] closed
+Aug 02 10:22 : client: [21] opened from 127.0.0.1:38686
+Aug 02 10:29 : client: [21] closed
+Aug 02 10:29 : client: [22] opened from 127.0.0.1:38706
+Aug 02 10:29 : client: [22] closed
+Aug 02 10:29 : client: [23] opened from 127.0.0.1:38708
+Aug 02 10:36 : client: [23] closed
+Aug 02 10:36 : client: [24] opened from 127.0.0.1:38778
+Aug 02 10:36 : client: [24] closed
+Aug 02 10:37 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Aug 02 10:37 : client: [0] opened from 127.0.0.1:56506
+Aug 02 10:38 : client: [0] closed
+Aug 02 10:41 : client: [1] opened from 127.0.0.1:56510
+Aug 02 10:43 : client: [1] closed
+Aug 02 10:43 : client: [2] opened from 127.0.0.1:56542
+Aug 02 18:39 : client: [2] closed
+Aug 02 18:39 : client: [3] opened from 127.0.0.1:57444
+Aug 02 18:39 : client: [3] closed
+Aug 02 18:39 : client: [4] opened from 127.0.0.1:57446
+Aug 02 22:01 : client: [4] closed
+Aug 02 22:07 : client: [5] opened from 127.0.0.1:57780
+Aug 02 22:07 : client: [5] closed
+Aug 02 22:07 : client: [6] opened from 127.0.0.1:57782
+Aug 02 22:14 : client: [6] closed
+Aug 03 07:20 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Aug 03 07:20 : client: [0] opened from 127.0.0.1:56988
+Aug 03 07:40 : client: [0] closed
+Aug 03 07:40 : client: [1] opened from 127.0.0.1:57082
+Aug 03 09:59 : client: [1] closed
+Aug 03 09:59 : client: [2] opened from 127.0.0.1:57764
+Aug 03 21:19 : client: [2] closed
+Aug 03 21:19 : client: [3] opened from 127.0.0.1:58374
+Aug 04 00:20 : client: [3] closed
+Aug 04 00:20 : client: [4] opened from 127.0.0.1:58634
+Aug 04 08:36 : client: [4] closed
+Aug 04 08:36 : client: [5] opened from 127.0.0.1:59640
+Aug 04 08:59 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Aug 04 09:00 : client: [6] opened from [::1]:52880
+Aug 04 09:00 : client: [6] closed
+Aug 04 09:01 : client: [7] opened from [::1]:52884
+Aug 04 09:01 : client: [7] closed
+Aug 04 09:01 : client: [8] opened from [::1]:52886
+Aug 04 09:01 : client: [8] closed
+Aug 04 09:02 : client: [9] opened from [::1]:52888
+Aug 04 09:02 : client: [9] closed
+Aug 04 09:15 : client: [10] opened from 127.0.0.1:59724
+Aug 04 09:15 : exception: OutputThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Aug 04 09:15 : exception: OutputThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Aug 04 09:19 : player: played "Midnight Oil - Beds Are Burning.opus"
+Aug 04 09:31 : player: played "Mr Mister/Welcome To The Real World/Mr.  Mister - 1 - Black, White - Welcome To The Real World (1985).opus"
+Aug 04 10:48 : client: [5] closed
+Aug 04 10:48 : client: [11] opened from 127.0.0.1:59814
+Aug 04 11:04 : client: [12] opened from 127.0.0.1:59826
+Aug 04 11:05 : client: [10] closed
+Aug 04 11:11 : client: [12] closed
+Aug 04 11:12 : client: [13] opened from 127.0.0.1:59868
+Aug 04 16:20 : client: [13] closed
