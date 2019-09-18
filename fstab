@@ -1,0 +1,8 @@
+# Static information about the filesystems.
+# See fstab(5) for details.
+
+# <file system> <dir> <type> <options> <dump> <pass>
+# /dev/sda4
+UUID=f618130a-748f-4ddc-ad15-2db5b39e0989	/         	ext4      	rw,relatime	0 1
+tmpfs	/home/peter/.cache/chromium	tmpfs	noatime,nodev,nosuid,size=400M	0	0
+
