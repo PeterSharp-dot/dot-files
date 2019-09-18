@@ -1,0 +1,28 @@
+auto-reload yes
+reload-time 5
+
+show-keymap-hint false 
+swap-title-and-hints false
+browser "/usr/bin/w3m"
+#external-url-viewer "/usr/bin/urlview"
+pager internal
+html-renderer "/usr/bin/w3m"
+
+bind-key j next
+bind-key k prev
+bind-key J next-feed
+bind-key K prev-feed
+bind-key j down article
+bind-key k up article
+bind-key J next article
+bind-key K prev article
+
+#                text    background
+color background blue default 
+color listnormal blue default 
+#               tło   text
+color listfocus black white standout
+color info blue default standout
+color listfocus_unread black white standout
+color listnormal_unread blue default
+
