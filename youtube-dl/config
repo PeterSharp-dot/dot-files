@@ -1,10 +1,11 @@
 # Save all videos under Movies directory in your home directory
 #--get-filename
-#-o "%(title)s.%(ext)s"
+-o ~/Wideo/%(title)s.%(ext)s
 #-f "best[height=480]"
 
 #-x
 #--audio-quality 0
 #--audio-format best
-#-f bestvideo[height<=720]+bestaudio/best[height<=720]
+#-f bestvideo[height<=480]+bestaudio/best[height<=480]
+-f bestvideo[height<=360]+bestaudio/best[height<=360]
 #-f 244+251
