@@ -1,0 +1,10 @@
+#!/bin/bash
+
+while true; do
+	xsetroot -name "$( 🌡 sensors | awk /^temp1:/{print $2})$(date +%c)"
+	sleep 1
+done
+
+
+
+

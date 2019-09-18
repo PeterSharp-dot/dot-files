@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# README: po nazwie 'ntex' należy podać wymyśloną nazwę pliku z rozszerzeniem .tex
+cp /home/*****/Dokumenty/Informatyka/LaTeX/skeleton.tex ./$1
+echo "Created latex skeleton file: " $1

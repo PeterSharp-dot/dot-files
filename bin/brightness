@@ -1,0 +1,14 @@
+#!/bin/bash
+
+BEGIN = xrandr --output VGA1 --brightness 0.7
+
+if [$1 == "-i"]
+then
+   
+fi
+
+if [$1 == "-d"]
+then
+    ....
+fi
+
