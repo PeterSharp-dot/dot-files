@@ -1,0 +1,10 @@
+[Unit]
+Description=Run 3 min after boot every 4 min
+
+[Timer]
+OnBootSec=3min
+# OnCalendar=*:0/6
+OnUnitActiveSec=4min
+
+[Install]
+WantedBy=timers.target

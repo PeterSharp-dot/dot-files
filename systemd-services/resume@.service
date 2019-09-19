@@ -1,0 +1,13 @@
+[Unit]
+Description=gpg-agent forgets passprase
+After=suspend.target
+
+[Service]
+User=peter
+Type=simple
+ExecStart=/home/peter/bin/restart_agent.sh 
+#TimeoutSec=0
+#StandardOutput=syslog
+
+[Install]
+WantedBy=suspend.target
