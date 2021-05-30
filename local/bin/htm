@@ -1,0 +1,6 @@
+#!/bin/bash
+
+#README: po komendzie htm należy podać swoją nazwę pliku z rozszerzeniem .html
+
+cp -v /home/peter/skeleton.html ./$1
+echo "Utworzono szkieletowy plik html: " $1

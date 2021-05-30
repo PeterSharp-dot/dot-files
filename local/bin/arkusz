@@ -1,0 +1,2 @@
+#!/bin/sh
+libreoffice --calc $1
