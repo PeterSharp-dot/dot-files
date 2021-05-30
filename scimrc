@@ -1,0 +1,9 @@
+REDEFINE_COLOR "RED" 700 100 100
+color "type=HEADINGS fg=BLACK bg=WHITE"
+# color "type=CELL_CONTENT fg=BLACK bg=WHITE"
+color "type=CELL_SELECTION_SC fg=WHITE bg=CYAN"
+color "type=INPUT fg=BLACK bg=DEFAULT_COLOR"
+color "type=NORMAL fg=BLACK bg=DEFAULT_COLOR"
+
+newline_action 'l'
+

@@ -1,0 +1,288 @@
+# wm independent hotkeys
+########################
+
+# terminal emulator
+super + Return
+	termite -c /home/peter/.config/termite/config
+
+ctrl + alt + Return
+	termite -c /home/peter/.config/termite/config_black
+
+# program launcher
+# super + @space
+#	dmenu_run 
+
+super + p
+	dmenu_run -fn Mononoki -p '>'
+
+# make sxhkd reload its configuration files:
+super + Escape
+	pkill -USR1 -x sxhkd
+
+# suspend
+shift + End
+	/home/peter/bin/sleep.sh
+
+# calculator in floating terminal
+ctrl + alt + c
+	bspc rule -a \* -o state=floating && termite -e calc  
+
+# ranger in floating terminal
+ctrl + alt + r
+	bspc rule -a \* -o state=floating && termite -e ranger    
+
+# thunar in floating terminal
+ctrl + alt + t
+	bspc rule -a \* -o state=floating && pcmanfm    
+
+# vifm in floating terminal
+ctrl + alt + v
+	bspc rule -a \* -o state=floating && termite -e vifm    
+
+# python in floating terminal
+ctrl + alt + p
+	bspc rule -a \* -o state=floating && termite -e python    
+
+# python in floating terminal
+ctrl + alt + n
+	bspc rule -a \* -o state=floating && nitrogen    
+
+
+#
+# bspwm hotkeys
+#######################
+
+# quit/restart bspwm
+super + alt + {q,r}
+	bspc {quit,wm -r}
+
+# close and kill
+super + {_,shift + }q
+	bspc node -{c,k}
+
+# alternate between the tiled and monocle layout
+super + m
+	bspc desktop -l next
+
+# send the newest marked node to the newest preselected node
+super + y
+	bspc node newest.marked.local -n newest.!automatic.local
+
+# swap the current node and the biggest node
+super + g
+	bspc node -s biggest
+
+
+
+
+#
+# state/flags
+####################
+
+# set the window state
+super + {t,shift + t,s,f}
+	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+
+# set the node flags
+super + ctrl + {m,x,y,z}
+	bspc node -g {marked,locked,sticky,private}
+
+
+
+
+#
+# desktop operations
+########################
+
+# focus the next/previous node in the current desktop
+super + {_,shift + }Tab
+	bspc node -f {next,prev}.local
+
+# focus the next/previous desktop in the current monitor
+# super + bracket{left,right}
+#	bspc desktop -f {prev,next}.local
+
+# focus the last node/desktop
+super + {grave,c}
+	bspc {node,desktop} -f last
+
+# focus or send to the given desktop
+super + {_,shift + }{1-9,0}
+	bspc {desktop -f,node -d} '^{1-9,10}'
+
+
+
+
+#
+# focus/swap
+####################
+
+# focus the node in the given direction
+super + {_,shift + }{h,j,k,l}
+	bspc node -{f,s} {west,south,north,east}
+
+# focus the node for the given path jump
+super + {p,b,comma,period}
+	bspc node -f @{parent,brother,first,second}
+
+# focus the older or newer node in the focus history
+super + {o,i}
+	bspc wm -h off; \
+	bspc node {older,newer} -f; \
+	bspc wm -h on
+
+# Rotate desktop
+super + {_,shift + }r
+	bspc node @/ --rotate {90,-90}
+
+# Circulate the leaves of the tree
+super + {_,shift + }y
+	bspc node @/ --circulate {backward,forward}
+
+# Make split ratios equal
+super + equal
+	bspc node @/ --equalize
+
+# Make split ratios balanced
+super + minus
+	bspc node @/ --balance
+
+# Toogle tiling of window
+super + d
+	bspc query --nodes -n focused.tiled && state=floating || state=tiled; \
+	bspc node --state \~$state
+
+# Toogle pseudo tiling of window
+super + l
+	bspc node --state \~pseudo_tiled
+
+# Swap window with last window
+super + apostrophe
+	bspc node --swap last
+
+# Move window to last split
+super + z
+	bspc query --nodes -n focused.automatic \
+	&& bspc node -n last.\!automatic \
+	|| bspc node last.leaf -n focused
+
+# Flip layout vertically/horizontally
+super + {_,shift + }j
+	bspc node @/ --flip {vertical,horizontal}
+
+
+# Define splitting ratio for next window on leaf/parent
+super + ctrl + {_,shift +}{1-9}
+	bspc node {_,@/} --presel-ratio 0.{1-9}
+
+# Cancel preselection
+super + ctrl + space
+	bspc node --presel-dir cancel
+
+
+# Focus when clicking
+~button1
+	bspc pointer --grab focus
+
+# Move/resize windows
+alt + button{1-3}
+	; bspc pointer --grab {move,resize_side,resize_corner}
+
+# Ungrab when releasing a mouse button
+alt + @button{1-3}
+	bspc pointer --ungrab
+
+# Emulate i3's scratchpad
+F12
+	xdotool search --onlyvisible --classname scratchpad windowunmap \
+	|| ( xdotool search --classname scratchpad windowmap; xdotool search --classname scratchpad windowraise; ) \
+	|| ( urxvtc -name scratchpad -geometry 220x20+400+0; xdotool search --classname scratchpad windowraise; )
+
+
+# make sxhkd reload its configuration files:
+super + Escape
+	pkill -USR1 -x sxhkd
+
+
+
+
+#
+# gaps
+#####################
+
+# Expand tiled space
+super + alt + {h,j,k,l}
+	bspc node {@west -r -10,@south -r +10,@north -r -10,@east -r +10}
+
+# Contract tiled space
+super + alt + shift + {h,j,k,l}
+	bspc node {@east -r -10,@north -r +10,@south -r -10,@west -r +10}
+
+
+# Increase/decrease window gap on focused desktop
+super + bracket{left,right}
+	bspc config -d focused window_gap $((`bspc config -d focused window_gap` {-,+} 5 ))
+
+
+
+
+#
+# preselect
+#####################
+
+# preselect the direction
+super + ctrl + {h,j,k,l}
+	bspc node -p {west,south,north,east}
+
+# preselect the ratio
+super + ctrl + {1-9}
+	bspc node -o 0.{1-9}
+
+# cancel the preselection for the focused node
+super + ctrl + space
+	bspc node -p cancel
+
+# cancel the preselection for the focused desktop
+super + ctrl + shift + space
+	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
+
+
+
+
+
+#
+# move/resize
+#####################
+
+# expand a window by moving one of its side outward
+super + alt + {h,j,k,l}
+	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+
+# contract a window by moving one of its side inward
+super + alt + shift + {h,j,k,l}
+	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+
+# move a floating window
+# super + {Left,Down,Up,Right}
+alt + {h,j,k,l}
+	bspc node -v {-20 0,0 20,0 -20,20 0}
+
+# resize floating windows
+ctrl + space + {h,j,k,l}
+    bspc window -e {left -10,down +10,up -10,right +10}
+
+ctrl + space + shift + {h,j,k,l}
+    bspc window -e {right -10,up +10,down -10,left +10}
+
+
+
+#
+# layouts
+###################
+alt + control + {1,2,3}
+  ~/.config/bspwm/config_scheme.sh {first_child,longest_side,spiral}
+
+# Navigate layouts
+super + {_,shift + }space
+	bspc desktop --layout {next,prev}
+
