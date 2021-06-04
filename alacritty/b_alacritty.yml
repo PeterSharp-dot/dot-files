@@ -110,8 +110,8 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    #family: JetBrains Mono
-    family: Comic Mono
+    family: JetBrains Mono
+    #family: Comic Mono
     #family: Envy Code R
 
     # The `style` can be specified to pick a specific face.
@@ -180,8 +180,8 @@ font:
 colors:
   # Default colors
   primary:
-    background: '#000000'
-    foreground: '#999999'
+    background: '#333333'
+    foreground: '#ffffff'
 
     # Bright and dim foreground colors
     #
