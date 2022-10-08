@@ -1,0 +1,9 @@
+#set selection-clipboard clipboard
+set default-bg "#1d1f1e"
+set default-fg "#777777"
+set recolor true 
+#light solarized
+set recolor-darkcolor "#777777"
+set recolor-lightcolor "#1d1f1e"
+set statusbar-bg "#000000"
+set statusbar-fg "#6F6F6F"
