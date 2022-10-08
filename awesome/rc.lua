@@ -1,5 +1,7 @@
 --[[
 
+     This file comes from arcolinux distribution but has been utilized and changed by me in many places.
+    
      Awesome WM configuration template
      https://github.com/awesomeWM
 
