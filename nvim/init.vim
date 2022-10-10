@@ -407,3 +407,5 @@ nmap <silent> gt :tabprevious<cr>
 
 let g:goyo_width = 90
 
+nnoremap <leader>gp :!g++ *.cpp <CR>
+nnoremap <leader>su :%s/
