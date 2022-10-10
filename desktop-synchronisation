@@ -1,0 +1,4 @@
+#!/bin/sh
+
+rm -f /home/peter/.config/nvim/init.vim
+cp -v ./nvim/init.vim /home/peter/.config/nvim/init.vim
