@@ -1,8 +1,0 @@
-#!/bin/sh
-
-rm -f $HOME/.config/nvim/init.vim
-cp -v ./nvim/init.vim $HOME/.config/nvim/init.vim
-rm -f $HOME/.config/nvim/after/plugin/telescope.nvim.vim
-rm -f $HOME/.config/nvim/after/plugin/toggleterm.lua
-cp -v ./nvim/after/plugin/telescope.nvim.vim $HOME/.config/nvim/after/plugin/telescope.nvim.vim
-cp -v ./nvim/after/plugin/toggleterm.lua $HOME/.config/nvim/after/plugin/toggleterm.lua
