@@ -2,3 +2,7 @@
 
 rm -f /home/peter/.config/nvim/init.vim
 cp -v ./nvim/init.vim /home/peter/.config/nvim/init.vim
+rm -f /home/peter/.config/nvim/after/plugin/telescope.nvim.vim
+rm -f /home/peter/.config/nvim/after/plugin/toggleterm.lua
+cp -v ./nvim/after/plugin/telescope.nvim.vim /home/peter/.config/nvim/after/plugin/telescope.nvim.vim
+cp -v ./nvim/after/plugin/toggleterm.lua /home/peter/.config/nvim/after/plugin/toggleterm.lua
