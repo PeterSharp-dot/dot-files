@@ -138,6 +138,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
 Plug 'akinsho/toggleterm.nvim'
 Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'christoomey/vim-tmux-navigator'
 "Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 call plug#end()
 
