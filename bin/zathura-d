@@ -1,0 +1,3 @@
+#!/bin/sh
+TITLE="$1" 
+zathura -c "/home/peter/.config/zathura-dracula/" "$TITLE"

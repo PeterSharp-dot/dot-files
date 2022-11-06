@@ -1,0 +1,2 @@
+#!/bin/bash
+stty cols 72 && readable $1 | w3m -T text/html

@@ -1,0 +1,12 @@
+#!/bin/sh
+if [-f /tmp/$1]; then
+    rm -f /tmp/$1
+fi
+cp ./$1 /tmp
+cd /tmp
+htmvar=$(echo "$1" | sed 's/.md/.html/')
+if (-f $htmvar); then
+    rm -f $htmvar
+fi
+pandoc -f markdown -t html $1 > $htmvar
+rm -f $1

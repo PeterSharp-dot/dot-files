@@ -1,0 +1,3 @@
+#!/bin/bash
+sdcv -n -c $1 | less -R
+

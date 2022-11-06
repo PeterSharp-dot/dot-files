@@ -1,0 +1,1 @@
+echo 'require("awful").screen.focused().selected_tag.gap = 30' | awesome-client

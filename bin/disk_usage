@@ -1,0 +1,4 @@
+#!/bin/bash
+hdd="$(df -h | awk 'NR==4{print $3,"of",$2, $5 }')"
+icon=" / used:"
+printf "[%s%s \\n" "$icon " "$hdd ]"

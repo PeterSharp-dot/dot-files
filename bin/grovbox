@@ -1,0 +1,2 @@
+#!/bin/bash
+/usr/bin/xsetroot -solid "#2f343a"

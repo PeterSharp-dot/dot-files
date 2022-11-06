@@ -1,0 +1,3 @@
+#!/bin/sh
+
+zathura-d /home/peter/Documents/hebrajski/hebrajski_alfabet.pdf &

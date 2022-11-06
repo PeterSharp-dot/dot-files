@@ -1,0 +1,2 @@
+#!/bin/sh
+sed 's/down//;s/up/ 📡/'  /sys/class/net/enp25s0/operstate

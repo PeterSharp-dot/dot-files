@@ -1,0 +1,67 @@
+echo "
+To okno  --  Ctrl + F4
+
+
+Dmenu  --  Super + d
+Menu  --   Super + Spacja
+
+terminal  --  Super + Enter
+
+Uśpij komputer  --  Shift + End
+
+kalkulator  --  Super + ;
+Appfinder  --  Alt + F3
+Appfinder collapsed  -- Alt + F2
+
+zgłośnij  --  Ctrl + F2
+zcisz  --  Ctrl +F1
+wycisz/dźwięk  --  Ctrl + F3
+
+
+W górę  --  k
+W dół  --  j
+W prawo  --  l
+W lewo --  h
+
+Anulowanie  --  Esc
+
+Przełączanie między oknami  --  Super + Tab
+Przełączanie okna bieżącego progamu  --  Ctrl + Tab
+Przełączanie okna  --  Super + z
+
+Zamknięcie okna  --  Super + q
+
+Zmaksymalizowanie  --  Super + CtrlR
+Zminimalizowanie  --  Super + CtrlL
+Zmaksymalizowanie w pionie  --  Super + \\
+Zmaksymalizowanie w poziomie  --  Super + /
+
+Przemieszczanie okna  --  Super + m (potem kierunek: k,j,l,h)
+Zmiana rozmiaru  --  Super + r
+
+Zwinięcie/rozwinięcie  --  Super + \`
+toggle na wyszystkich pulpitach  --  Alt + F6
+Przemieszczenie na wierzch  --  Shift + Alt + Page UP
+Przemieszczenie na spód  --  Shift + Alt + Page DOWN
+Zawsze na wieszchu  --  Alt + F12
+Pełny ekran  --  Alt + F11
+
+Przemieszczenie na poprzedni pulpit  --  Ctrl + Alt + Home
+Przemieszczenie na następny pulpit  --  Ctrl + Alt + End
+
+Przemieszczenie na pulpit nr 1 - 10  -- Shift + Super + 1-0
+
+Pulpit 1 - 10  --  Super + 1 - 0
+
+Rozmieszczenie okien:
+    Okno do lewej krawędzi ekranu  --  Shift + Ctrl + H
+    Okno do prawej krawędzi ekranu  --  Shift + Ctrl + L
+    Okno do górnej-lewej k.e  --  Shift + Ctrl + \`
+    Okno do dolnej-lewej k.e  --  Shift + Ctrl + Super
+    Okno do górnej-prawej k.e  --  Shift + Ctrl + Backspace
+    Okno do dolnej-prawej k.e  --  Shift + Ctlr + CtrlR
+
+Wyświetlanie pulpitu  --  Ctrl + Alt + d "
+
+
+

@@ -1,0 +1,3 @@
+#!/bin/sh
+
+zathura-d /home/peter/Documents/Informatyka/sql/SQL-cheat-sheet.pdf

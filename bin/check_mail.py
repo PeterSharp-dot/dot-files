@@ -22,7 +22,7 @@ def decodeHeader(value):
 
 def listLastInbox(top = 4):
   mailbox = imaplib.IMAP4_SSL('imap.gmail.com')
-  mailbox.login('xxxxx.xxxxx@gmail.com', '*************')
+  mailbox.login('peter.grela@gmail.com', 'bBIxfWNDvjyuwem8abe6Ul3H')
 
   selected = mailbox.select('INBOX')
   assert selected[0] == 'OK'

@@ -1,0 +1,4 @@
+#!/bin/sh
+cd ~/screenshots
+scrot -s -f -d 0.1 '%Y-%m-%d_%H:%M:%S_$wx$h.png' -e 'gimp -s $f'
+

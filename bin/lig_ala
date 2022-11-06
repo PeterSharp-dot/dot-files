@@ -1,0 +1,5 @@
+#!/bin/sh
+sed -i -e "/background: '#333333'/s/background:/#background:/" /home/peter/.config/alacritty/alacritty.yml
+sed -i -e "/foreground: '#dddddd'/s/foreground:/#foreground:/" /home/peter/.config/alacritty/alacritty.yml
+sed -i -e "/#background: '#ffffff'/s/#background:/background:" /home/peter/.config/alacritty/alacritty.yml
+sed -i -e "/#foreground: '#333333'/s/#foreground:/foreground:" /home/peter/.config/alacritty/alacritty.yml

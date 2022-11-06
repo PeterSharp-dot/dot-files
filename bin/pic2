@@ -1,0 +1,2 @@
+#!/bin/sh
+picom2 --config ~/.config/picom2.conf

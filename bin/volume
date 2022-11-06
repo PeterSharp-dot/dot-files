@@ -1,0 +1,11 @@
+#!/bin/sh
+# 🔊 🔈 🔉 
+vol="$(pamixer --get-volume)"
+if [ "$vol" -gt "70" ]; then
+    icon="奄 "
+elif [ "$vol" -lt "30" ]; then
+    icon="奔 "
+else
+    icon="墳 "
+fi
+echo "    [ $icon$vol% ]  "

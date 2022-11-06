@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Uruchamiany przez /etc/systemd/system/cool.timer 
+
 echo "0" >/sys/class/thermal/cooling_device0/cur_state
 echo "0" >/sys/class/thermal/cooling_device1/cur_state
 echo "0" >/sys/class/thermal/cooling_device2/cur_state

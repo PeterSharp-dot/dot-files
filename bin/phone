@@ -1,0 +1,3 @@
+#!/bin/bash
+echo "simple-mtpfs --device 1 ~/mnt\n"
+echo "Umount: fusermount -u ~/mnt"

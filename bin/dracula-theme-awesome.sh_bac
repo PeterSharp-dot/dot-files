@@ -1,0 +1,8 @@
+sed -i -e 's/^foreground.*$/foreground #8f878e/' -e 's/^background.*$/background #1d1f1e/' /home/peter/.config/kitty/kitty.conf
+sed -i -e 's/^set -g status-bg .*$/set -g status-bg "#222222"/' -e 's/^set -g status-fg .*$/set -g status-fg "#8f878e"/' -e 's/#\[fg=.*\]/#\[fg=#cccccc\]/' -e 's/W#.*\*/W#\[fg=#32a852\]\*/' -e 's/^setw -g window-status-style .*$/setw -g window-status-style bg="#222222",fg="#8f878e"/' -e 's/^setw -g window-status-current-style bg.*$/setw -g window-status-current-style bg="#222222",fg="#8f878e"/' -e 's/^set -g pane-active-border-style fg.*$/set -g pane-active-border-style fg="#111111"/' -e 's/^set -g pane-border-style fg.*$/set -g pane-border-style fg="#8f878e"/' /home/peter/.tmux.conf
+sed -i -e 's/^theme.border_normal.*$/theme.border_normal = "#1d1f1e"/' -e 's/^theme.border_focus.*$/theme.border_focus = "#444444"/' -e 's/^theme.wibar_bg.*$/theme.wibar_bg = "#1d1f1e"/' -e 's/^theme.wibar_fg.*$/theme.wibar_fg = "#8f878e"/' -e 's/theme.tasklist_fg_focus.*$/theme.tasklist_fg_focus = "#8f878e"/' -e 's/theme.tasklist_bg_focus.*$/theme.tasklist_bg_focus = "#1d1f1e"/' -e 's/^theme.taglist_bg_focus.*$/theme.taglist_bg_focus = "#1d1f1e"/' /home/peter/.config/awesome/themes/multicolor/theme.lua
+awesome-client 'awesome.restart()'
+tmux detach-client -t 0
+tmux source-file ~/.tmux.conf
+pkill -USR1 -x kitty
+tmux attach-session -t 0

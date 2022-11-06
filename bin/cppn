@@ -1,0 +1,10 @@
+#!/bin/sh
+
+touch $1
+echo "#include <iostream>"  >> $1
+echo "using namespace std;"  >> $1
+echo " " >> $1
+echo "int main(){" >> $1
+echo " " >> $1
+echo "}" >> $1
+nvim $1 +5

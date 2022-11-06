@@ -1,0 +1,10 @@
+#!/bin/bash
+cp ./$1 /tmp
+cd /tmp
+dvivar=$(echo "$1" | sed 's/.ms/.dvi/')
+pdfvar=$(echo "$1" | sed 's/.ms/.pdf/')
+groff -Kutf8 -t -Tdvi -mec -ms -U $1 > $dvivar
+#dvipdfm -cz 9 $dvivar
+dvipdf $dvivar
+rm -f $dvivar
+zathura /tmp/$pdfvar &

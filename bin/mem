@@ -1,0 +1,3 @@
+#!/bin/sh
+#echo " 🔋`free '-h' | awk '(NR==2){ print $3 }'` "
+echo " MEM:`free '-h' | awk '(NR==2){ print $3 }'` "
