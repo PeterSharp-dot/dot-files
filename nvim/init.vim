@@ -38,8 +38,8 @@ autocmd BufWinLeave *.* mkview
 autocmd BufWinEnter *.* silent! loadview
 
 " Save and Load folded lines and view for ubg.txt bible
-autocmd BufWinLeave /home/peter/notes/ubg.txt mkview! ubg_view
-autocmd BufWinEnter /home/peter/notes/ubg.txt silent! loadview
+"autocmd BufWinLeave /home/peter/notes/ubg.txt mkview! ubg_view
+"autocmd BufWinEnter /home/peter/notes/ubg.txt silent! loadview
 
 
 """ Groff snippets
