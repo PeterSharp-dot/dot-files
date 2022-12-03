@@ -1,4 +1,3 @@
-
 "set nowrap                " Do not allow to text be wrapped to next line
 set linebreak             " do not wrap within a word when set
 set whichwrap=b,s,<,>,[,] " only these movement keys move the cursor to previous/next line
@@ -47,13 +46,15 @@ autocmd BufWinEnter *.* silent! loadview
 autocmd BufNewFile,BufRead *.ms setfiletype groff
 syntax on
 
+" to use those shortcuts type a name and then enter <space> key
 inoreabbr grotex .\" to compile and open pdf: :!grop % (pdf in /tmp)<CR>.\" to compile only: :!gro % (pdf in /tmp)<CR>.\" snippets (insert mode): heading .SH 1 = .s , paragraph .LP = .l<CR>.\" Also to create another paragraph insert empty line<CR>.\" Indented paragraph: .PP<CR>.\" .gcolor blue<CR>.\" .gcolor - black default<CR>.\" .B - bold (until empty line)<CR><CR>.nr PO 1.5i<CR>.nr LL 4.5i<CR>.de cb<CR>.SM<CR>.CW<CR>..<CR>.<CR>.de bi<CR>.IP \(bu<CR>..<CR><CR>.nr PS 12<CR>.nr VS 10*1700/1000<CR><CR>.TL 
 
 inoreabbr .s .SH<CR>
 inoreabbr .i .IP<CR>
 inoreabbr .b \(bu<CR>
 inoreabbr .l .LP<CR>
-inoreabbr .c .\" 
+inoreabbr cmm .\" 
+inoreabbr .c .comment<CR><CR>.endc<Esc>BbVjzfi<Space><Space><Space>
 
 map <F3> :!grop %<CR><CR>
 map <F4> :!gro %<CR><CR>
@@ -223,7 +224,7 @@ set shortmess+=c
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.
 if has("nvim-0.5.0") || has("patch-8.1.1564")
-  "" Recently vim can merge signcolumn and number column into one
+" Recently vim can merge signcolumn and number column into one
   set signcolumn=number
 else
   set signcolumn=yes
@@ -376,7 +377,6 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
-"_____________________________________________
 
 "UNIVERSAL TAGS
 set tags+=./tags;,tags
@@ -390,10 +390,10 @@ command Nc e ~/.config/nvim/init.vim
 command H cd ~/
 command Note cd ~/notes/
 
-"let g:airline_theme='monochrome'
+let g:airline_theme='monochrome'
 "let g:airline_theme='biogoo'
 "let g:airline_theme='solarized'
-let g:airline_theme='peaksea'
+"let g:airline_theme='peaksea'
 "let g:airline_theme='transparent'
 
 "Folding text style
@@ -406,7 +406,7 @@ endfunction
 
 let g:indentLine_color_term = 239
 "let g:indentLine_color_gui = '#A4E57E'
-"
+
 
 nmap <silent> gy :tabnext<cr>
 nmap <silent> gt :tabprevious<cr>
@@ -434,5 +434,5 @@ function! ToggleHiddenAll()
     endif
 endfunction
 
-nnoremap <S-h> :call ToggleHiddenAll()<CR>
+nnoremap <C-h> :call ToggleHiddenAll()<CR>
 
