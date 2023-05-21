@@ -29,5 +29,5 @@ function fish_right_prompt
   pwd 
 end
 function t
-  clear && pwd && tree -L 1
+  ls && clear && pwd && tree -L 1
 end
