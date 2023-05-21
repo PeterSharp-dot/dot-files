@@ -10,6 +10,7 @@ browser "w3m %u"
 pager internal
 html-renderer "/usr/bin/w3m"
 
+#keybindings
 bind-key j next
 bind-key k prev
 bind-key J next-feed
