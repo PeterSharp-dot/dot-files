@@ -31,3 +31,15 @@ end
 function t
   ls && clear && pwd && tree -L 1
 end
+function notes
+  nvim ~/notes/index.md
+end
+function gita
+  git add . && git commit -am "New commit. Ok"
+end
+function gitap
+  git add . && git commit -am "New commit. Ok" && git push
+end
+function gpull
+  git pull
+end
