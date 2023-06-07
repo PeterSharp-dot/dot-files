@@ -46,10 +46,7 @@ autocmd BufWinEnter *.* silent! loadview
 autocmd BufNewFile,BufRead *.ms setfiletype groff
 syntax on
 
-" to use those shortcuts type a name and then enter <space> key
-inoreabbr grotex .\" to compile and open pdf: :!grop % (pdf in /tmp)<CR>.\" to compile only: :!gro % (pdf in /tmp)<CR>.\" snippets (insert mode): heading .SH 1 = .s , paragraph .LP = .l<CR>.\" Also to create another paragraph insert empty line<CR>.\" Indented paragraph: .PP<CR>.\" .gcolor blue<CR>.\" .gcolor - black default<CR>.\" .B - bold (until empty line)<CR><CR>.nr PO 1.5i<CR>.nr LL 4.5i<CR>.de cb<CR>.SM<CR>.CW<CR>..<CR>.<CR>.de bi<CR>.IP \(bu<CR>..<CR><CR>.nr PS 12<CR>.nr VS 10*1700/1000<CR><CR>.TL 
-
-inoreabbr .s .SH<CR>
+" USAGE: to use those shortcuts type a name and then enter <space> key
 inoreabbr .i .IP<CR>
 inoreabbr .b \(bu<CR>
 inoreabbr .l .LP<CR>
@@ -80,6 +77,8 @@ map <C-D> <C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E>
 " better block of code intendation in v mode
 vnoremap < <gv 
 vnoremap > >gv
+
+map <leader>hr :call ToggleHiddenAll()<CR>
 
 "cursor shape for normal and insert mode
 let &t_SI = "\e[5 q"
@@ -160,22 +159,6 @@ autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_
     \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
 
 
-" --------------------------------------------
-" Tips for which-key plugin
-" which-key plugin usage: 
-"     type first letter and wait; 
-"     type your leader key; 
-"     type " for registers list; 
-"     type z= for spellchecking; 
-"     type ` for marks list
-
-lua << EOF
-  require("which-key").setup {
-    -- your configuration comes here
-    -- or leave it empty to use the default settings
-    -- refer to the configuration section below
-  }
-EOF
 
 
 " Tip : nerdcommenter toggle comment/uncomment: leader(that is: ;)+c+spacja
@@ -370,7 +353,7 @@ nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
 nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
 " Search workspace symbols.
 nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
-" Do default action for next item.
+" Do default action for next item
 nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 " Do default action for previous item.
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
@@ -378,13 +361,20 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
 
+" bible
+au BufRead,BufNewFile *.bible set filetype=bible
+au! Syntax bible source ~/.config/nvim/syntax/bible.vim
+
+
+
 "UNIVERSAL TAGS
 set tags+=./tags;,tags
 nnoremap <leader>tt :!ctags -R . <CR>
 " Generate ctags silently
 "nnoremap <leader>tt :silent !ctags -R . <CR>:redraw!<CR>
-
-set fillchars=fold:\ ,vert:\│,eob:\ ,msgsep:‾ " space instead of ~ sign at the end of buffer
+"
+"space instead of `~` sign at the end of buffer
+set fillchars=fold:\ ,vert:\│,eob:\ ,msgsep:‾ 
 
 command Nc e ~/.config/nvim/init.vim
 command H cd ~/
@@ -405,7 +395,6 @@ function MyFoldText()
 endfunction
 
 let g:indentLine_color_term = 239
-"let g:indentLine_color_gui = '#A4E57E'
 
 
 nmap <silent> gy :tabnext<cr>
@@ -434,5 +423,20 @@ function! ToggleHiddenAll()
     endif
 endfunction
 
-nnoremap <C-h> :call ToggleHiddenAll()<CR>
 
+" --------------------------------------------
+" Tips for which-key plugin
+" which-key plugin usage: 
+"     type first letter and wait; 
+"     type your leader key; 
+"     type " for registers list; 
+"     type z= for spellchecking; 
+"     type ` for marks list
+
+lua << EOF
+  require("which-key").setup {
+    -- your configuration comes here
+    -- or leave it empty to use the default settings
+    -- refer to the configuration section below
+  }
+EOF
