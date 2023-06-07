@@ -29,5 +29,19 @@ function fish_right_prompt
   pwd 
 end
 function t
-  clear && pwd && tree -L 1
+  ls && clear && pwd && tree -L 1
 end
+function media
+  cd /run/media/peter
+end
+function sd
+    cd $HOME && cd "$(fd -H -t d | fzf --preview="tree -L 1 {}" --bind="space:toggle-preview" --preview-window=:hidden)" && clear && pwd && ls -a --color &
+end
+function rgall
+  clear && rga -B 5 -A 4
+end
+alias l1='ls -1'
+alias l='ls'
+alias chat='tgpt'
+alias bing='edge-gpt --rich --style creative'
+#alias rga='rga -B 5 -A 4'
