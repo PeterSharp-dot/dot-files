@@ -17,6 +17,8 @@ set -gx SHFM_OPENER "/home/peter/.local/bin/shfm-opener.sh"
 set -gx EDITOR nvim
 set -gx VISUAL nvim
 set -gx FZF_DEFAULT_COMMAND 'ag --hidden --depth 4 --ignore .git -f -g ""'
+fish_vi_key_bindings
+
 set -gx BAT_THEME "Solarized (light)"
 set -gx XDG_CURRENT_DESKTOP KDE
 set -gx QT_QPA_PLATFORMTHEME qt5ct
