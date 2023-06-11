@@ -21,6 +21,8 @@ set -gx BAT_THEME "Solarized (light)"
 set -gx XDG_CURRENT_DESKTOP KDE
 set -gx QT_QPA_PLATFORMTHEME qt5ct
 
+fish_vi_key_bindings
+
 set -g fish_greeting 'Welcome to Fish shell  '
 function fish_prompt 
   printf '>'
@@ -49,4 +51,5 @@ alias l='ls --color=always | bat -p'
 alias ll='ls -l --color=always | bat -p'
 alias chat='tgpt'
 alias bing='edge-gpt --rich --style creative'
+alias pliki='pcmanfm'
 #alias rga='rga -B 5 -A 4'
