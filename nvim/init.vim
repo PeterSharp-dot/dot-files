@@ -364,7 +364,7 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 " bible
 au BufRead,BufNewFile *.bible set filetype=bible
 au! Syntax bible source ~/.config/nvim/syntax/bible.vim
-"au BufRead,BufNewFile *.bible set conceallevel=2
+au BufRead,BufNewFile *.bible set conceallevel=2
 
 
 
