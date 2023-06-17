@@ -1,16 +1,29 @@
 #!/usr/bin/env python
 
 def primesGen(max):
-    l = 2
+    primes = [3]
+    l = 4
+    # import pdb; pdb.set_trace()   
     while l <= max:
-        for i in range(2,l):
-            if ((l / i-1) != 1) or ((l / i-1) != l):
+        if (l % 2 == 1):  # gdy l jest nieparzyste
+            primes.append(l)
+        else: 
+            l += 1
+
+        for i in primes:
+            if ( l % 2 == 1 and l % i == 0 and i != l):  # jeśli to nieparzysta i dzielona przez liczbę, która jest różna od l 
+                l += 1
                 break
             else:
-                print(l)
-        l+=1
+                l += 1
+
+
+    primes.insert(0,2)
+    primes.insert(0,1)
+    # print(set(primes))
+    print(primes)
         
 
 
-inp = int(input("Podaj maksymalną liczbę zamykającą zakres l. pierwszych: "))
+inp = int(input("Podaj zakres: "))
 primesGen(inp)
