@@ -26,13 +26,13 @@ bind -M insert \cy accept-autosuggestion
 fish_vi_key_bindings
 set -g fish_greeting 'Welcome to Fish shell  '
 function fish_prompt 
-  printf '>'
+  echo -n  '[' (prompt_pwd) '] > '
 end
-function fish_right_prompt 
-  pwd 
-end
+#function fish_right_prompt 
+  #pwd 
+#end
 function t
-  ls && clear && pwd && tree -L 1
+  ls && clear && pwd && tree -C -L 1  | bat -p --color always
 end
 function media
   cd /run/media/peter
@@ -44,7 +44,7 @@ function rgall
   clear && rga -B 5 -A 4
 end
 function tra
-    clear && trans :pl $argv -show-translation-phonetics | bat -p
+    clear && trans :pl $argv -show-translation-phonetics | bat --color always -p
 end
 alias l1='ls -1 --color=always | bat -p'
 alias la='ls -la --color=always | bat -p'
@@ -55,3 +55,4 @@ alias bing='edge-gpt --rich --style creative'
 alias pliki='pcmanfm'
 #alias rga='rga --color always -B 1 -A 1'
 alias rga='rga --color always --heading'
+alias disc='lsblk -l -o FSSIZE,FSAVAIL,FSUSE% | awk \'NR==7\' | awk \'{print "SIZE:" $1 "  AVAIL:" $2 "  USED:" $3}\''

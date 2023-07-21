@@ -6,5 +6,3 @@ while x <= 10:
         print(f"{x} % {i} = {x % i}")
     print("---------")
     x += 1
-    
-

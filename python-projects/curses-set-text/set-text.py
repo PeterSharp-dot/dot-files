@@ -14,8 +14,8 @@ def setDot(verse, column):
     curses.init_pair(2, curses.COLOR_GREEN, curses.COLOR_BLACK)
 
     # Ustawienie rozmiaru okna
-    height, width = 28, 70
-    start_y, start_x = 2, 4
+    height, width = 26, 70
+    start_y, start_x = 1, 2
 
     # Tworzenie nowego okna
     newwin = curses.newwin(height, width, start_y, start_x)
@@ -38,4 +38,4 @@ def setDot(verse, column):
     # Przywrócenie normalnego trybu terminala
     curses.endwin()
     
-setDot(13,35)
+setDot(12,35)
