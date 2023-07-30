@@ -1,16 +1,16 @@
 if status is-interactive
     # Commands to run in interactive sessions can go here
 end
-fish_add_path /home/peter/.bin 
-fish_add_path /home/peter/.local/bin 
+fish_add_path /home/peter/.bin
+fish_add_path /home/peter/.local/bin
 fish_add_path /home/peter/.cargo/bin
 fish_add_path /home/peter/.local/lib
 set -gx COOKIE_FILE "/home/peter/.local/bin/cookies.json"
 set -gx TERM xterm-kitty
 set -gx GPG_TTY $(tty)
 set -gx MANWIDTH 80
-set -gx STARDICT_DATA_DIR "/home/peter/sdcv/"
-set -gx TERMINAL "/usr/bin/kitty"
+set -gx STARDICT_DATA_DIR /home/peter/sdcv/
+set -gx TERMINAL /usr/bin/kitty
 set -gx BROWSER firefox
 set -gx COLORTERM truecolor
 set -gx SHFM_OPENER "/home/peter/.local/bin/shfm-opener.sh"
@@ -25,23 +25,23 @@ bind -M insert \cy accept-autosuggestion
 
 fish_vi_key_bindings
 set -g fish_greeting 'Welcome to Fish shell  '
-function fish_prompt 
-  echo -n  '[' (prompt_pwd) '] > '
+function fish_prompt
+    echo -n (prompt_pwd) ' > '
 end
 #function fish_right_prompt 
-  #pwd 
+#pwd 
 #end
 function t
-  ls && clear && pwd && tree -C -L 1  | bat -p --color always
+    ls && clear && pwd && tree -C -L 1 | bat -p --color always
 end
 function media
-  cd /run/media/peter
+    cd /run/media/peter
 end
 function sd
     cd $HOME && cd "$(fd -H -t d | fzf --preview="tree -L 1 {}" --bind="space:toggle-preview" --preview-window=:hidden)" && clear && pwd && ls -a --color &
 end
 function rgall
-  clear && rga -B 5 -A 4
+    clear && rga -B 5 -A 4
 end
 function tra
     clear && trans :pl $argv -show-translation-phonetics | bat --color always -p
