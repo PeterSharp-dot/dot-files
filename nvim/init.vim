@@ -12,6 +12,7 @@ set mouse=a
 set ttimeout		      " time out for key codes
 set ttimeoutlen=0	      " wait up to 100ms after Esc for special key
 set path+=,/usr/include/**
+set path+=**
 set nospell
 set complete+=kspell
 command Pl set spell spelllang=pl
@@ -396,6 +397,12 @@ function MyFoldText()
 endfunction
 
 let g:indentLine_color_term = 239
+
+" NEOVIDE
+if exists("g:neovide")
+    " Put anything you want to happen only in Neovide here
+    set guifont=Source\ Code\ Pro:h10
+endif
 
 
 nmap <silent> gy :tabnext<cr>
