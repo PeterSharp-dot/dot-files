@@ -41,7 +41,7 @@ function pen
     cd /run/media/peter/D120-CF00/
 end
 function sd
-    cd $HOME && cd "$(fd -H -t d | fzf --preview="tree -L 1 {}" --bind="space:toggle-preview" --preview-window=:hidden)" && clear && pwd && ls -a --color &
+    cd $HOME && cd "$(fd -H -t d | fzf --preview="tree -L 1 {}" --bind="space:toggle-preview" --preview-window=:hidden)" && clear && pwd && lsd -a --color=always
 end
 function rgall
     clear && rga -B 5 -A 4
@@ -64,4 +64,6 @@ alias pliki='pcmanfm'
 alias photo='sxiv'
 #alias rga='rga --color always -B 1 -A 1'
 alias rga='rga --color always --heading'
+alias ebook='foliate'
 alias disc='lsblk -l -o FSSIZE,FSAVAIL,FSUSE% | awk \'NR==7\' | awk \'{print "SIZE:" $1 "  AVAIL:" $2 "  USED:" $3}\''
+alias vimpager='vim -R -c "set guicursor=n-v-c:ver25" -c "nnoremap <silent> <buffer> <Up> <NOP>" -c "nnoremap <silent> <buffer> <Down> <NOP>" -c "nnoremap <silent> <buffer> <Left> <NOP>" -c "nnoremap <silent> <buffer> <Right> <NOP>" -c "nnoremap <silent> <buffer> <Home> <NOP>" -c "nnoremap <silent> <buffer> <End> <NOP>" -c "nnoremap <silent> <buffer> <PageUp> <NOP>" -c "nnoremap <silent> <buffer> <PageDown> <NOP>" -c "nnoremap <silent> <buffer> <Enter> <NOP>" -c "nnoremap <silent> <buffer> i <NOP>" -c "nnoremap <silent> <buffer> a <NOP>" -c "nnoremap <silent> <buffer> v <NOP>" -c "nnoremap <silent> <buffer> V <NOP>" -c "nnoremap <silent> <buffer> <C-v> <NOP>"'
