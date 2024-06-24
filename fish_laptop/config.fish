@@ -32,7 +32,7 @@ end
 #pwd 
 #end
 function t
-    ls && clear && pwd && tree -C -L 1 | bat -p --color always
+    ls && clear && pwd && tree --cmd -L 1 | bat -p --color always
 end
 function media
     cd /run/media/peter
@@ -66,4 +66,4 @@ alias photo='sxiv'
 alias rga='rga --color always --heading'
 alias ebook='foliate'
 alias disc='lsblk -l -o FSSIZE,FSAVAIL,FSUSE% | awk \'NR==7\' | awk \'{print "SIZE:" $1 "  AVAIL:" $2 "  USED:" $3}\''
-alias vimpager='vim -R -c "set guicursor=n-v-c:ver25" -c "nnoremap <silent> <buffer> <Up> <NOP>" -c "nnoremap <silent> <buffer> <Down> <NOP>" -c "nnoremap <silent> <buffer> <Left> <NOP>" -c "nnoremap <silent> <buffer> <Right> <NOP>" -c "nnoremap <silent> <buffer> <Home> <NOP>" -c "nnoremap <silent> <buffer> <End> <NOP>" -c "nnoremap <silent> <buffer> <PageUp> <NOP>" -c "nnoremap <silent> <buffer> <PageDown> <NOP>" -c "nnoremap <silent> <buffer> <Enter> <NOP>" -c "nnoremap <silent> <buffer> i <NOP>" -c "nnoremap <silent> <buffer> a <NOP>" -c "nnoremap <silent> <buffer> v <NOP>" -c "nnoremap <silent> <buffer> V <NOP>" -c "nnoremap <silent> <buffer> <C-v> <NOP>"'
+alias vimpager='vim -R --cmd "set guicursor=n-v-c:ver25" --cmd "nnoremap <silent> <buffer> <Up> <NOP>" --cmd "nnoremap <silent> <buffer> <Down> <NOP>" --cmd "nnoremap <silent> <buffer> <Left> <NOP>" --cmd "nnoremap <silent> <buffer> <Right> <NOP>" --cmd "nnoremap <silent> <buffer> <Home> <NOP>" --cmd "nnoremap <silent> <buffer> <End> <NOP>" --cmd "nnoremap <silent> <buffer> <PageUp> <NOP>" --cmd "nnoremap <silent> <buffer> <PageDown> <NOP>" --cmd "nnoremap <silent> <buffer> <Enter> <NOP>" --cmd "nnoremap <silent> <buffer> i <NOP>" --cmd "nnoremap <silent> <buffer> a <NOP>" --cmd "nnoremap <silent> <buffer> v <NOP>" --cmd "nnoremap <silent> <buffer> V <NOP>" --cmd "nnoremap <silent> <buffer> <C-v> <NOP>"'
