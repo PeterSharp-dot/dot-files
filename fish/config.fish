@@ -43,7 +43,7 @@ function pen
     cd /run/media/peter/D120-CF00 && ls
 end
 function sd
-    cd $HOME && cd "$(fd -H -t d | fzf --preview="tree -L 1 {}" --bind="space:toggle-preview" --preview-window=:hidden)" && clear && pwd && lsd -a --color &
+    cd $HOME && cd "$(fd -H -t d | fzf --preview="tree -L 1 {}" --bind="space:toggle-preview" --preview-window=:hidden)" && clear && pwd && lsd -a
 end
 function rgall
     clear && rga -B 5 -A 4
