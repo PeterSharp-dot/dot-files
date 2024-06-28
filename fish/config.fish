@@ -45,6 +45,10 @@ end
 function sd
     cd $HOME && cd "$(fd -H -t d | fzf --preview="tree -L 1 {}" --bind="space:toggle-preview" --preview-window=:hidden)" && clear && pwd && lsd -a
 end
+function vif
+    cd
+    nvim $(fzf)
+end
 function rgall
     clear && rga -B 5 -A 4
 end
