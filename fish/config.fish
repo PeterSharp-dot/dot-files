@@ -5,7 +5,8 @@ fish_add_path /home/peter/.bin
 fish_add_path /home/peter/.local/bin
 fish_add_path /home/peter/.cargo/bin
 fish_add_path /home/peter/.local/lib
-set -gx PATH /home/peter/.local/share/pypy3.10-v7.3.16-linux64/bin $PATH
+#set -gx PATH /home/peter/.local/share/pypy3.10-v7.3.16-linux64/bin $PATH
+set -gx PATH /usr/bin/python $PATH
 set -gx COOKIE_FILE "/home/peter/.local/bin/cookies.json"
 #set -gx TERM xterm-kitty
 set -gx GPG_TTY $(tty)
