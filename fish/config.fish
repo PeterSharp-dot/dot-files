@@ -47,8 +47,7 @@ function sd
     cd $HOME && cd "$(fd -H -t d | fzf --preview="tree -L 1 {}" --bind="space:toggle-preview" --preview-window=:hidden)" && clear && pwd && lsd -a
 end
 function vif
-    cd
-    nvim $(fzf)
+    cd $HOME && nvim $(fzf)
 end
 function rgall
     clear && rga -B 5 -A 4
@@ -56,10 +55,11 @@ end
 function tra
     clear && trans :pl $argv -show-translation-phonetics | bat -p --color always
 end
-alias l1='ls -1 --color=always'
-alias la='ls -la --color=always'
-alias l='ls --color=always'
-alias ll='ls -l --color=always'
+#alias ls='lsd --color=always'
+alias l1='lsd -1 --color=always'
+alias la='lsd -la --color=always'
+alias l='lsd --color=always'
+alias ll='lsd -l --color=always'
 alias chat='tgpt'
 alias bing='edge-gpt --rich --style creative --cookie-file /home/peter/.local/bin/cookies.json'
 alias pliki='pcmanfm'
