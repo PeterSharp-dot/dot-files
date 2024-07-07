@@ -8,7 +8,7 @@ if test "$TERM" = "xterm-256color"
     echo -en "\e]P4268bd2" # blue
     echo -en "\e]P55e3a4c" # magenta
     echo -en "\e]P62aa198" # cyan
-    echo -en "\e]P73f4742" # podstawowy tekst w tty
+    echo -en "\e]P706536b" # podstawowy tekst w tty
     echo -en "\e]P84a614a" # zgaszona zieleń
     echo -en "\e]P9cb4b16" # orange
     echo -en "\e]PA5b708f" # jasno fioletowy  prompt w fish shell
