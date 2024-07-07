@@ -8,7 +8,7 @@ fish_add_path /home/peter/.local/lib
 #set -gx PATH /home/peter/.local/share/pypy3.10-v7.3.16-linux64/bin $PATH
 set -gx PATH /usr/bin/python $PATH
 set -gx COOKIE_FILE "/home/peter/.local/bin/cookies.json"
-#set -gx TERM xterm-kitty
+set -gx TERM xterm-256color
 set -gx GPG_TTY $(tty)
 set -gx MANWIDTH 80
 set -gx STARDICT_DATA_DIR /home/peter/sdcv/
@@ -22,6 +22,8 @@ set -gx FZF_DEFAULT_COMMAND 'ag --hidden --depth 4 --ignore .git -f -g ""'
 set -gx BAT_THEME "Solarized (light)"
 set -gx XDG_CURRENT_DESKTOP KDE
 set -gx QT_QPA_PLATFORMTHEME qt5ct
+
+source /home/peter/.local/bin/tty-colors.sh
 
 bind -M insert \cf accept-autosuggestion
 bind -M insert \cy accept-autosuggestion
