@@ -1,0 +1,64 @@
+[colors]
+draw_bold_text_with_bright_colors = true
+
+# Theme: atelierlakeside.dark
+[colors.primary]
+
+background = "#212230"
+foreground = "#6f95a8"
+# foreground = "#7ea2b4"
+
+[colors.normal]
+black =   "#161b1d"
+red =     "#d22d72"
+green =   "#568c3b"
+yellow =  "#8a8a0f"
+blue =    "#257fad"
+magenta = "#5d5db1"
+cyan =    "#2d8f6f"
+white =   "#6f95a8"
+
+[colors.bright]
+black =   "#5a7b8c"
+red =     "#d22d72"
+green =   "#568c3b"
+yellow =  "#8a8a0f"
+blue =    "#257fad"
+magenta = "#5d5db1"
+cyan =    "#2d8f6f"
+white =   "#ebf8ff"
+
+
+[env]
+TERM = "alacritty"
+
+[font]
+builtin_box_drawing = true
+size = 13
+
+[font.bold]
+style = "Bold"
+
+[font.bold_italic]
+style = "Bold Italic"
+
+[font.glyph_offset]
+x = 0
+y = 0
+
+[font.italic]
+style = "Italic"
+
+[font.normal]
+# family = "JetBrains Mono Nerd Font"
+family = "Terminus"
+# family = "Inconsolata"
+style = "Regular"
+
+[font.offset]
+x = -1
+y = 1
+
+[window.padding]
+x = 0
+y = 0
