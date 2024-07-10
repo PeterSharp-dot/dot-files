@@ -34,7 +34,7 @@ TERM = "alacritty"
 
 [font]
 builtin_box_drawing = true
-size = 13
+size = 11.7
 
 [font.bold]
 style = "Bold"
@@ -51,8 +51,8 @@ style = "Italic"
 
 [font.normal]
 # family = "JetBrains Mono Nerd Font"
-family = "Terminus"
-# family = "Inconsolata"
+# family = "Terminus"
+family = "Inconsolata"
 style = "Regular"
 
 [font.offset]
