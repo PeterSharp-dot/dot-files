@@ -1,4 +1,5 @@
 -- wombat (matching the vim colorscheme), awesome3 theme, by zhuravlik
+-- #eb4034  - czerwień
 
 --{{{ Main
 local awful = require("awful")
@@ -62,7 +63,7 @@ theme.bg_urgent = "#34353488"
 theme.border_width = "2"
 theme.useless_gap = "0"
 theme.border_normal = "#333333"
-theme.border_focus = "#444444"
+theme.border_focus = "#555555"
 theme.border_marked = "#CC9393"
 --theme.border_width  = "2"
 --theme.border_normal = "#34353488"
@@ -88,7 +89,7 @@ theme.titlebar_bg_normal = "#333333"
 -- }}}
 
 -- {{{ Tasklist
-theme.tasklist_fg_focus = "#dddddd"
+theme.tasklist_fg_focus = "#8288a1" -- kolor komunikatu używanego właśnie programu
 theme.tasklist_bg_focus = "#000000"
 theme.tasklist_disable_icon = true
 -- }}}
@@ -112,7 +113,7 @@ theme.prompt_bg = "#000000"
 --theme.border_widget    = "#3F3F3F"
 -- theme.wibar_bg = "#16181c"
 theme.wibar_bg = "#000000"
-theme.wibar_fg = "#bbbbbb"
+theme.wibar_fg = "#8288a1" -- kolor tekstu w barze za wyjątkiem tasklist_fg_focus i taglist_fg_focus
 theme.wibar_opacity = 1
 -- }}}
 
@@ -133,10 +134,10 @@ theme.menu_width = "130"
 -- {{{ Taglist
 theme.taglist_squares_sel = sharedthemes .. "/zenburn/taglist/squarefz.png"
 theme.taglist_squares_unsel = sharedthemes .. "/zenburn/taglist/squarez.png"
-theme.taglist_font = "Terminess Nerd Font Propo 9"
-theme.taglist_fg = "#444444"
-theme.taglist_fg_focus = "#ffffff"
-theme.taglist_bg_focus = "#222222"
+theme.taglist_font = "Terminus 12"
+theme.taglist_fg = "#111111"
+theme.taglist_fg_focus = "#cccccc"
+theme.taglist_bg_focus = "#014d73"
 --theme.taglist_squares_resize = "false"
 -- }}}
 
