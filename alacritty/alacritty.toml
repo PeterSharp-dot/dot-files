@@ -56,7 +56,7 @@ family = "Inconsolata"
 style = "Regular"
 
 [font.offset]
-x = -1
+x = 0
 y = 1
 
 [window.padding]
