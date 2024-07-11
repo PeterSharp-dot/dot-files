@@ -36,13 +36,6 @@ function Go_to_file_or_create()
     vim.cmd("edit " .. file_name)
     print("New file created: " .. file_name)
   end
-  -- else
-  --   -- Jeśli plik nie istnieje, utwórz nowy plik
-  --   local create_command = "edit " .. file_name
-  --   vim.fn.system(create_command)
-  --   print("New file created: " .. file_name)
-  -- end
 end
-
 -- Zmapuj gf bezpośrednio do polecenia, które wywoła funkcję Lua
 vim.api.nvim_set_keymap("n", "gf", ":lua Go_to_file_or_create()<CR>", { noremap = true, silent = true })

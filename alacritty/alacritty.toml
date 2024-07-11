@@ -5,7 +5,7 @@ draw_bold_text_with_bright_colors = true
 [colors.primary]
 
 background = "#212230"
-foreground = "#6f95a8"
+foreground = "#8288a1"
 # foreground = "#7ea2b4"
 
 [colors.normal]
