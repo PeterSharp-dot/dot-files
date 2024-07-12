@@ -19,7 +19,7 @@ highlight lebPath2 guibg=NONE guifg=#1886b5 gui=underline
 " syntax keyword bibleTitle  Genesis Exodus Leviticus Numbers Deuteronomy Joshua Judges Ruth Samuel  Kings Chronicles Ezra Nehemiah Esther Job Psalms Proverbs Ecclesiastes Isaiah Jeremiah Lamentations Ezekiel Daniel Hosea Joel Amos Obadiah Jonah Micah Nahum Habakkuk Zephaniah Haggai Zechariah Malachi Matthew Mark Luke John Acts Romans Corinthians Galatians Ephesians Philippians Colossian Thessalonians Timothy Titus Philemon Hebrews James Peter John Jude Revelation.
 " syntax match bibleTitle2 /Song of Solomon/
 " " Comments
-syntax match bibleTag /\comments\:/
+syntax match bibleTag /comments\:/
 "syntax match cBracket /\[.*\]/
 " \(foo \)\@<=bar\\( baz\)\@=  -ten kod to tzw. lookaround, czyli sukces gdy
 " bar jest pomiędzy foo i baz, ale wyodrębnione jest tylko samo bar
