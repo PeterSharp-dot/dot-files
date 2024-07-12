@@ -2,14 +2,70 @@
 -- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
 -- Add any additional options here
 
-local function set_highlight_normal()
-  vim.cmd("hi Normal guifg=#8288a1")
+--Funkcja ustawiająca colorscheme i colorcolumn
+-- local function set_tty_colorscheme()
+--   local status1, err1 = pcall(function()
+--     vim.cmd("colorscheme vim")
+--   end)
+-- if not status1 then
+--   print("Error setting colorscheme:", err1)
+-- else
+--   print("Colorscheme set to vim")
+-- end
+
+--   local status2, err2 = pcall(function()
+--     vim.cmd("set colorcolumn=")
+--   end)
+--   if not status2 then
+--     print("Error setting colorcolumn:", err2)
+--   else
+--     print("Colorcolumn set to empty")
+--   end
+-- end
+
+-- Sprawdzenie czy Neovim działa w trybie tekstowym (TTY)
+-- if not os.getenv("DISPLAY") then
+--   vim.defer_fn(function()
+--     set_tty_colorscheme()
+--   end, 0)
+-- end
+
+-- vim.cmd("highlight Normal guifg=#DDDDDD")
+-- vim.cmd("colorscheme vim")
+
+-- Definiowanie funkcji, która sprawdzi, czy plik jest w repozytorium Git
+local function is_git_repo()
+  local handle = io.popen("git rev-parse --is-inside-work-tree 2>/dev/null")
+  if handle == nil then
+    return false
+  end
+  local result = handle:read("*a")
+  handle:close()
+  if result == nil then
+    return false
+  end
+  return result:match("true") ~= nil
 end
-vim.defer_fn(function()
-  set_highlight_normal()
-end, 0)
+-- Definiowanie funkcji, która wykonuje git add i git commit
+local function git_add_and_commit()
+  if is_git_repo() then
+    os.execute("git add .")
+    os.execute("git commit -m 'ok'")
+    os.execute("git push")
+  end
+end
+-- Dodawanie autokomentarzy
+vim.api.nvim_create_augroup("AutoGitCommit", { clear = true })
+vim.api.nvim_create_autocmd("BufWritePost", {
+  group = "AutoGitCommit",
+  pattern = "*",
+  callback = git_add_and_commit,
+})
+
+vim.api.nvim_command("syntax on")
+-- vim.cmd("syntax on")
 vim.o.scrolloff = 0 -- one text line of previous screen
--- vim.o.autochdir = false
+vim.o.autochdir = false
 -- vim.o.textwidth = 80
 vim.o.colorcolumn = "80"
 vim.wo.wrap = true
@@ -17,7 +73,6 @@ vim.wo.linebreak = true
 vim.o.relativenumber = false
 vim.o.number = true
 vim.opt.conceallevel = 1
-vim.cmd("syntax enable")
 vim.opt.tags = { "/home/peter/notes/tags" }
 
 -- Funkcja do otwierania istniejącego pliku lub tworzenia nowego
