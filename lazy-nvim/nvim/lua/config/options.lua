@@ -32,6 +32,13 @@
 
 -- vim.cmd("highlight Normal guifg=#DDDDDD")
 -- vim.cmd("colorscheme vim")
+--
+local function set_highlight_normal()
+  vim.cmd("hi Normal guifg=#8288a1")
+end
+vim.defer_fn(function()
+  set_highlight_normal()
+end, 0)
 
 -- Definiowanie funkcji, która sprawdzi, czy plik jest w repozytorium Git
 local function is_git_repo()
