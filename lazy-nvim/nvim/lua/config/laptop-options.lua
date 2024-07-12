@@ -37,18 +37,20 @@ end
 
 -- Funkcja sprawdzająca, czy ścieżka zawiera określony katalog
 local function is_in_directory(file_path, dir_name)
+  -- Ucieczkowanie specjalnych znaków w nazwie katalogu
+  dir_name = dir_name:gsub("([^%w])", "%%%1")
   return file_path:find("/" .. dir_name .. "/") ~= nil
 end
 
--- Definiowanie funkcji, która wykonuje git add i git commit, ale czy działa
+-- Definiowanie funkcji, która wykonuje git add i git commit
 local function git_add_and_commit()
   local file_path = vim.fn.expand("%:p") -- Pełna ścieżka aktualnego pliku
   local dir_name
 
   if is_in_directory(file_path, "notes") then
-    dir_name = "/home/peter/notes"
+    dir_name = "notes"
   elseif is_in_directory(file_path, "dot-files") then
-    dir_name = "/home/peter/AUR/dot-files"
+    dir_name = "dot-files"
   end
 
   if dir_name then
@@ -71,6 +73,58 @@ vim.api.nvim_create_autocmd("BufWritePost", {
   pattern = "*",
   callback = git_add_and_commit,
 })
+
+-----------------------------------------------------------------------------
+-- -- Definiowanie funkcji, która sprawdzi, czy plik jest w repozytorium Git
+-- local function is_git_repo()
+--   local handle = io.popen("git rev-parse --is-inside-work-tree 2>/dev/null")
+--   if handle == nil then
+--     return false
+--   end
+--   local result = handle:read("*a")
+--   handle:close()
+--   if result == nil then
+--     return false
+--   end
+--   return result:match("true") ~= nil
+-- end
+--
+-- -- Funkcja sprawdzająca, czy ścieżka zawiera określony katalog
+-- local function is_in_directory(file_path, dir_name)
+--   return file_path:find("/" .. dir_name .. "/") ~= nil
+-- end
+--
+-- -- Definiowanie funkcji, która wykonuje git add i git commit, ale czy działa
+-- local function git_add_and_commit()
+--   local file_path = vim.fn.expand("%:p") -- Pełna ścieżka aktualnego pliku
+--   local dir_name
+--
+--   if is_in_directory(file_path, "notes") then
+--     dir_name = "/home/peter/notes"
+--   elseif is_in_directory(file_path, "dot-files") then
+--     dir_name = "/home/peter/AUR/dot-files"
+--   end
+--
+--   if dir_name then
+--     if is_git_repo() then
+--       local git_command = "cd "
+--         .. dir_name
+--         .. " && git add . > /dev/null 2>&1 && git commit -m 'ok' > /dev/null 2>&1 && git push > /dev/null 2>&1"
+--       os.execute(git_command)
+--       print("Git commit has been pushed in " .. dir_name)
+--     end
+--   else
+--     print("File is not in 'notes' or 'dot-files' directory.")
+--   end
+-- end
+--
+-- -- Dodawanie autokomentarzy
+-- vim.api.nvim_create_augroup("AutoGitCommit", { clear = true })
+-- vim.api.nvim_create_autocmd("BufWritePost", {
+--   group = "AutoGitCommit",
+--   pattern = "*",
+--   callback = git_add_and_commit,
+-- })
 
 ------------------------------------------------------------------------
 -- -- Definiowanie funkcji, która sprawdzi, czy plik jest w repozytorium Git
