@@ -82,6 +82,9 @@ vim.o.number = true
 vim.opt.conceallevel = 1
 vim.opt.tags = { "/home/peter/notes/tags" }
 
+-- Po 5 sekundach ukryj komunikaty w command-line
+vim.api.nvim_command("autocmd CmdlineLeave * lua vim.defer_fn(function() vim.cmd(\"echo ''\") end, 5000)")
+
 -- -- Funkcja do otwierania istniejącego pliku lub tworzenia nowego
 -- function Go_to_file_or_create()
 --   -- Pobierz nazwę pliku spod kursora
@@ -100,9 +103,6 @@ vim.opt.tags = { "/home/peter/notes/tags" }
 --     print("New file created: " .. file_name)
 --   end
 -- end
-
--- Po 5 sekundach ukryj komunikaty w command-line
-vim.api.nvim_command("autocmd CmdlineLeave * lua vim.defer_fn(function() vim.cmd(\"echo ''\") end, 5000)")
 
 -- Zmapuj gf bezpośrednio do polecenia, które wywoła funkcję Lua
 -- vim.api.nvim_set_keymap("n", "gf", ":lua Go_to_file_or_create()<CR>", { noremap = true, silent = true })
