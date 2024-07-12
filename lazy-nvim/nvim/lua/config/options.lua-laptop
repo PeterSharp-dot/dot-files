@@ -69,3 +69,6 @@ end
 
 -- Zmapuj gf bezpośrednio do polecenia, które wywoła funkcję Lua
 vim.api.nvim_set_keymap("n", "gf", ":lua Go_to_file_or_create()<CR>", { noremap = true, silent = true })
+
+-- Po 5 sekundach ukryj komunikaty w command-line
+vim.cmd("autocmd CmdlineLeave * call timer_start(5000, function() vim.cmd(\"echo ''\") end)")
