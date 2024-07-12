@@ -36,9 +36,10 @@ end
 -- Definiowanie funkcji, która wykonuje git add i git commit
 local function git_add_and_commit()
   if is_git_repo() then
-    os.execute("git add .")
-    os.execute("git commit -m 'ok'")
-    os.execute("git push")
+    os.execute("git add . > /dev/null 2>&1")
+    os.execute("git commit -m 'ok' > /dev/null 2>&1")
+    os.execute("git push > /dev/null 2>&1")
+    print("git commit has been pushed")
   end
 end
 -- Dodawanie autokomentarzy
@@ -71,4 +72,4 @@ end
 vim.api.nvim_set_keymap("n", "gf", ":lua Go_to_file_or_create()<CR>", { noremap = true, silent = true })
 
 -- Po 5 sekundach ukryj komunikaty w command-line
-vim.cmd("autocmd CmdlineLeave * call timer_start(5000, function() vim.cmd(\"echo ''\") end)")
+vim.api.nvim_command("autocmd CmdlineLeave * lua vim.defer_fn(function() vim.cmd(\"echo ''\") end, 5000)")
