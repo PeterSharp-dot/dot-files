@@ -72,7 +72,7 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 vim.api.nvim_command("syntax on")
 -- vim.cmd("syntax on")
 vim.o.scrolloff = 0 -- one text line of previous screen
-vim.o.autochdir = false
+vim.o.autochdir = true
 -- vim.o.textwidth = 80
 vim.o.colorcolumn = "80"
 vim.wo.wrap = true
