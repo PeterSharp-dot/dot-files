@@ -56,9 +56,10 @@ end
 -- Definiowanie funkcji, która wykonuje git add i git commit
 local function git_add_and_commit()
   if is_git_repo() then
-    os.execute("git add .")
-    os.execute("git commit -m 'ok'")
-    os.execute("git push")
+    os.execute("git add . --quiet")
+    os.execute("git commit -m 'ok' --quiet")
+    os.execute("git push --quiet")
+    print("git commit has been pushed")
   end
 end
 -- Dodawanie autokomentarzy
@@ -104,5 +105,5 @@ function Go_to_file_or_create()
   end
 end
 
-Zmapuj gf bezpośrednio do polecenia, które wywoła funkcję Lua
+-- Zmapuj gf bezpośrednio do polecenia, które wywoła funkcję Lua
 vim.api.nvim_set_keymap("n", "gf", ":lua Go_to_file_or_create()<CR>", { noremap = true, silent = true })
