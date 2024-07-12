@@ -105,4 +105,4 @@ vim.opt.tags = { "/home/peter/notes/tags" }
 vim.api.nvim_command("autocmd CmdlineLeave * lua vim.defer_fn(function() vim.cmd(\"echo ''\") end, 5000)")
 
 -- Zmapuj gf bezpośrednio do polecenia, które wywoła funkcję Lua
-vim.api.nvim_set_keymap("n", "gf", ":lua Go_to_file_or_create()<CR>", { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap("n", "gf", ":lua Go_to_file_or_create()<CR>", { noremap = true, silent = true })
