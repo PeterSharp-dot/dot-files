@@ -40,7 +40,7 @@ local function is_in_directory(file_path, dir_name)
   return file_path:find("/" .. dir_name .. "/") ~= nil
 end
 
--- Definiowanie funkcji, która wykonuje git add i git commit
+-- Definiowanie funkcji, która wykonuje git add i git commit, ale czy działa
 local function git_add_and_commit()
   local file_path = vim.fn.expand("%:p") -- Pełna ścieżka aktualnego pliku
   local dir_name
