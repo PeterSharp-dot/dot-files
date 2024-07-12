@@ -9,7 +9,7 @@ vim.defer_fn(function()
   set_highlight_normal()
 end, 0)
 vim.o.scrolloff = 0 -- one text line of previous screen
--- vim.o.autochdir = false
+vim.o.autochdir = true
 -- vim.o.textwidth = 80
 vim.o.colorcolumn = "80"
 vim.wo.wrap = true
