@@ -6,8 +6,10 @@ syntax match bibleComment /\(#\)\@<=.*/
 syntax match bibleNumber /\d\+/
 
 syntax match lebPath /\.\/[a-zA-Z0-9_\/\.\-]*/
-" syntax match lebPath /\.\//
 highlight link lebPath Underlined
+
+syntax match lebPath2 /\$NOTES\/[a-zA-Z0-9_\/\.\-]*/
+highlight link lebPath2 Underlined
 
 " Słowa kluczowe
 "syntax keyword bibleConstant LORD Jesus
