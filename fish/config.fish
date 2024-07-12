@@ -64,7 +64,7 @@ function check_and_pull_git
     end
 end
 # Funkcja, która jest uruchamiana przy zmianie katalogu
-function fish_prompt --on-variable PWD
+function check_on_cd --on-variable PWD
     # Sprawdzanie i wykonywanie git pull
     check_and_pull_git
 end
