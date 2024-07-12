@@ -93,6 +93,7 @@ function Go_to_file_or_create()
   -- Jeśli plik istnieje, otwórz go w nowym buforze
   if file_exists == 1 then
     vim.cmd("edit " .. file_name)
+    print("Oto istniejący plik:" .. file_name)
   else
     -- Jeśli plik nie istnieje, utwórz nowy plik
     vim.cmd("edit " .. file_name)
