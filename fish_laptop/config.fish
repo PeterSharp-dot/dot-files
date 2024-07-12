@@ -49,6 +49,17 @@ end
 function tra
     clear && trans :pl $argv -show-translation-phonetics | bat --color always -p
 end
+# Funkcja, która sprawdza, czy bieżący katalog jest repozytorium Git i wykonuje git pull
+function check_and_pull_git
+    if test -d .git
+        git pull
+    end
+end
+# Funkcja, która jest uruchamiana przy zmianie katalogu
+function check_on_cd --on-variable PWD
+    # Sprawdzanie i wykonywanie git pull
+    check_and_pull_git
+end
 #alias ls='ls'
 alias l1='ls -1 --color=always | bat -p'
 alias la='ls -la --color=always | bat -p'
