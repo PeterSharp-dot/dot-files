@@ -46,9 +46,9 @@ local function git_add_and_commit()
   local dir_name
 
   if is_in_directory(file_path, "notes") then
-    dir_name = "notes"
+    dir_name = "/home/peter/notes"
   elseif is_in_directory(file_path, "dot-files") then
-    dir_name = "dot-files"
+    dir_name = "/home/peter/AUR/dot-files"
   end
 
   if dir_name then

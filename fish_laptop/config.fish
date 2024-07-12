@@ -55,7 +55,11 @@ function check_on_cd --on-variable PWD
     check_and_pull_git
 end
 function sd
-    cd $HOME && cd "$(fd -H -t d | fzf --preview="tree -L 1 {}" --bind="space:toggle-preview" --preview-window=:hidden)" && check_and_pull_git && clear && pwd && lsd -a --color=always
+    if test (count $argv) -eq 0
+        cd $HOME && cd "$(fd -H -t d | fzf --preview="tree -L 1 {}" --bind="space:toggle-preview" --preview-window=:hidden)" && check_and_pull_git && clear && pwd && lsd -a --color=always
+    else
+        cd $HOME && cd "$(fd -H -t d | fzf --query="$argv[1]" --preview="tree -L 1 {}" --bind="space:toggle-preview" --preview-window=:hidden)" && check_and_pull_git && clear && pwd && lsd -a --color=always
+    end
 end
 function vif
     cd $HOME

@@ -14,10 +14,6 @@ syntax match lebPath2 /\$NOTES\/[a-zA-Z0-9_\/\.\-]*/
 " highlight link lebPath2 Underlined
 highlight lebPath2 guibg=NONE guifg=#1886b5 gui=underline
 
-" Słowa kluczowe
-"syntax keyword bibleConstant LORD Jesus
-" syntax keyword bibleTitle  Genesis Exodus Leviticus Numbers Deuteronomy Joshua Judges Ruth Samuel  Kings Chronicles Ezra Nehemiah Esther Job Psalms Proverbs Ecclesiastes Isaiah Jeremiah Lamentations Ezekiel Daniel Hosea Joel Amos Obadiah Jonah Micah Nahum Habakkuk Zephaniah Haggai Zechariah Malachi Matthew Mark Luke John Acts Romans Corinthians Galatians Ephesians Philippians Colossian Thessalonians Timothy Titus Philemon Hebrews James Peter John Jude Revelation.
-" syntax match bibleTitle2 /Song of Solomon/
 " " Comments
 syntax match bibleTag /\.\/comments\:/
 "syntax match cBracket /\[.*\]/
@@ -46,7 +42,7 @@ syntax match Todo /#/ conceal
 
 
 hi def link bibleComment Title
-hi def link bibleNumber String
+hi bibleNumber guibg=NONE guifg=#495e61 gui=italic
 hi def link bibleConstant Tag
 hi link bibleTag Underlined
 "hi def link bibleTitle LineNr
@@ -55,8 +51,8 @@ hi def link bibleTitle2 String
 hi def link bibleSlash Search
 "hi def link cBracket Label
 hi def link squereBracket Tag
-hi def link tyldeBracket Label
+highlight tyldeBracket guibg=NONE guifg=NONE gui=italic
 hi def link astericBold Title
 "hi def link astericItalic Comment
 hi def link floorUnderline Underlined
-hi def link lebSpecial SpecialKey
+highlight lebSpecial guibg=NONE guifg=#524c6b gui=italic
