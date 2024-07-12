@@ -1,10 +1,14 @@
 "syntax case ignore
-
 " Komentarze
 "syntax match bibleComment /\v#.*/
 syntax match bibleComment /\(#\)\@<=.*/ 
 " Liczby
 syntax match bibleNumber /\d\+/
+
+syntax match lebPath /\.\/[a-zA-Z0-9_\/\.\-]*/
+" syntax match lebPath /\.\//
+highlight link lebPath Underlined
+
 " Słowa kluczowe
 "syntax keyword bibleConstant LORD Jesus
 " syntax keyword bibleTitle  Genesis Exodus Leviticus Numbers Deuteronomy Joshua Judges Ruth Samuel  Kings Chronicles Ezra Nehemiah Esther Job Psalms Proverbs Ecclesiastes Isaiah Jeremiah Lamentations Ezekiel Daniel Hosea Joel Amos Obadiah Jonah Micah Nahum Habakkuk Zephaniah Haggai Zechariah Malachi Matthew Mark Luke John Acts Romans Corinthians Galatians Ephesians Philippians Colossian Thessalonians Timothy Titus Philemon Hebrews James Peter John Jude Revelation.
@@ -49,5 +53,5 @@ hi def link squereBracket Tag
 hi def link tyldeBracket Label
 hi def link astericBold Title
 "hi def link astericItalic Comment
-hi def link floorUnderline TabLineSel
+hi def link floorUnderline Underlined
 hi def link lebSpecial SpecialKey
