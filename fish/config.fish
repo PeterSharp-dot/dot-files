@@ -45,18 +45,6 @@ end
 function pen
     cd /run/media/peter/D120-CF00 && ls
 end
-function sd
-    cd $HOME && cd "$(fd -H -t d | fzf --preview="tree -L 1 {}" --bind="space:toggle-preview" --preview-window=:hidden)" && clear && pwd && lsd -a
-end
-function vif
-    cd $HOME && nvim $(fzf)
-end
-function rgall
-    clear && rga -B 5 -A 4
-end
-function tra
-    clear && trans :pl $argv -show-translation-phonetics | bat -p --color always
-end
 # Funkcja, która sprawdza, czy bieżący katalog jest repozytorium Git i wykonuje git pull
 function check_and_pull_git
     if test -d .git
@@ -67,6 +55,18 @@ end
 function check_on_cd --on-variable PWD
     # Sprawdzanie i wykonywanie git pull
     check_and_pull_git
+end
+function sd
+    cd $HOME && cd "$(fd -H -t d | fzf --preview="tree -L 1 {}" --bind="space:toggle-preview" --preview-window=:hidden)" && check_and_pull_git && clear && pwd && lsd -a
+end
+function vif
+    cd $HOME && nvim $(fzf)
+end
+function rgall
+    clear && rga -B 5 -A 4
+end
+function tra
+    clear && trans :pl $argv -show-translation-phonetics | bat -p --color always
 end
 
 #alias ls='lsd --color=always'
