@@ -23,6 +23,8 @@ set -gx QT_QPA_PLATFORMTHEME qt5ct
 
 bind -M insert \cy accept-autosuggestion
 
+source /home/peter/.local/bin/tty-colors.sh
+
 fish_vi_key_bindings
 set -g fish_greeting 'Welcome to Fish shell  '
 function fish_prompt
@@ -40,15 +42,6 @@ end
 function pen
     cd /run/media/peter/D120-CF00/
 end
-function sd
-    cd $HOME && cd "$(fd -H -t d | fzf --preview="tree -L 1 {}" --bind="space:toggle-preview" --preview-window=:hidden)" && clear && pwd && lsd -a --color=always
-end
-function rgall
-    clear && rga -B 5 -A 4
-end
-function tra
-    clear && trans :pl $argv -show-translation-phonetics | bat --color always -p
-end
 # Funkcja, która sprawdza, czy bieżący katalog jest repozytorium Git i wykonuje git pull
 function check_and_pull_git
     if test -d .git
@@ -60,11 +53,33 @@ function check_on_cd --on-variable PWD
     # Sprawdzanie i wykonywanie git pull
     check_and_pull_git
 end
-#alias ls='ls'
-alias l1='ls -1 --color=always | bat -p'
-alias la='ls -la --color=always | bat -p'
-alias l='ls --color=always | bat -p'
-alias ll='ls -l --color=always | bat -p'
+function sd
+    cd $HOME && cd "$(fd -H -t d | fzf --preview="tree -L 1 {}" --bind="space:toggle-preview" --preview-window=:hidden)" && check_and_pull_git && clear && pwd && lsd -a --color=always
+end
+function vif
+    cd $HOME
+    nvim $(fzf)
+end
+function rgall
+    clear && rga -B 5 -A 4
+end
+function tra
+    clear && trans :pl $argv -show-translation-phonetics | bat --color always -p
+end
+# function increase_brightness
+#     echo -n '\033]128;\;255\a' | cat
+#     brightnessctl s +10%
+# end
+# function decrease_brightness
+#     echo -n '\033]128;\;0\a' | cat
+#     brightnessctl s 10%-
+# end
+# alias ls='ls'
+# alias ls='lsd --color=always'
+alias l1='lsd -1 --color=always'
+alias la='lsd -la --color=always'
+alias l='lsd --color=always'
+alias ll='lsd -l --color=always'
 #alias l1='lsd -1 --color=always'
 #alias la='lsd -la --color=always'
 #alias l='lsd --color=always'
@@ -78,3 +93,5 @@ alias rga='rga --color always --heading'
 alias ebook='foliate'
 alias disc='lsblk -l -o FSSIZE,FSAVAIL,FSUSE% | awk \'NR==7\' | awk \'{print "SIZE:" $1 "  AVAIL:" $2 "  USED:" $3}\''
 alias vimpager='vim -R --cmd "set guicursor=n-v-c:ver25" --cmd "nnoremap <silent> <buffer> <Up> <NOP>" --cmd "nnoremap <silent> <buffer> <Down> <NOP>" --cmd "nnoremap <silent> <buffer> <Left> <NOP>" --cmd "nnoremap <silent> <buffer> <Right> <NOP>" --cmd "nnoremap <silent> <buffer> <Home> <NOP>" --cmd "nnoremap <silent> <buffer> <End> <NOP>" --cmd "nnoremap <silent> <buffer> <PageUp> <NOP>" --cmd "nnoremap <silent> <buffer> <PageDown> <NOP>" --cmd "nnoremap <silent> <buffer> <Enter> <NOP>" --cmd "nnoremap <silent> <buffer> i <NOP>" --cmd "nnoremap <silent> <buffer> a <NOP>" --cmd "nnoremap <silent> <buffer> v <NOP>" --cmd "nnoremap <silent> <buffer> V <NOP>" --cmd "nnoremap <silent> <buffer> <C-v> <NOP>"'
+alias ,='devour'
+alias z='zathura'
