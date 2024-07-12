@@ -56,7 +56,7 @@ end
 # end
 function sd
     if test (count $argv) -eq 0
-        cd $HOME && cd "$(fd -H -t d | fzf --preview="tree -L 1 {}" --bind="space:toggle-preview" --preview-window=:hidden)" && check_and_pull_git && clear && pwd && lsd -a --color=always
+        cd $HOME && cd "$(fd -H -t d | fzf --preview="tree -L 1 {}" --bind="space:toggle-preview" --preview-window=:hidden)" && clear && pwd && lsd -a --color=always
     else
         cd $HOME && cd "$(fd -H -t d | fzf --query="$argv[1]" --preview="tree -L 1 {}" --bind="space:toggle-preview" --preview-window=:hidden)" && clear && pwd && lsd -a --color=always
     end
