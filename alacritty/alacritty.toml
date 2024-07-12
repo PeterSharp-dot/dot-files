@@ -34,7 +34,7 @@ TERM = "alacritty"
 
 [font]
 builtin_box_drawing = true
-size = 11.7
+size = 10.7
 
 [font.bold]
 style = "Bold"

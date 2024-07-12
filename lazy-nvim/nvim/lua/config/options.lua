@@ -2,7 +2,7 @@
 -- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
 -- Add any additional options here
 
---Funkcja ustawiająca colorscheme i colorcolumn
+--Funkcja ustawiająca colorscheme i colorcolumn w TTY
 -- local function set_tty_colorscheme()
 --   local status1, err1 = pcall(function()
 --     vim.cmd("colorscheme vim")
@@ -92,5 +92,9 @@ function Go_to_file_or_create()
     print("New file created: " .. file_name)
   end
 end
+
+-- Po 5 sekundach ukryj komunikaty w command-line
+vim.api.nvim_command("autocmd CmdlineLeave * lua vim.defer_fn(function() vim.cmd(\"echo ''\") end, 5000)")
+
 -- Zmapuj gf bezpośrednio do polecenia, które wywoła funkcję Lua
 vim.api.nvim_set_keymap("n", "gf", ":lua Go_to_file_or_create()<CR>", { noremap = true, silent = true })
