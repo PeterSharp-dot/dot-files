@@ -5,6 +5,7 @@ syntax match bibleComment /\(#\)\@<=.*/
 " Liczby
 syntax match bibleNumber /\d\+/
 
+"Poniższe ustawienia dla kolorów linków do plików
 syntax match lebPath /\.\/[a-zA-Z0-9_\/\.\-]*/
 " highlight link lebPath Underlined
 highlight lebPath2 guibg=NONE guifg=#1886b5 gui=underline
@@ -47,7 +48,7 @@ syntax match Todo /#/ conceal
 hi def link bibleComment Title
 hi def link bibleNumber String
 hi def link bibleConstant Tag
-hi def link bibleTag Underlined
+hi link bibleTag Underlined
 "hi def link bibleTitle LineNr
 hi def link bibleTitle String
 hi def link bibleTitle2 String
