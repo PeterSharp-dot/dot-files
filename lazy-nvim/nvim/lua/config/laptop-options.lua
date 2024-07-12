@@ -8,6 +8,7 @@ end
 vim.defer_fn(function()
   set_highlight_normal()
 end, 0)
+
 vim.o.scrolloff = 0 -- one text line of previous screen
 vim.o.autochdir = true
 -- vim.o.textwidth = 80
@@ -72,4 +73,4 @@ end
 vim.api.nvim_set_keymap("n", "gf", ":lua Go_to_file_or_create()<CR>", { noremap = true, silent = true })
 
 -- Po 5 sekundach ukryj komunikaty w command-line
---vim.api.nvim_command("autocmd CmdlineLeave * lua vim.defer_fn(function() vim.cmd(\"echo ''\") end, 5000)")
+vim.api.nvim_command("autocmd CmdlineLeave * lua vim.defer_fn(function() vim.cmd(\"echo ''\") end, 5000)")
