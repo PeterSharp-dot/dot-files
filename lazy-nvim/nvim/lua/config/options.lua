@@ -56,9 +56,9 @@ end
 -- Definiowanie funkcji, która wykonuje git add i git commit
 local function git_add_and_commit()
   if is_git_repo() then
-    os.execute("git add . --quiet")
-    os.execute("git commit -m 'ok' --quiet")
-    os.execute("git push --quiet")
+    os.execute("git add . > /dev/null 2>&1")
+    os.execute("git commit -m 'ok' > /dev/null 2>&1")
+    os.execute("git push > /dev/null 2>&1")
     print("git commit has been pushed")
   end
 end
