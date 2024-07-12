@@ -43,22 +43,22 @@ end
 function pen
     cd /run/media/peter/D120-CF00/
 end
-# Funkcja, która sprawdza, czy bieżący katalog jest repozytorium Git i wykonuje git pull
-function check_and_pull_git
-    if test -d .git
-        git pull
-    end
-end
-# Funkcja, która jest uruchamiana przy zmianie katalogu
-function check_on_cd --on-variable PWD
-    # Sprawdzanie i wykonywanie git pull
-    check_and_pull_git
-end
+# # Funkcja, która sprawdza, czy bieżący katalog jest repozytorium Git i wykonuje git pull
+# function check_and_pull_git
+#     if test -d .git
+#         git pull
+#     end
+# end
+# # Funkcja, która jest uruchamiana przy zmianie katalogu
+# function check_on_cd --on-variable PWD
+#     # Sprawdzanie i wykonywanie git pull
+#     check_and_pull_git
+# end
 function sd
     if test (count $argv) -eq 0
         cd $HOME && cd "$(fd -H -t d | fzf --preview="tree -L 1 {}" --bind="space:toggle-preview" --preview-window=:hidden)" && check_and_pull_git && clear && pwd && lsd -a --color=always
     else
-        cd $HOME && cd "$(fd -H -t d | fzf --query="$argv[1]" --preview="tree -L 1 {}" --bind="space:toggle-preview" --preview-window=:hidden)" && check_and_pull_git && clear && pwd && lsd -a --color=always
+        cd $HOME && cd "$(fd -H -t d | fzf --query="$argv[1]" --preview="tree -L 1 {}" --bind="space:toggle-preview" --preview-window=:hidden)" && clear && pwd && lsd -a --color=always
     end
 end
 function vif

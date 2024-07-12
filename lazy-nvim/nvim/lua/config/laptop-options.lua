@@ -21,58 +21,33 @@ vim.opt.conceallevel = 1
 vim.cmd("syntax enable")
 vim.opt.tags = { "/home/peter/notes/tags" }
 
--- -- Definiowanie funkcji, która sprawdzi, czy plik jest w repozytorium Git
--- local function is_git_repo()
---   local handle = io.popen("git rev-parse --is-inside-work-tree 2>/dev/null")
---   if handle == nil then
---     return false
---   end
---   local result = handle:read("*a")
---   handle:close()
---   if result == nil then
---     return false
---   end
---   return result:match("true") ~= nil
--- end
---
--- -- Funkcja sprawdzająca, czy ścieżka zawiera określony katalog
--- local function is_in_directory(file_path, dir_name)
---   -- Ucieczkowanie specjalnych znaków w nazwie katalogu
---   dir_name = dir_name:gsub("([^%w])", "%%%1")
---   return file_path:find("/" .. dir_name .. "/") ~= nil
--- end
---
--- -- Definiowanie funkcji, która wykonuje git add i git commit
--- local function git_add_and_commit()
---   local file_path = vim.fn.expand("%:p") -- Pełna ścieżka aktualnego pliku
---   local dir_name
---
---   if is_in_directory(file_path, "notes") then
---     dir_name = "notes"
---   elseif is_in_directory(file_path, "dot-files") then
---     dir_name = "dot%-files" --  zobaczymy czy to pomogło
---   end
---
---   if dir_name then
---     if is_git_repo() then
---       local git_command = "cd "
---         .. dir_name
---         .. " && git add . > /dev/null 2>&1 && git commit -m 'ok' > /dev/null 2>&1 && git push > /dev/null 2>&1"
---       os.execute(git_command)
---       print("Git commit has been pushed in " .. dir_name)
---     end
---   else
---     print("File is not in 'notes' or 'dot-files' directory.")
---   end
--- end
---
--- -- Dodawanie autokomentarzy
--- vim.api.nvim_create_augroup("AutoGitCommit", { clear = true })
--- vim.api.nvim_create_autocmd("BufWritePost", {
---   group = "AutoGitCommit",
---   pattern = "*",
---   callback = git_add_and_commit,
--- })
+-- Funkcja do sprawdzenia, czy bufor jest częścią repozytorium Git
+local function is_git_repo()
+  local handle = io.popen("git rev-parse --is-inside-work-tree 2>/dev/null")
+  local result = handle:read("*a")
+  handle:close()
+  return result:find("true") ~= nil
+end
+
+-- Funkcja do sprawdzenia, czy plik został zmieniony
+local function is_file_modified()
+  local handle = io.popen("git status --porcelain 2>/dev/null")
+  local result = handle:read("*a")
+  handle:close()
+  return result ~= ""
+end
+
+-- Funkcja powiadomienia przy zamknięciu Neovim
+local function notify_on_exit()
+  if is_git_repo() and is_file_modified() then
+    os.execute('notify-send "Neovim" "Plik z repozytorium Git został zmieniony!"')
+  end
+end
+
+-- Ustawienie autokomendy, która uruchamia funkcję notify_on_exit przy zamknięciu Neovim
+vim.api.nvim_create_autocmd("VimLeavePre", {
+  callback = notify_on_exit,
+})
 
 -- Funkcja do otwierania istniejącego pliku lub tworzenia nowego
 function Go_to_file_or_create()
