@@ -40,34 +40,32 @@ vim.defer_fn(function()
   set_highlight_normal()
 end, 0)
 
--- Definiowanie funkcji, która sprawdzi, czy plik jest w repozytorium Git
+-- Funkcja do sprawdzenia, czy bufor jest częścią repozytorium Git
 local function is_git_repo()
   local handle = io.popen("git rev-parse --is-inside-work-tree 2>/dev/null")
-  if handle == nil then
-    return false
-  end
   local result = handle:read("*a")
   handle:close()
-  if result == nil then
-    return false
-  end
-  return result:match("true") ~= nil
+  return result:find("true") ~= nil
 end
--- Definiowanie funkcji, która wykonuje git add i git commit
-local function git_add_and_commit()
-  if is_git_repo() then
-    os.execute("git add . > /dev/null 2>&1")
-    os.execute("git commit -m 'ok' > /dev/null 2>&1")
-    os.execute("git push > /dev/null 2>&1")
-    print("git commit has been pushed")
+
+-- Funkcja do sprawdzenia, czy plik został zmieniony
+local function is_file_modified()
+  local handle = io.popen("git status --porcelain 2>/dev/null")
+  local result = handle:read("*a")
+  handle:close()
+  return result ~= ""
+end
+
+-- Funkcja powiadomienia przy zamknięciu Neovim
+local function notify_on_exit()
+  if is_git_repo() and is_file_modified() then
+    os.execute('notify-send "Neovim" "Plik z repozytorium Git został zmieniony!"')
   end
 end
--- Dodawanie autokomentarzy
-vim.api.nvim_create_augroup("AutoGitCommit", { clear = true })
-vim.api.nvim_create_autocmd("BufWritePost", {
-  group = "AutoGitCommit",
-  pattern = "*",
-  callback = git_add_and_commit,
+
+-- Ustawienie autokomendy, która uruchamia funkcję notify_on_exit przy zamknięciu Neovim
+vim.api.nvim_create_autocmd("VimLeavePre", {
+  callback = notify_on_exit,
 })
 
 vim.api.nvim_command("syntax on")
