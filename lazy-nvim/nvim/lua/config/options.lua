@@ -34,7 +34,7 @@
 -- vim.cmd("colorscheme vim")
 --
 local function set_highlight_normal()
-  vim.cmd("hi Normal guifg=#8288a1")
+  vim.cmd("hi Normal guifg=#adb3c7")
 end
 vim.defer_fn(function()
   set_highlight_normal()
