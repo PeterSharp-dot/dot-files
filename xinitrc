@@ -58,7 +58,7 @@ udiskie &
 #|`awk '{ print $1,$2,$3 }' /proc/loadavg`|
 #  兩
 #  cat /sys/class/net/enp25s0/operstate
-
+##
 
 #while xsetroot -name "爛 `mpstat --dec=1 1 1 | awk '(NR==4){ print $3 }'`%   `curl wttr.in?format='%c+%p+%t+%w+%P'`    `sed 's/down//;s/up//'  /sys/class/net/enp25s0/operstate`     奄 `amixer get Master | tail '-1' | sed 's/.*\[\([0-9]*%\)\].*/\1/'`    `free '-h' | awk '(NR==2){ print $3 }'`    `awk '{ print substr($1/1000,1,2) }' /sys/bus/pci/drivers/k10temp/0000:00:18.3/hwmon/hwmon0/temp1_input`°C     `date +%a.%d.%b.` `date +%H·%M` "
 #	do
