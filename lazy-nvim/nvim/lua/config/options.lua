@@ -41,16 +41,18 @@ vim.defer_fn(function()
 end, 0)
 
 -- Funkcja do sprawdzenia, czy bufor jest częścią repozytorium Git
-local function is_git_repo()
-  local handle = io.popen("git rev-parse --is-inside-work-tree 2>/dev/null")
+local function is_git_repo(file)
+  local cmd = "git -C " .. file .. " rev-parse --is-inside-work-tree 2>/dev/null"
+  local handle = io.popen(cmd)
   local result = handle:read("*a")
   handle:close()
   return result:find("true") ~= nil
 end
 
 -- Funkcja do sprawdzenia, czy plik został zmieniony
-local function is_file_modified()
-  local handle = io.popen("git status --porcelain 2>/dev/null")
+local function is_file_modified(file)
+  local cmd = "git -C " .. file .. " status --porcelain 2>/dev/null"
+  local handle = io.popen(cmd)
   local result = handle:read("*a")
   handle:close()
   return result ~= ""
@@ -58,7 +60,9 @@ end
 
 -- Funkcja powiadomienia przy zamknięciu Neovim
 local function notify_on_exit()
-  if is_git_repo() and is_file_modified() then
+  -- Pobierz ścieżkę do bieżącego bufora
+  local file = vim.fn.expand("%:p:h")
+  if is_git_repo(file) and is_file_modified(file) then
     os.execute('notify-send "Neovim" "Plik z repozytorium Git został zmieniony!"')
   end
 end
