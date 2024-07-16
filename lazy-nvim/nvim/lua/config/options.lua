@@ -33,8 +33,17 @@
 -- vim.cmd("highlight Normal guifg=#DDDDDD")
 -- vim.cmd("colorscheme vim")
 --
+local function set_syntax_on()
+  vim.cmd("syntax on")
+end
+-- Tworzenie autokomendy
+vim.api.nvim_create_autocmd("BufRead", {
+  pattern = "*.leb",
+  callback = set_syntax_on,
+})
+
 local function set_highlight_normal()
-  vim.cmd("hi Normal guifg=#adb3c7")
+  vim.cmd("hi Normal ctermbg=black ctermfg=gray guibg=#10131c guifg=#adb3c7")
 end
 vim.defer_fn(function()
   set_highlight_normal()
@@ -44,18 +53,26 @@ end, 0)
 local function is_git_repo(file)
   local cmd = "git -C " .. file .. " rev-parse --is-inside-work-tree 2>/dev/null"
   local handle = io.popen(cmd)
-  local result = handle:read("*a")
-  handle:close()
-  return result:find("true") ~= nil
+  if handle == nil then
+    print("something's wrong")
+  else
+    local result = handle:read("*a")
+    handle:close()
+    return result:find("true") ~= nil
+  end
 end
 
 -- Funkcja do sprawdzenia, czy plik został zmieniony
 local function is_file_modified(file)
   local cmd = "git -C " .. file .. " status --porcelain 2>/dev/null"
   local handle = io.popen(cmd)
-  local result = handle:read("*a")
-  handle:close()
-  return result ~= ""
+  if handle == nil then
+    print("something's wrong")
+  else
+    local result = handle:read("*a")
+    handle:close()
+    return result ~= ""
+  end
 end
 
 -- Funkcja powiadomienia przy zamknięciu Neovim
