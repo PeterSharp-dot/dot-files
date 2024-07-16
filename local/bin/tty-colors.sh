@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if test "$TERM" = "xterm-256color"
-    echo -en "\e]P020243d" # tło ciemnozielone w tty
+    echo -en "\e]P0000000" # tło w tty
     echo -en "\e]P1730301" # red
     echo -en "\e]P2017a3a" # green 
     echo -en "\e]P3b58900" # yellow
