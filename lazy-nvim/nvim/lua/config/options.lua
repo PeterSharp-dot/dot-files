@@ -35,6 +35,7 @@
 --
 local function set_syntax_on()
   vim.cmd("syntax on")
+  vim.opt.colorcolumn = ""
 end
 -- Tworzenie autokomendy
 vim.api.nvim_create_autocmd("BufRead", {
@@ -44,7 +45,7 @@ vim.api.nvim_create_autocmd("BufRead", {
 
 -- bg=#10131c
 local function set_highlight_normal()
-  vim.cmd("hi Normal ctermbg=black ctermfg=gray guibg=#000000 guifg=#adb3c7")
+  vim.cmd("hi Normal ctermbg=black ctermfg=gray guibg=#0f0f0f guifg=#adb3c7")
 end
 vim.defer_fn(function()
   set_highlight_normal()
