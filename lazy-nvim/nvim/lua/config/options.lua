@@ -35,7 +35,7 @@
 --
 local function set_syntax_on()
   vim.cmd("syntax on")
-  vim.opt.colorcolumn = ""
+  -- vim.opt.colorcolumn = ""
 end
 -- Tworzenie autokomendy
 vim.api.nvim_create_autocmd("BufRead", {
