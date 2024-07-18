@@ -1,20 +1,26 @@
 #!/bin/sh
-vol="$(pamixer --get-volume)"
-if [ "$vol" -gt "86" ]; then
-	icon="█ "
-elif [ "$vol" -gt "75" ]; then
-	icon="▇ "
-elif [ "$vol" -gt "64" ]; then
-	icon="▆ "
-elif [ "$vol" -gt "53" ]; then
-	icon="▅ "
-elif [ "$vol" -gt "42" ]; then
-	icon="▄ "
-elif [ "$vol" -gt "31" ]; then
-	icon="▃ "
-elif [ "$vol" -gt "20" ]; then
-	icon="▂ "
+vol="$(pamixer --get-volume-human)"
+if [ "$vol" == "muted" ]; then
+  icon=" "
+  echo "     $icon$vol   "
 else
-	icon="▁ "
+  vol="$(pamixer --get-volume)"
+  if [ "$vol" -gt "86" ]; then
+    icon="█ "
+  elif [ "$vol" -gt "75" ]; then
+    icon="▇ "
+  elif [ "$vol" -gt "64" ]; then
+    icon="▆ "
+  elif [ "$vol" -gt "53" ]; then
+    icon="▅ "
+  elif [ "$vol" -gt "42" ]; then
+    icon="▄ "
+  elif [ "$vol" -gt "31" ]; then
+    icon="▃ "
+  elif [ "$vol" -gt "20" ]; then
+    icon="▂ "
+  else
+    icon="▁ "
+  fi
+  echo "     $icon$vol%   "
 fi
-echo "     $icon$vol%   "
