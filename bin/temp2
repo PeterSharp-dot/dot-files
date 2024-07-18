@@ -1,0 +1,4 @@
+#!/bin/sh
+#echo " `awk '{ print substr($1/1000,1,2) }' /sys/devices/pci0000:00/0000:00:08.1/0000:38:00.0/hwmon/hwmon1/temp1_input`°C"
+#echo " `awk '{ print substr($1/1000,1,2) }' /sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon1/temp1_input`°C"
+echo "$(sensors -u 2>/dev/null | awk 'FNR==4 {printf("%.1f\n", $2)}')°C"
