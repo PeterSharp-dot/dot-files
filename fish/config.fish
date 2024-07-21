@@ -23,10 +23,10 @@ set -gx BAT_THEME "Solarized (light)"
 set -gx XDG_CURRENT_DESKTOP KDE
 set -gx QT_QPA_PLATFORMTHEME qt5ct
 set -gx NOTES /home/peter/notes/
-set -gx VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/amd_icd64.json
-set -gx MESA_GLTHREAD=true
-set -gx MESA_GLSL_CACHE_DISABLE=true
-set -gx MESA_EXTENSION_MAX_YEAR=2020
+set -gx VK_ICD_FILENAMES /usr/share/vulkan/icd.d/radeon_icd.x86_64.json
+#set -gx MESA_GLTHREAD true
+#set -gx MESA_GLSL_CACHE_DISABLE true
+#set -gx MESA_EXTENSION_MAX_YEAR 2020
 source /home/peter/.local/bin/tty-colors.sh
 
 bind -M insert \cf accept-autosuggestion
