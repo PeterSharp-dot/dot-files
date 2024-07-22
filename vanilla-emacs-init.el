@@ -1,0 +1,7 @@
+(load-theme 'wombat t)
+(menu-bar-mode -1)
+(tool-bar-mode -1)
+(set-frame-font "Inconsolata LGC Nerd Font-13" nil t)
+(set-face-attribute 'default nil :font "Inconsolata LGC Nerd Font-13")
+(set-face-attribute 'fixed-pitch nil :font "Inconsolata LGC Nerd Font-15")
+(set-face-attribute 'variable-pitch nil :font "Inconsolata LGC Nerd Font-13")

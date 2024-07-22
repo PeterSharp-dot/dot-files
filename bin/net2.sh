@@ -1,6 +1,6 @@
 #!/bin/sh
 
-WHITE='<span foreground="#aaaaaa"'
+WHITE='<span foreground="#aaaaaa">'
 GREEN='<span foreground="green">'
 RED='<span foreground="red">'
 END='</span>'
