@@ -36,7 +36,6 @@
 ;;   :bind (("C-s" . swiper))
 ;;   :config
 ;;   (ivy-mode 1))
-
 ;; Składnia use-package
 ;; :ensure t: Automatycznie instaluje pakiet, jeśli nie jest zainstalowany.
 ;; :diminish: Usuwa nazwę pakietu z modeline, aby zachować porządek.
