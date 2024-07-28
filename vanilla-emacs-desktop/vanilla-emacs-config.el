@@ -5,16 +5,45 @@
 (setq package-user-dir (expand-file-name "elpa" user-emacs-directory))
 
 
-
-(load-theme 'wombat t)
+;;(load-theme 'wombat t
+(load-theme 'misterioso t)
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 
-(set-frame-font "Inconsolata LGC Nerd Font-10.5" nil t)
-(set-face-attribute 'default nil :font "Inconsolata LGC Nerd Font-10.5")
-(set-face-attribute 'fixed-pitch nil :font "Inconsolata LGC Nerd Font-10")
-(set-face-attribute 'variable-pitch nil :font "Inconsolata LGC Nerd Font-10.5")
+(set-frame-font "Inconsolata LGC Nerd Font-9.5" nil t)
+(set-face-attribute 'default nil :font "Inconsolata LGC Nerd Font-9.5")
+(set-face-attribute 'fixed-pitch nil :font "Inconsolata LGC Nerd Font-9.5")
+(set-face-attribute 'variable-pitch nil :font "Inconsolata LGC Nerd Font-9.5")
+
+;; Ustaw hunspell jako domyślny program sprawdzania pisowni
+(setq ispell-program-name "hunspell")
+;; Dodaj polski i angielski słownik
+(setq ispell-local-dictionary-alist
+      '(("pl_en"
+         "[[:alpha:]]"
+         "[^[:alpha:]]"
+         "[']"
+         nil
+         ("-d" "pl_PL,en_US")
+         nil
+         utf-8)))
+;; Ustaw jako domyślny słownik dla buforów
+(setq ispell-dictionary "pl_en")
+;; Ustaw hunspell, aby używał wielu słowników
+(setq ispell-hunspell-dict-paths-alist
+      '(("pl_en" "/usr/share/hunspell/pl_PL.aff"
+         "/usr/share/hunspell/en_US.aff")))
+;; Włącz Flyspell dla tekstów
+(add-hook 'text-mode-hook 'flyspell-mode)
+(add-hook 'prog-mode-hook 'flyspell-prog-mode)
+
+(defun create-line-below ()
+  "Tworzy pustą linię poniżej kursora"
+  (interactive)
+  (move-end-of-line nil)
+  (newline-and-indent))
+(global-set-key (kbd "M-o") 'create-line-below)
 
 ;; Inicjalizacja pakietów
 (require 'package)
@@ -48,3 +77,9 @@
   :bind
       ("C-." . dot-mode-execute)
       ("C-M-." . dot-mode-override))
+
+(use-package which-key
+  :ensure t
+  :config
+      (which-key-mode)
+)
