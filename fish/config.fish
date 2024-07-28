@@ -5,11 +5,12 @@ fish_add_path /home/peter/.bin
 fish_add_path /home/peter/.local/bin
 fish_add_path /home/peter/.cargo/bin
 fish_add_path /home/peter/.local/lib
+fish_add_path /home/peter/.emacs.d/bin
 #set -gx PATH /home/peter/.local/share/pypy3.10-v7.3.16-linux64/bin $PATH
 set -gx PATH /usr/bin/python $PATH
 set -gx COOKIE_FILE "/home/peter/.local/bin/cookies.json"
 set -gx TERM xterm-256color
-set -gx GPG_TTY $(tty)
+set -gx GPG_TTY (tty)
 set -gx MANWIDTH 80
 set -gx STARDICT_DATA_DIR /home/peter/sdcv/
 #set -gx TERMINAL "/usr/bin/kitty"
@@ -81,3 +82,5 @@ alias rga='rga --color always --heading'
 alias meta5='wine /home/peter/.wine/drive_c/Program\ Files/MetaTrader\ 5/terminal64.exe'
 alias note='cd /home/peter/notes && nvim index.md'
 alias ,='devour'
+alias space='emacs -q --load ~/.emacs.d/init.el'
+alias doom='emacs'
