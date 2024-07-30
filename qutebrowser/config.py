@@ -8,20 +8,18 @@ config.set("colors.webpage.darkmode.enabled", True)
 config.set("colors.webpage.darkmode.policy.page", "always")
 config.set("colors.webpage.darkmode.policy.images", "never")
 config.set("colors.webpage.preferred_color_scheme", "dark")
+# config.set("colors.webpage.darkmode.algorithm", "lightness-hsl")
+# config.set("colors.webpage.darkmode.contrast", -0.01)
+config.set("colors.webpage.darkmode.threshold.foreground", 40)
 
-# Function to toggle dark mode
-# def toggle_dark_mode():
-#     enabled = c.colors.webpage.darkmode.enabled
-#     new_value = not enabled
-#     c.colors.webpage.darkmode.enabled = new_value
-#     message = "Dark mode enabled" if new_value else "Dark mode disabled"
-#     message = f"set colors.webpage.darkmode.enabled {new_value}"
-#     config.set("colors.webpage.darkmode.enabled", new_value)
-#     print(message)
+# config.set("content.user_stylesheets", ["~/.config/qutebrowser/custom.css"])
+
 
 # Toggle darkmode
-config.bind('<Alt+Shift+d>', 'config-cycle -p colors.webpage.darkmode.enabled True False')
+config.bind(
+    "<Alt+Shift+d>", "config-cycle -p colors.webpage.darkmode.enabled True False"
+)
 
 
 # Toggle javascript for webpages
-config.bind('<Alt+Shift+j>', 'config-cycle -p content.javascript.enabled False True')
+config.bind("<Alt+Shift+j>", "config-cycle -p content.javascript.enabled False True")

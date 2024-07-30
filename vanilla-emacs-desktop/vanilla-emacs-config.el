@@ -5,7 +5,7 @@
 (setq package-user-dir (expand-file-name "elpa" user-emacs-directory))
 
 
-;;(load-theme 'wombat t
+;;(load-theme 'modus-vivendi t)
 (load-theme 'misterioso t)
 (menu-bar-mode -1)
 (tool-bar-mode -1)
@@ -83,3 +83,16 @@
   :config
       (which-key-mode)
 )
+
+(use-package org-superstar
+  :ensure t
+  :config
+      (add-hook 'org-mode-hook (lambda () (org-superstar-mode 1)))
+      ;; This is usually the default, but keep in mind it must be nil
+      (setq org-hide-leading-stars nil)
+      ;; This line is necessary.
+      (setq org-superstar-leading-bullet ?\s)
+      ;; If you use Org Indent you also need to add this, otherwise the
+      ;; above has no effect while Indent is enabled.
+      (setq org-indent-mode-turns-on-hiding-stars nil)
+      (setq org-superstar-headline-bullets-list '("🞊" "🞚" "○" "🞍")))

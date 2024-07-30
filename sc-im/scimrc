@@ -1,0 +1,11 @@
+set xlsx_readformulas
+set truncate
+color "type=STRG bold=0 fg=DEFAULT_COLOR bg=DEFAULT_COLOR"
+#color "type=HEADINGS bold=1 fg=BLACK bg=BLUE"
+#color "type=HEADINGS_ODD bold=0 fg=BLACK bg=BLUE"
+color "type=HEADINGS bold=0 fg=WHITE bg=DEFAULT_COLOR"
+color "type=HEADINGS_ODD bold=0 fg=WHITE bg=DEFAULT_COLOR"
+#color "type=GRID_EVEN fg=WHITE bg=DEFAULT_COLOR"
+#color "type=GRID_ODD fg=WHITE bg=DEFAULT_COLOR"
+color "type=CELL_SELECTION bold=1 fg=WHITE bg=BLUE"
+color "type=CELL_SELECTION_SC fg=WHITE bg=BLUE"
