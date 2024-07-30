@@ -45,6 +45,10 @@
   (newline-and-indent))
 (global-set-key (kbd "M-o") 'create-line-below)
 
+;;Zwiększ lub zmniejsz wcięcie
+(global-set-key (kbd "C-c >") (lambda (start end) (interactive "r") (indent-rigidly start end 4)))
+(global-set-key (kbd "C-c <") (lambda (start end) (interactive "r") (indent-rigidly start end -4)))
+
 ;; Inicjalizacja pakietów
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
@@ -96,3 +100,4 @@
       ;; above has no effect while Indent is enabled.
       (setq org-indent-mode-turns-on-hiding-stars nil)
       (setq org-superstar-headline-bullets-list '("🞊" "🞚" "○" "🞍")))
+;;      (setq org-superstar-headline-bullets-list '("" "" "" "")) )
