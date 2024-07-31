@@ -159,6 +159,12 @@
       ;; above has no effect while Indent is enabled.
       (setq org-indent-mode-turns-on-hiding-stars nil)
       (setq org-superstar-headline-bullets-list '("" "" "" "")) )
+
+(use-package org
+  :ensure t
+  :config
+  (setq org-hide-emphasis-markers t))
+
     
 
 
