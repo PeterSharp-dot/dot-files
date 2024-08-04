@@ -207,3 +207,4 @@
 
 (require 'doom-modeline)
 (doom-modeline-mode)
+y
