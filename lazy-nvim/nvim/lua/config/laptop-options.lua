@@ -45,8 +45,8 @@ vim.api.nvim_create_autocmd("BufRead", {
 
 -- bg=#10131c
 local function set_highlight_normal()
+  vim.cmd("colorscheme tokyonight-night")
   vim.cmd("hi Normal ctermbg=black ctermfg=gray guibg=#10131c guifg=#adb3c7")
-  vim.cmd("colorscheme tokyonight-day")
 end
 vim.defer_fn(function()
   set_highlight_normal()
