@@ -26,6 +26,9 @@
 ;; (add-to-list 'default-frame-alist '(fullscreen . maximized))
 ;; Disable line numbers for some modes
 (dolist (mode '(org-mode-hook
+		elfeed-search-mode-hook
+		elfeed-show-mode-hook
+		eww-mode-hook
                 term-mode-hook
                 shell-mode-hook
                 treemacs-mode-hook
@@ -207,3 +210,62 @@
 
 (require 'doom-modeline)
 (doom-modeline-mode)
+
+(use-package all-the-icons
+  :ensure t
+  :if (display-graphic-p)
+)
+
+(use-package dashboard
+  :ensure t
+  :config
+     (dashboard-setup-startup-hook))
+
+(dashboard-open)
+
+(use-package company
+  :ensure t
+  :hook (after-init . global-company-mode)
+  )
+
+(global-set-key (kbd "C-x w") 'elfeed)
+
+(setq elfeed-feeds '(("http://nullprogram.com/feed/" emacs)
+        ("https://planet.emacslife.com/atom.xml" emacs)
+	("https://www.archlinux.org/feeds/news/" arch)
+	("https://www.linuxjournal.com/node/feed" linux)
+	("http://www.dobreprogramy.pl/rss/rss_news.xml" it)
+	("https://geekweek.interia.pl/feed" it)
+	("https://wydarzenia.interia.pl/nauka/feed" news)
+	("https://www.computerworld.pl/news?rss" it)
+	("https://antyweb.pl/feed" it)
+	("https://itsfoss.com/feed" it linux)
+	("https://linux.com/feed" linux)
+	("https://lnwn.net/headlines/newrss" linux)
+	("https://www.kalilinux.in/feeds/posts/default" linux cyber)
+	("http://feeds.feedburner.com/wPolitycepl" news wpolityce)
+	("https://www.wykop.pl/rss/" news wykop)
+	("https://www.tvn24.pl/najnowsze.xml" news tvn)
+	("https://wydarzenia.interia.pl/feed" interia news)
+	("https://www.polsatnews.pl/rss/wszystkie.xml" news polsat)
+	("http://wiadomosci.onet.pl/.feed" news onet)))
+
+(setq browse-url-browser-function 'browse-url-generic
+      browse-url-generic-program "qutebrowser")
+(global-set-key (kbd "C-c u") 'browse-url-at-point)
+(global-set-key (kbd "C-c e") 'eww)
+
+
+;; (use-package elfeed-goodies
+;;   :ensure t
+;;   )
+;; (require 'elfeed)
+;; (require 'elfeed-goodies)
+;; (elfeed-goodies/setup)
+;; (setq elfeed-goodies/entry-pane-size 0.5)
+
+;;   :init
+;;   (elfeed-goodies/setup)
+;;   :config
+;;   (setq elfeed-goodies/entry-pane-size 0.5))
+;;You can customise some aspects of the package with M-x customize-group elfeed-goodies.

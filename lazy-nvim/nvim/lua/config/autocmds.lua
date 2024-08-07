@@ -11,6 +11,15 @@ vim.cmd([[
   augroup END
 ]])
 
+vim.cmd([[
+  augroup BibleFileType2
+    autocmd!
+    autocmd BufRead,BufNewFile *.leb set filetype=leb
+    autocmd Syntax leb source ~/.config/nvim/syntax/leb.vim
+    autocmd BufRead,BufNewFile *.leb set conceallevel=2
+  augroup END
+]])
+
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "markdown" },
   command = "setlocal nospell",

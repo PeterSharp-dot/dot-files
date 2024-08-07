@@ -1,0 +1,50 @@
+[general]
+# List of accounts to be synced, separated by a comma.
+accounts = Gmail
+# As for now we try ~/.netrc
+
+# Path to file with arbitrary Python code to be loaded
+#pythonfile = ~/.config/offlineimap/.offlineimap.py
+
+[Account Gmail]
+# Identifier for the local repository; e.g. the maildir to be synced via IMAP.
+localrepository = Gmail-local
+# Identifier for the remote repository; i.e. the actual IMAP, usually non-local.
+remoterepository = Gmail-remote
+
+[Repository Gmail-local]
+# OfflineIMAP supports Maildir, GmailMaildir, and IMAP for local repositories.
+type = Maildir
+# Where should the mail be placed?
+localfolders = ~/Mail
+
+[Repository Gmail-remote]
+# Remote repos can be IMAP or Gmail, the latter being a preconfigured IMAP.
+# SSL and STARTTLS are enabled by default.
+type = Gmail
+remotehost = imap.gmail.com
+remoteuser = peter.grela@gmail.com
+folderfilter = lambda foldername: foldername not in ['[Gmail]/All Mail', '[Gmail]/Trash']
+# nametrans = lambda foldername: re.sub ('wys&aui-ane', 'wysłane',
+#                                re.sub ('gwiazdk&aqu-', 'gwiazdką',
+#                                re.sub ('wa&axw-ne', 'ważne',
+#                                re.sub ('p&aui-atno&avs-ci', 'płatnosci',
+#                                re.sub ('j&ark-zykowa', 'jezykowa',
+#                                re.sub ('si&aui-ka', 'siłka',
+#                                re.sub ('szko&aui-a', 'szkoła',
+#                                re.sub (' ', '_', foldername.lower()))))))))
+
+# Necessary for SSL connections, if using offlineimap version > 6.5.4
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+ssl_version = tls1_2
+
+# Decrypt and read the encrypted password
+#remotepasseval = get_pass("Gmail")
+
+[mbnames]
+enabled = yes
+filename = ~/.config/neomutt/mailboxes
+header = "mailboxes "
+peritem = "+%(foldername)s"
+sep = " "
+footer = "\n"

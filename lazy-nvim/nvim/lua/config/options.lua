@@ -128,3 +128,99 @@ end
 
 -- Zmapuj gf bezpośrednio do polecenia, które wywoła funkcję Lua
 vim.api.nvim_set_keymap("n", "gf", ":lua Go_to_file_or_create()<CR>", { noremap = true, silent = true })
+
+-- //--------------------------------------------------------------------
+-- Wymagaj 'telescope' i 'plenary'
+-- Telescope = require("telescope")
+-- local previewers = require("telescope.previewers")
+-- local builtin = require("telescope.builtin")
+--
+-- -- Funkcja otwierająca plik i linie w oknie telescope
+-- function Telescope_gF()
+--   -- Pobierz aktualną linię pod kursorem
+--   local line = vim.fn.getline(".")
+--
+--   -- Pobierz nazwę pliku i numer linii z linii
+--   local file, linenr = line:match("([^:]+):(%d+)")
+--   if not file then
+--     print("Nie znaleziono odpowiedniego pliku i numeru linii")
+--     return
+--   end
+--
+--   -- Użyj 'telescope' do wyświetlenia pliku z zaznaczeniem linii
+--   builtin.find_files({
+--     default_text = file,
+--     attach_mappings = function(_, map)
+--       map("i", "<CR>", function()
+--         entry = require("Telescope.actions.state").get_selected_entry()
+--         if entry then
+--           local filename = entry.value
+--           if filename then
+--             local previewer = previewers.vim_buffer_cat.new({
+--               title = filename,
+--               get_buffer_by_name = function(_, entry)
+--                 return entry.value
+--               end,
+--               define_preview = function(self, entry, status)
+--                 local bufnr = self.state.bufnr
+--                 vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, vim.fn.readfile(entry.value))
+--                 vim.api.nvim_buf_set_option(bufnr, "modifiable", false)
+--                 vim.api.nvim_buf_set_option(bufnr, "readonly", true)
+--                 vim.api.nvim_buf_set_option(bufnr, "buftype", "nofile")
+--                 vim.api.nvim_buf_set_option(bufnr, "filetype", "text")
+--                 vim.fn.cursor(tonumber(linenr), 1)
+--               end,
+--             })
+--             previewer:preview(filename, status)
+--           end
+--         end
+--       end)
+--       return true
+--     end,
+--   })
+-- end
+--
+-- -- Zmapuj 'gF' do nowej funkcji
+-- vim.api.nvim_set_keymap("n", "GF", ":lua Telescope_gF()<CR>", { noremap = true, silent = true })
+
+--//----------------------------------------------------------------------
+telescope = require("telescope")
+previewers = require("telescope.previewers")
+local builtin = require("telescope.builtin")
+local actions = require("telescope.actions")
+local action_state = require("telescope.actions.state")
+
+function telescope_gF()
+  -- Pobierz aktualną linię pod kursorem
+  local line = vim.fn.getline(".")
+
+  -- Pobierz nazwę pliku i numer linii z linii
+  local file, linenr = line:match("([^:]+):(%d+)")
+  if not file then
+    print("Nie znaleziono odpowiedniego pliku i numeru linii")
+    return
+  end
+
+  -- Użyj 'telescope' do wyświetlenia pliku z zaznaczeniem linii
+  builtin.find_files({
+    default_text = file,
+    attach_mappings = function(_, map)
+      map("i", "<CR>", function(prompt_bufnr)
+        local entry = action_state.get_selected_entry()
+        if entry then
+          actions.close(prompt_bufnr)
+          local filename = entry.value
+          if filename then
+            -- Użycie 'vim.cmd' do otwarcia pliku i przejścia do linii
+            vim.cmd("edit " .. filename)
+            vim.cmd(linenr)
+          end
+        end
+      end)
+      return true
+    end,
+  })
+end
+
+-- Zmapuj 'gF' do nowej funkcji
+vim.api.nvim_set_keymap("n", "GF", ":lua telescope_gF()<CR>", { noremap = true, silent = true })

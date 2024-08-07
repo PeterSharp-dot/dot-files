@@ -1,0 +1,6 @@
+[Unit]
+Description=Check for new mail and notify
+
+[Service]
+Type=oneshot
+ExecStart=/home/peter/.local/bin/new_mail_offlineimap.sh
