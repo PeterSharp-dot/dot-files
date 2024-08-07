@@ -210,6 +210,7 @@
 
 (require 'doom-modeline)
 (doom-modeline-mode)
+<<<<<<< HEAD
 
 (use-package all-the-icons
   :ensure t
@@ -269,3 +270,6 @@
 ;;   :config
 ;;   (setq elfeed-goodies/entry-pane-size 0.5))
 ;;You can customise some aspects of the package with M-x customize-group elfeed-goodies.
+=======
+y
+>>>>>>> 4459118a5e86693dee7991387fbf1bd66e0de756
