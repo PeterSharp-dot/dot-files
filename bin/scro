@@ -1,3 +1,3 @@
 #!/bin/sh
-cd ~/Obrazy/screens
-scrot -s -f '%Y-%m-%d_%H:%M:%S_$wx$h.png' -e 'gimp -s $f'
+cd ~/screenshots
+scrot -s -f -d 1 '%Y-%m-%d_%H:%M:%S_$wx$h.png' -e 'gimp -s $f'

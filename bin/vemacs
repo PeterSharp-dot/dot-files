@@ -1,0 +1,3 @@
+#!/bin/sh
+
+emacs -q -l ~/.vanilla-emacs/vanilla-emacs-init.el
