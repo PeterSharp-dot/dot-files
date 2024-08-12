@@ -16,7 +16,7 @@ set -gx COLORTERM truecolor
 set -gx SHFM_OPENER "/home/peter/.local/bin/shfm-opener.sh"
 set -gx EDITOR nvim
 set -gx VISUAL nvim
-set -gx FZF_DEFAULT_COMMAND 'ag --hidden --depth 4 --ignore .git -f -g ""'
+# set -gx FZF_DEFAULT_COMMAND 'ag --hidden --depth 4 --ignore .git -f -g ""'
 set -gx BAT_THEME OneHalfLight
 set -gx XDG_CURRENT_DESKTOP KDE
 set -gx QT_QPA_PLATFORMTHEME qt5ct
@@ -56,9 +56,9 @@ end
 # end
 function sd
     if test (count $argv) -eq 0
-        cd $HOME && cd "$(fd -H -t d | fzf --preview="tree -L 1 {}" --bind="space:toggle-preview" --preview-window=:hidden)" && clear && pwd && lsd -a --color=always
+        cd $HOME && cd "$(fd -H -t d | fzf --height 40% --layout reverse --preview="tree -L 1 {}" --bind="space:toggle-preview" --preview-window=:hidden)" && clear && pwd && lsd -a --color=always
     else
-        cd $HOME && cd "$(fd -H -t d | fzf --query="$argv[1]" --preview="tree -L 1 {}" --bind="space:toggle-preview" --preview-window=:hidden)" && clear && pwd && lsd -a --color=always
+        cd $HOME && cd "$(fd -H -t d | fzf --height 40% --layout reverse  --query="$argv[1]" --preview="tree -L 1 {}" --bind="space:toggle-preview" --preview-window=:hidden)" && clear && pwd && lsd -a --color=always
     end
 end
 function vif
