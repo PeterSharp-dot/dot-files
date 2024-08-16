@@ -535,6 +535,21 @@ Ta konfiguracja pozwala na numerację jedynie przy niektórych rodzajach plików
   ;;   :ensure t          )
 #+end_src
 
+*** Yasnippet
+#+begin_src emacs-lisp
+  (use-package yasnippet
+    :ensure t
+    :config
+      (yas-global-mode 1)    
+    )
+
+#+end_src
+
+*** Yasnippet-snippets
+#+begin_src emacs-lisp
+	(use-package yasnippet-snippets
+	  :ensure t )
+#+end_src
 *** Skrót find-file-at-point
 #+begin_src emacs-lisp
   (global-set-key (kbd "C-c f") 'find-file-at-point)
