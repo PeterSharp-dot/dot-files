@@ -52,6 +52,11 @@ Ta konfiguracja pozwala na numerację jedynie przy niektórych rodzajach plików
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 #+end_src
 
+** Parowanie nawiasów
+#+begin_src emacs-lisp
+  (electric-pair-mode 1)
+#+end_src
+
 ** Czcionki
 #+begin_src emacs-lisp
   (set-frame-font "Inconsolata LGC Nerd Font-9.5" nil t)
@@ -301,9 +306,11 @@ Ta konfiguracja pozwala na numerację jedynie przy niektórych rodzajach plików
 #+begin_src emacs-lisp
     ;;M-x all-the-icons-install-fonts
   (use-package all-the-icons
-    :demand t
-    :ensure t)
-  (require 'all-the-icons)
+  :if (display-graphic-p))
+  ;; (use-package all-the-icons
+  ;;   :demand t
+  ;;   :ensure t)
+  ;; (require 'all-the-icons)
 #+end_src
 
 *** Dashboard
@@ -311,16 +318,22 @@ Ta konfiguracja pozwala na numerację jedynie przy niektórych rodzajach plików
   (use-package dashboard
     :ensure t
     :config
-    (dashboard-setup-startup-hook)
-    :custom
-      (setq dashboard-icon-type 'all-the-icons)
-      (setq dashboard-set-heading-icons t)
-      (setq dashboard-set-file-icons t))
-
+    (dashboard-setup-startup-hook))
+  ;;(require 'all-the-icons)
+    (setq dashboard-icon-type 'all-the-icons)
+    (setq dashboard-set-file-icons t)
+    (require 'dashboard)
+    (setq dashboard-set-heading-icons t)
+    (setq dashboard-icon-type 'all-the-icons)
+    (setq dashboard-heading-icons '((recents   . "history")
+                                (bookmarks . "bookmark")
+                                (agenda    . "calendar")
+                                (projects  . "rocket")
+                                (registers . "database")))
       ; Set the title
-      (setq dashboard-banner-logo-title "Welcome to Emacs Dashboard")
+    (setq dashboard-banner-logo-title "Welcome to Emacs Dashboard")
       ;; Set the banner
-      (setq dashboard-startup-banner 'logo)
+    (setq dashboard-startup-banner 'logo)
       ;; Value can be:
       ;;  - 'official which displays the official emacs logo.
       ;;  - 'logo which displays an alternative emacs logo.
