@@ -1,0 +1,86 @@
+autoload -Uz compinit promptinit
+compinit
+promptinit
+zstyle ':completion:*' rehash true
+
+autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+[[ -n "${key[Up]}"   ]] && bindkey -- "${key[Up]}"   up-line-or-beginning-search
+[[ -n "${key[Down]}" ]] && bindkey -- "${key[Down]}" down-line-or-beginning-search
+
+export PATH=/home/peter/.local/bin:$PATH
+export PATH=/home/peter/.local/lib:$PATH
+export PATH=/home/peter/.cargo/bin:$PATH
+export PATH=/home/peter/.emacs.d/bin:$PATH
+#export PATH=/home/peter/.local/share/pypy3.10-v7.3.16-linux64/bin:$PATH
+export PATH=/usr/bin/python:$PATH
+export COOKIE_FILE="/home/peter/.local/bin/cookies.json"
+export TERM="xterm-256color"
+export GPG_TTY=(tty)
+export MANWIDTH=80
+export STARDICT_DATA_DIR="home/peter/sdcv/"
+export TERMINAL="/usr/bin/kitty"
+export COLORTERM=truecolor
+export SHFM_OPENER="/home/peter/.local/bin/shfm-opener.sh"
+export EDITOR=nvim
+export VISUAL=nvim
+#export FZF_DEFAULT_COMMAND='ag --hidden --depth 4 --ignore .git -f -g ""'
+#source fzf --zsh
+export BAT_THEME="Solarized (light)"
+# export XDG_CURRENT_DESKTOP=KDE
+export QT_QPA_PLATFORMTHEME=qt5ct
+export NOTES="/home/peter/notes/"
+export VK_ICD_FILENAMES="/usr/share/vulkan/icd.d/radeon_icd.x86_64.json"
+#set -gx MESA_GLTHREAD true
+#set -gx MESA_GLSL_CACHE_DISABLE true
+#set -gx MESA_EXTENSION_MAX_YEAR 2020
+# source /home/peter/.local/bin/tty-zsh-colors.sh
+
+# bind -M insert \cf accept-autosuggestion
+# bind -M insert \cy accept-autosuggestion
+
+t(){
+  lsd && clear && pwd && tree -C -L 1
+}
+media() {
+  cd /run/media/peter
+}
+pen() {
+  cd /run/media/peter/D120-CF00 && ls
+}
+
+sd() {
+  if (($#argv == 0)); then
+    cd $HOME && cd "$(fd -H -t d | fzf --height 40% --layout reverse --preview="tree -L 1 {}" --bind="space:toggle-preview" --preview-window=:hidden)" && clear && pwd && lsd -a --color=always
+    else
+        cd $HOME && cd "$(fd -H -t d | fzf --height 40% --layout reverse --query="$argv[1]" --preview="tree -L 1 {}" --bind="space:toggle-preview" --preview-window=:hidden)" && clear && pwd && lsd -a --color=always
+    fi
+  }
+
+vif() {
+    cd $HOME && nvim $(fzf)
+  }
+rgall(){
+    clear && rga -B 5 -A 4
+  }
+tra() {
+  clear && trans :pl $argv -show-translation-phonetics | bat -p --color always
+}
+
+#alias ls='lsd --color=always'
+alias ls='ls --color=auto'
+alias l1='lsd -1 --color=always'
+alias la='lsd -la --color=always'
+alias l='lsd --color=always'
+alias ll='lsd -l --color=always'
+alias chat='tgpt'
+alias bing='edge-gpt --rich --style creative --cookie-file /home/peter/.local/bin/cookies.json'
+alias pliki='pcmanfm'
+#alias rga='rga --color always -B 1 -A 1'
+alias rga='rga --color always --heading'
+alias meta5='wine /home/peter/.wine/drive_c/Program\ Files/MetaTrader\ 5/terminal64.exe'
+alias note='cd /home/peter/notes && nvim index.md'
+alias ,='devour'
+alias space='emacs -q --load ~/.emacs.d/init.el'
+alias doom='emacs'

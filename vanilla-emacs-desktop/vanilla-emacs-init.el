@@ -6,7 +6,7 @@
 
 
 ;;(load-theme 'deeper-blue t)
-;;(setq inhibit-startup-message t)
+(setq inhibit-startup-message t)
 ;(load-theme 'misterioso t)
 
 (menu-bar-mode -1)
@@ -26,9 +26,9 @@
 ;; (add-to-list 'default-frame-alist '(fullscreen . maximized))
 ;; Disable line numbers for some modes
 (dolist (mode '(org-mode-hook
-		elfeed-search-mode-hook
-		elfeed-show-mode-hook
-		eww-mode-hook
+                elfeed-search-mode-hook
+                elfeed-show-mode-hook
+                eww-mode-hook
                 term-mode-hook
                 shell-mode-hook
                 treemacs-mode-hook
@@ -127,19 +127,17 @@
       ;; above has no effect while Indent is enabled.
       (setq org-indent-mode-turns-on-hiding-stars nil)
       ;;(setq org-superstar-headline-bullets-list '("🞊" "🞚" "○" "🞍")))
-      (setq org-superstar-headline-bullets-list '(" " " " "" "")) )
-
-(use-package org
-  :ensure t
-  :config
-  (setq org-hide-emphasis-markers t))
-
+      ;;(setq org-superstar-headline-bullets-list '(" " " " "" "")) )
+      ;;(setq org-superstar-headline-bullets-list '(" " " " "" "")) )
+(setq org-hide-emphasis-markers t)
+      
+      (setq org-superstar-headline-bullets-list '("󰐾" "" "○" "" "")) )
 (use-package ivy
   :ensure t
   :config
   (ivy-mode 1)
   (global-set-key (kbd "C-c C-r") 'ivy-resume)
-  (global-set-key (kbd "C-l") 'ivy-alt-done)
+;;  (global-set-key (kbd "C-l") 'ivy-alt-done)
   (setq ivy-use-virtual-buffers t)
   (setq ivy-count-format "(%d/%d) ")
   (setq enable-recursive-minibufferst t)
@@ -156,7 +154,7 @@
          ("C-c g" . counsel-git)
          ("C-c l" . counsel-locate)
          ;;("C-S-o" . counsel-rhythmbox)
-	 )
+         )
 )
 
 (use-package swiper
@@ -210,51 +208,116 @@
 
 (require 'doom-modeline)
 (doom-modeline-mode)
-<<<<<<< HEAD
 
+;;M-x all-the-icons-install-fonts
 (use-package all-the-icons
-  :ensure t
-  :if (display-graphic-p)
-)
-
+  :demand t
+  :ensure t)
+(require 'all-the-icons)
 (use-package dashboard
   :ensure t
   :config
-     (dashboard-setup-startup-hook))
+  (dashboard-setup-startup-hook)
+  :custom
+    (setq dashboard-icon-type 'all-the-icons)
+    (setq dashboard-set-heading-icons t)
+    (setq dashboard-set-file-icons t))
 
+    ; Set the title
+    (setq dashboard-banner-logo-title "Welcome to Emacs Dashboard")
+    ;; Set the banner
+    (setq dashboard-startup-banner 'logo)
+    ;; Value can be:
+    ;;  - 'official which displays the official emacs logo.
+    ;;  - 'logo which displays an alternative emacs logo.
+    ;;  - an integer which displays one of the text banners
+    ;;    (see dashboard-banners-directory files).
+    ;;  - a string that specifies a path for a custom banner
+    ;;    currently supported types are gif/image/text/xbm.
+    ;;  - a cons of 2 strings which specifies the path of an image to use
+    ;;    and other path of a text file to use if image isn't supported.
+    ;;    ("path/to/image/file/image.png" . "path/to/text/file/text.txt").
+    ;;  - a list that can display an random banner,
+    ;;    supported values are: string (filepath), 'official, 'logo and integers.
+
+    ;; Content is not centered by default. To center, set
+    (setq dashboard-center-content t)
+    ;; vertically center content
+    (setq dashboard-vertically-center-content t)
+
+    ;; To disable shortcut "jump" indicators for each section, set
+    ;;(setq dashboard-show-shortcuts nil)
+    (setq dashboard-items '((recents   . 5)
+                            (bookmarks . 5)
+                            (projects  . 5)
+                            (agenda    . 5)
+                            (registers . 5)))
+    (setq dashboard-startupify-list '(dashboard-insert-banner
+                                      dashboard-insert-newline
+                                      dashboard-insert-banner-title
+                                      dashboard-insert-newline
+                                      dashboard-insert-navigator
+                                      dashboard-insert-newline
+                                      dashboard-insert-init-info
+                                      dashboard-insert-items
+                                      dashboard-insert-newline
+                                      dashboard-insert-footer))
+    (setq dashboard-navigation-cycle t)
 (dashboard-open)
 
 (use-package company
   :ensure t
-  :hook (after-init . global-company-mode)
+  :config
+  ;; (add-hook 'after-init-hook 'global-company-mode)
+  ;; :hook (after-init . global-company-mode)
   )
+(global-company-mode 1)
+(global-set-key (kbd "M-/") 'company-complete)
+
+(use-package company-files
+  :ensure nil
+  :config
+  ;; Dodaj company-files do listy backendów
+  (add-to-list 'company-backends 'company-files))
+
+(use-package company-dabbrev
+  :ensure nil
+  :config
+  ;; Dodaj company-dabbrev do listy backendów
+(add-to-list 'company-backends 'company-dabbrev))
+
+
+;; Konfiguracja company-mode
+(setq company-idle-delay 0.2) ;; Czas oczekiwania na wyświetlenie podpowiedzi
+(setq company-minimum-prefix-length 1) ;; Minimalna długość prefiksu do aktywacji autouzupełniania
 
 (global-set-key (kbd "C-x w") 'elfeed)
 
 (setq elfeed-feeds '(("http://nullprogram.com/feed/" emacs)
         ("https://planet.emacslife.com/atom.xml" emacs)
-	("https://www.archlinux.org/feeds/news/" arch)
-	("https://www.linuxjournal.com/node/feed" linux)
-	("http://www.dobreprogramy.pl/rss/rss_news.xml" it)
-	("https://geekweek.interia.pl/feed" it)
-	("https://wydarzenia.interia.pl/nauka/feed" news)
-	("https://www.computerworld.pl/news?rss" it)
-	("https://antyweb.pl/feed" it)
-	("https://itsfoss.com/feed" it linux)
-	("https://linux.com/feed" linux)
-	("https://lnwn.net/headlines/newrss" linux)
-	("https://www.kalilinux.in/feeds/posts/default" linux cyber)
-	("http://feeds.feedburner.com/wPolitycepl" news wpolityce)
-	("https://www.wykop.pl/rss/" news wykop)
-	("https://www.tvn24.pl/najnowsze.xml" news tvn)
-	("https://wydarzenia.interia.pl/feed" interia news)
-	("https://www.polsatnews.pl/rss/wszystkie.xml" news polsat)
-	("http://wiadomosci.onet.pl/.feed" news onet)))
+        ("https://www.archlinux.org/feeds/news/" arch)
+        ("https://www.linuxjournal.com/node/feed" linux)
+        ("http://www.dobreprogramy.pl/rss/rss_news.xml" it)
+        ("https://geekweek.interia.pl/feed" it)
+        ("https://wydarzenia.interia.pl/nauka/feed" news)
+        ("https://www.computerworld.pl/news?rss" it)
+        ("https://antyweb.pl/feed" it)
+        ("https://itsfoss.com/feed" it linux)
+        ("https://linux.com/feed" linux)
+        ("https://lnwn.net/headlines/newrss" linux)
+        ("https://www.kalilinux.in/feeds/posts/default" linux cyber)
+        ("http://feeds.feedburner.com/wPolitycepl" news wpolityce)
+        ("https://www.wykop.pl/rss/" news wykop)
+        ("https://www.tvn24.pl/najnowsze.xml" news tvn)
+        ("https://wydarzenia.interia.pl/feed" interia news)
+        ("https://www.polsatnews.pl/rss/wszystkie.xml" news polsat)
+        ("http://wiadomosci.onet.pl/.feed" news onet)))
 
-(setq browse-url-browser-function 'browse-url-generic
-      browse-url-generic-program "qutebrowser")
+(setq browse-url-browser-function 'eww-browse-url)
+;; (setq browse-url-browser-function 'browse-url-generic
+;;       browse-url-generic-program "qutebrowser")
 (global-set-key (kbd "C-c u") 'browse-url-at-point)
-(global-set-key (kbd "C-c e") 'eww)
+(global-set-key (kbd "C-c e") 'qutebrowser)
 
 
 ;; (use-package elfeed-goodies
@@ -270,6 +333,66 @@
 ;;   :config
 ;;   (setq elfeed-goodies/entry-pane-size 0.5))
 ;;You can customise some aspects of the package with M-x customize-group elfeed-goodies.
-=======
-y
->>>>>>> 4459118a5e86693dee7991387fbf1bd66e0de756
+
+;; ;; Definicja nowego trybu major dla plików .leb
+;; (define-derived-mode leb-mode fundamental-mode "LEB"
+;;   "Major mode for editing LEB files.")
+
+;; ;; Dodanie asocjacji rozszerzenia .leb z trybem leb-mode
+;; (add-to-list 'auto-mode-alist '("\\.leb\\'" . leb-mode))
+
+;; ;; Definiowanie własnej twarzy z kolorem #222222
+;; (defface leb-mode-custom-face
+;;   '((t (:foreground "#555555")))
+;;   "Custom face for text between < and > in leb-mode.")
+
+;; ;; Funkcja ustawień specjalnych dla trybu leb-mode
+;; (defun my-leb-mode-setup ()
+;;   ;; Przykład: ustawienie szerokości wcięcia na 4 spacje
+;;   (setq tab-width 4)
+;;   (setq indent-tabs-mode nil)
+  
+;;   ;; Kolorowanie cyfr
+;;   (font-lock-add-keywords nil
+;;     '(("\\b[0-9]+\\b" . font-lock-constant-face)))
+
+;;    ;; Kolorowanie tekstu między '<' i '>'
+;;   (font-lock-add-keywords nil
+;;     `((,(rx "<" (group (0+ (not (any ">")))) ">") 0 'leb-mode-custom-face prepend)))
+;;   )
+;; ;; Dodanie funkcji ustawień do hooka trybu leb-mode
+;; (add-hook 'leb-mode-hook 'my-leb-mode-setup)
+
+(use-package avy
+  :ensure t)
+(global-set-key (kbd "C-'") 'avy-goto-char-2)
+
+;; (use-package python-mode
+;;   :ensure nil
+;;   ;hook (python-mode . lsp-deferred)
+;;   :custom
+;;   (python-shell-interpreter "python3"))
+
+(with-eval-after-load 'ox-latex
+(add-to-list 'org-latex-classes
+             '("org-plain-latex"
+               "\\documentclass{article}
+           [NO-DEFAULT-PACKAGES]
+           [PACKAGES]
+           [EXTRA]"
+               ("\\section{%s}" . "\\section*{%s}")
+               ("\\subsection{%s}" . "\\subsection*{%s}")
+               ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+               ("\\paragraph{%s}" . "\\paragraph*{%s}")
+               ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))))
+
+
+(global-set-key (kbd "C-c f") 'find-file-at-point)
+
+
+;; Ustawienie maksymalnej szerokości linii na 80 znaków
+(setq-default fill-column 80)
+;; Włączenie auto-fill-mode dla tekstu
+(add-hook 'text-mode-hook 'turn-on-auto-fill)
+;; Włączenie auto-fill-mode dla org-mode
+(add-hook 'org-mode-hook 'turn-on-auto-fill)
