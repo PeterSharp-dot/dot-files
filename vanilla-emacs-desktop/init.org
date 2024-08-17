@@ -571,12 +571,26 @@ Hook, dzięki któremu wywołanie funkcji ~org-babel-tangle~ nastąpi automatycz
 przy zapisie pliku ~init.org~
 
 #+begin_src emacs-lisp
-  (add-hook 'org-mode-hook
-	    (lambda ()
-	      (when (string-equal (file-name-nondirectory buffer-file-name) "init.org")
-		(add-hook 'after-save-hook
-			  (lambda ()
-			    (org-babel-tangle)
-			    (message "Custom init.el loaded successfully!"))
-			  'run-at-end 'only-this-buffer))))
+  ;; (add-hook 'org-mode-hook
+  ;; 	  (lambda ()
+  ;; 	    (when (string-equal (file-name-nondirectory buffer-file-name) "init.org")
+  ;; 	      (add-hook 'after-save-hook
+  ;; 			(lambda ()
+  ;; 			  (org-babel-tangle)
+  ;; 			  (message "Custom init.el loaded successfully!"))
+  ;; 			'run-at-end 'only-this-buffer))))
+
+
+
+  ;; Automatyczne tanglowanie i ewaluacja po zapisaniu pliku `init.org`
+  (defun my/org-babel-tangle-and-eval ()
+    "Tangle pliku `init.org` i ewaluuje plik `init.el`."
+    (when (string-equal (buffer-file-name)
+			(expand-file-name "~/.vanilla-emacs/init.org"))
+      (let ((org-confirm-babel-evaluate nil)) ;; Wyłącz potwierdzenie tanglowania
+	(org-babel-tangle))
+      (load-file (expand-file-name "~/.vanilla-emacs/init.el"))))
+
+  ;; Dodaj hook, aby wywołać tę funkcję po zapisaniu pliku `init.org`
+  (add-hook 'after-save-hook #'my/org-babel-tangle-and-eval)
   #+end_src
