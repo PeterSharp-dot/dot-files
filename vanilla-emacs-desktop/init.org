@@ -57,12 +57,18 @@ Ta konfiguracja pozwala na numerację jedynie przy niektórych rodzajach plików
   (electric-pair-mode 1)
 #+end_src
 
+** Zapamiętanie miejsca kursora przed zamknięciem pliku
+#+begin_src emacs-lisp
+  (save-place-mode 1)
+#+end_src
+
+
 ** Czcionki
 #+begin_src emacs-lisp
-  (set-frame-font "Inconsolata LGC Nerd Font-9.5" nil t)
-(set-face-attribute 'default nil :font "Inconsolata LGC Nerd Font-9.5")
-(set-face-attribute 'fixed-pitch nil :font "Inconsolata LGC Nerd Font-9.5")
-(set-face-attribute 'variable-pitch nil :font "Inconsolata LGC Nerd Font-9.5")
+  (set-frame-font "Inconsolata LGC Nerd Font-10.5" nil t)
+(set-face-attribute 'default nil :font "Inconsolata LGC Nerd Font-10.5")
+(set-face-attribute 'fixed-pitch nil :font "Inconsolata LGC Nerd Font-10.5")
+(set-face-attribute 'variable-pitch nil :font "Inconsolata LGC Nerd Font-10.5")
 #+end_src
 
 ** Sprawdzanie pisowni
@@ -199,6 +205,13 @@ Ta konfiguracja pozwala na numerację jedynie przy niektórych rodzajach plików
  '(org-level-6 ((t (:inherit default :weight bold :height 1.0 :family "JetBrains Mono"))))
  '(org-level-7 ((t (:inherit default :weight bold :height 1.0 :family "JetBrains Mono"))))
  '(org-level-8 ((t (:inherit default :weight bold :height 1.0 :family "JetBrains Mono")))))
+#+end_src
+
+**** Wcięcia tekstu w org-mode
+#+begin_src emacs-lisp
+  (add-hook 'org-mode-hook 'org-indent-mode)
+  (setq org-adapt-indentation t)
+  (setq org-startup-indented t)
 #+end_src
   
 *** Ivy
@@ -564,6 +577,13 @@ Ta konfiguracja pozwala na numerację jedynie przy niektórych rodzajach plików
 ;; Włączenie auto-fill-mode dla org-mode
 (add-hook 'org-mode-hook 'turn-on-auto-fill)
 #+end_src
+
+*** Jak Ctrl-o w Vim
+#+begin_src emacs-lisp
+  (global-set-key (kbd "M-p") 'pop-global-mark)
+  ;; (global-set-key (kbd "M-n") 'point-redo)
+#+end_src
+
 
 
 ** Automatyzacja tanglowania
