@@ -20,3 +20,24 @@ vim.api.nvim_set_keymap("n", "<S-h>", ":lua Move_cursor_to_head()<CR>", { norema
 -- Przypisanie strzałek do przewijania o jedną stronę w górę/dół
 vim.api.nvim_set_keymap("n", "<Up>", "<C-b>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<Down>", "<C-f>", { noremap = true, silent = true })
+
+-- Window move from  terminal
+vim.keymap.set("t", "<C-w>", [[<C-\><C-n><C-w>]], { desc = "Window move from terminal" })
+
+-- F9 otwiera Snacks.terimnal i uruchamia 'cargo run' dla pliku w bierzącym katalogu:
+if vim.fn.expand("%:e") == "rs" then
+  vim.keymap.set("n", "<F9>", function()
+    Snacks.terminal("cargo run", {
+      cwd = vim.fn.expand("%:p:h"),
+      --interactive = false, -- ustawia wszystkie trzy: start_insert, auto_insert, auto_close na false
+      start_insert = true,
+      auto_insert = true,
+      auto_close = false,
+      win = {
+        style = "minimal", -- <- wyłącza floating
+        position = "bottom", -- <- na spodzie
+        height = 10, -- <- wysokość terminala
+      },
+    })
+  end, { desc = "Run cargo in cwd of current file" }, { noremap = true, silent = true })
+end
