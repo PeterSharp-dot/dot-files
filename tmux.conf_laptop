@@ -1,6 +1,6 @@
-set -g default-terminal "xterm-256color"   # Use 256 colors
-set-option -sa terminal-overrides ',xterm-256color:RGB'
-set-option -g default-shell /usr/bin/fish
+# set -g default-terminal "xterm-256color"   # Use 256 colors
+# set-option -sa terminal-overrides ',xterm-256color:RGB'
+set-option -g default-shell /usr/bin/zsh
 
 set -g history-limit 100000                 # Scrollback buffer number of lines
 
@@ -11,8 +11,8 @@ set -g base-index 1
 set-option -g status-position bottom 
 
 # Set the prefix key and some key bindings to match GNU Screen
-set -g prefix C-q
-bind-key C-q last-window
+set -g prefix C-a
+bind-key C-a last-window
 
  
 # Key bindings for horizontal and vertical panes
@@ -41,20 +41,19 @@ unbind -T copy-mode-vi MouseDragEnd1Pane # don't exit copy mode after dragging w
 set -g set-titles-string '#T'
  
 # Status bar with load and time
-set -g status-bg "#222222"
-set -g status-fg "#8f878e"
-set -g status-left '#[fg=#cccccc]#S  '
+set -g status-bg "#111111"
+set -g status-fg "#aaaaaa"
+set -g status-left '#[fg=#cccccc]#S '
 set -g status-right-length 100
-#set -g status-right '#[fg=#cccccc]'
-set -g status-right '#[fg=#666666]#($HOME/.bin/weather.sh)  #($HOME/.bin/cpu)  #($HOME/.bin/temp)  #[fg=white]%m-%d %H:%M  #[fg=green] #(upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep percentage | awk "{print \$2}")'
+set -g status-right '#[fg=#cccccc] #(upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep percentage | awk "{print \$2}")'
 set -g window-status-format '#I:#W ' 
 set -g window-status-current-format '#I:#W#[fg=#32a852]* '
-setw -g window-status-style bg="#222222",fg="#8f878e"
-setw -g window-status-current-style bg="#222222",fg="#8f878e"
+setw -g window-status-style bg=#111111,fg=#aaaaaa
+setw -g window-status-current-style bg="#111111",fg="#aaaaaa"
  
 # Pane border colors
-set -g pane-active-border-style fg="#111111"
-set -g pane-border-style fg="#8f878e"
+set -g pane-active-border-style fg="#333333"
+set -g pane-border-style fg="#111111"
  
 # Bind to reload config
 bind r source-file ~/.tmux.conf
@@ -66,5 +65,5 @@ set -g mouse on
 
 #set -g @plugin 'christoomey/vim-tmux-navigator' # for navigating panes and vim/nvim with Ctrl-hjkl
 
-#run-shell ~/.config/tmux-resurrect/resurrect.tmux
+run-shell ~/AUR/tmux-resurrect/resurrect.tmux
 #run '~/.tmux/plugins/tpm/tpm'
