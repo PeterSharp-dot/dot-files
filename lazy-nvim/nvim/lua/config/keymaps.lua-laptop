@@ -39,5 +39,21 @@ if vim.fn.expand("%:e") == "rs" then
         height = 10, -- <- wysokość terminala
       },
     })
-  end, { desc = "Run cargo in cwd of current file" }, { noremap = true, silent = true })
+  end, { desc = "Run cargo in cwd of current file" })
+end
+
+-- Shift - k  otwiera definicję słownikową dla słowa pod kursor
+if vim.fn.expand("%:e") == "leb" or vim.fn.expand("%:e") == "md" then
+  vim.keymap.set("n", "C-k", function()
+    Snacks.terminal("tra <cword><CR>", {
+      start_insert = false,
+      auto_insert = false,
+      auto_close = false,
+      win = {
+        style = "minimal",
+        position = "bottom",
+        height = 10,
+      },
+    })
+  end, { desc = "Run cargo in cwd of current file" })
 end
