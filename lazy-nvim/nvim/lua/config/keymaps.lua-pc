@@ -36,5 +36,25 @@ if vim.fn.expand("%:e") == "rs" then
         height = 10, -- <- wysokość terminala
       },
     })
-  end, { desc = "Run cargo in cwd of current file" }, { noremap = true, silent = true })
+  end, { desc = "Run cargo in cwd of current file" })
 end
+
+-- Ctrl - k  otwiera definicję słownikową dla słowa pod kursor
+-- if vim.fn.expand("%:e") == "leb" or vim.fn.expand("%:e") == "md" then
+vim.keymap.set("n", "<C-k>", function()
+  -- print("Ctr K działa")
+  local cword = vim.fn.expand("<cword>")
+  local command = "sdcv -c " .. cword
+  Snacks.terminal(command, {
+    start_insert = false,
+    auto_insert = false,
+    auto_close = false,
+    win = {
+      --   style = "minimal",
+      --   position = "bottom",
+      height = 24,
+      width = 80,
+    },
+  })
+end, { desc = "show translation using trans" })
+-- end
