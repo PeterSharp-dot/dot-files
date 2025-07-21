@@ -25,38 +25,91 @@
                 elfeed-search-mode-hook
                 elfeed-show-mode-hook
                 eww-mode-hook
+                dired-mode-hook		
                 term-mode-hook
                 shell-mode-hook
                 treemacs-mode-hook
                 eshell-mode-hook))
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
-(set-frame-font "Inconsolata LGC Nerd Font-9.5" nil t)
-(set-face-attribute 'default nil :font "Inconsolata LGC Nerd Font-9.5")
-(set-face-attribute 'fixed-pitch nil :font "Inconsolata LGC Nerd Font-9.5")
-(set-face-attribute 'variable-pitch nil :font "Inconsolata LGC Nerd Font-9.5")
+(electric-pair-mode 1)
+
+(save-place-mode 1)
+
+(defun my/translate-word-at-point-minibuffer ()
+    "Use `trans` to translate the word at point and display the result in the minibuffer."
+    (interactive)
+    (let* ((word (thing-at-point 'word t))
+           (cmd (format "trans :pl %s" word))
+           (output (string-trim (shell-command-to-string cmd))))
+      (if (string-empty-p output)
+          (message "Brak tłumaczenia lub błąd.")
+        (message "Tłumaczenie: %s" output))))
+
+(defun my/translate-region-or-word ()
+  "Translate selected region if active, otherwise word at point. Show result in minibuffer."
+  (interactive)
+  (let* ((text (if (use-region-p)
+                   (buffer-substring-no-properties (region-beginning) (region-end))
+                 (thing-at-point 'word t)))
+         (cmd (format "trans -brief :pl %s" (shell-quote-argument text)))
+         (output (string-trim (shell-command-to-string cmd))))
+    (if (string-empty-p output)
+        (message "Brak tłumaczenia lub błąd.")
+      (message "Tłumaczenie: %s" output))))
+
+  
+  (global-set-key (kbd "C-c t") 'my/translate-region-or-word)
+
+;; (set-frame-font "Inconsolata LGC Nerd Font-10.5" nil t)
+       ;; (set-face-attribute 'default nil :font "Inconsolata LGC Nerd Font-10.5")
+       ;; (set-face-attribute 'fixed-pitch nil :font "Inconsolata LGC Nerd Font-10.5")
+       ;; (set-face-attribute 'variable-pitch nil :font "Inconsolata LGC Nerd Font-10.5")
+       ;; ;; 
+       ;;  (set-frame-font "JetBrains Mono-10.5" nil t) ;
+       ;; (set-face-attribute 'default nil :font "JetBrains Mono-10.5")
+       ;; (set-face-attribute 'fixed-pitch nil :font "JetBrains Mono-10.5")
+       ;; (set-face-attribute 'variable-pitch nil :font "JetBrains Mono-10.5")
+(set-frame-font "JetBrains Mono-11.5" nil t) 
+(set-face-attribute 'default nil :font "JetBrains Mono-11.5")
+(set-face-attribute 'fixed-pitch nil :font "JetBrains Mono-11.5")
+(set-face-attribute 'variable-pitch nil :font "JetBrains Mono-11.5")
+ ;; (set-frame-font "EnvyCodeR Nerd Font Mono-12" nil t) 
+ ;; (set-face-attribute 'default nil :font "EnvyCodeR Nerd Font Mono-12")
+ ;; (set-face-attribute 'fixed-pitch nil :font "EnvyCodeR Nerd Font Mono-12")
+ ;; (set-face-attribute 'variable-pitch nil :font "EnvyCodeR Nerd Font Mono-12")
 
 ;; Ustaw hunspell jako domyślny program sprawdzania pisowni
-(setq ispell-program-name "hunspell")
-;; Dodaj polski i angielski słownik
-(setq ispell-local-dictionary-alist
-      '(("pl_en"
-         "[[:alpha:]]"
-         "[^[:alpha:]]"
-         "[']"
-         nil
-         ("-d" "pl_PL,en_US")
-         nil
-         utf-8)))
-;; Ustaw jako domyślny słownik dla buforów
-(setq ispell-dictionary "pl_en")
-;; Ustaw hunspell, aby używał wielu słowników
-(setq ispell-hunspell-dict-paths-alist
-      '(("pl_en" "/usr/share/hunspell/pl_PL.aff"
-         "/usr/share/hunspell/en_US.aff")))
-;; Włącz Flyspell dla tekstów
-(add-hook 'text-mode-hook 'flyspell-mode)
-(add-hook 'prog-mode-hook 'flyspell-prog-mode)
+  (setq ispell-program-name "hunspell")
+  ;; Dodaj polski i angielski słownik
+  (setq ispell-local-dictionary-alist
+        '(("pl_en"
+           "[[:alpha:]]"
+           "[^[:alpha:]]"
+           "[']"
+           nil
+           ("-d" "pl_PL,en_US")
+           nil
+           utf-8)))
+  ;; Ustaw jako domyślny słownik dla buforów
+  (setq ispell-dictionary "pl_en")
+  ;; Ustaw hunspell, aby używał wielu słowników
+  (setq ispell-hunspell-dict-paths-alist
+        '(("pl_en" "/usr/share/hunspell/pl_PL.aff"
+           "/usr/share/hunspell/en_US.aff")))
+  ;; Włącz Flyspell dla tekstów
+  ;;(add-hook 'text-mode-hook 'flyspell-mode)
+  ;;(add-hook 'prog-mode-hook 'flyspell-prog-mode)
+
+  (defun disable-flyspell-in-modeline ()
+  "Disable flyspell in the modeline."
+  (setq flyspell-mode nil))
+
+(add-hook 'prog-mode-hook
+          (lambda ()
+            (if (string-match-p "^ " (buffer-name))
+                (disable-flyspell-in-modeline)
+              (flyspell-prog-mode))))
 
 (defun create-line-below ()
   "Tworzy pustą linię poniżej kursora"
@@ -64,6 +117,8 @@
   (move-end-of-line nil)
   (newline-and-indent))
 (global-set-key (kbd "M-o") 'create-line-below)
+
+(global-set-key (kbd "C-;") 'next-line)
 
 ;;Zwiększ lub zmniejsz wcięcie
 (global-set-key (kbd "C->") (lambda (start end) (interactive "r") (indent-rigidly start end 4)))
@@ -138,6 +193,40 @@
 '(org-level-7 ((t (:inherit default :weight bold :height 1.0 :family "JetBrains Mono"))))
 '(org-level-8 ((t (:inherit default :weight bold :height 1.0 :family "JetBrains Mono")))))
 
+(add-hook 'org-mode-hook 'org-indent-mode)
+(setq org-adapt-indentation t)
+(setq org-startup-indented t)
+
+;; Tworzymy nową twarz dla cyfr
+(defface my/org-number-face
+  '((t (:foreground "#606060")))
+  "Face for numbers in Org mode.")
+
+;; Funkcja dodająca wyróżnianie cyfr w org-mode
+(defun my/org-highlight-numbers ()
+  "Highlight numbers in Org mode using a custom face."
+  (font-lock-add-keywords
+   nil
+   '(("\\b[0-9]+\\b" . 'my/org-number-face))))
+
+;; Dodajemy funkcję do hooka org-mode
+(add-hook 'org-mode-hook 'my/org-highlight-numbers)
+
+;; Twarz dla wybranych skrótów biblijnych, np. Ge, Eze
+(defface my/org-bible-keyword-face
+  '((t (:foreground "#343434")))
+  "Face for selected Bible keywords in Org mode.")
+
+;; Funkcja dodająca wyróżnianie słów Ge i Eze w org-mode
+(defun my/org-highlight-bible-keywords ()
+  "Highlight selected Bible keywords in Org mode using a custom face."
+  (font-lock-add-keywords
+   nil
+   '(("\\b\\(Ge\\|Je\\|Ex\\|Le\\|Nu\\|Dt\\|Jos\\|Jdg\\|Sa\\|Ki\\|Ch\\|Ezr\\|Ne\\|Es\\|Job\\|Ps\\|Pr\\|Ec\\|SoS\\|Da\\|Ho\\|Isa\\|Eze\\|Am\\|Mic\\|Jon|Na\\|Hab\\|Zep\\|Hag\\|Zec\\|Mal\\)\\b" . 'my/org-bible-keyword-face))))
+
+;; Dodanie do hooka org-mode
+(add-hook 'org-mode-hook 'my/org-highlight-bible-keywords)
+
 (use-package ivy
   :ensure t
   :config
@@ -164,9 +253,10 @@
 )
 
 (use-package swiper
-:ensure t
-:after ivy
-:bind (("C-s" . swiper)))
+  :ensure t
+  :after ivy
+;;  :bind (("C-s" . swiper))
+  )
 
 (use-package doom-modeline
 :ensure t
@@ -194,46 +284,56 @@
 ([remap describe-key] . helpful-key))
 
 (use-package doom-themes
-  :ensure t
-  :config
-  ;; Global settings (defaults)
-  (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
-        doom-themes-enable-italic t) ; if nil, italics is universally disabled
-  ;;(load-theme 'doom-tokyo-night t)
-  (load-theme 'doom-Iosvkem t)
+      :ensure t
+      :config
+      ;; Global settings (defaults)
+      (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
+            doom-themes-enable-italic t) ; if nil, italics is universally disabled
+      ;;(load-theme 'doom-tokyo-night t)
+    ;;  (load-theme 'doom-Iosvkem t)
+;;      (load-theme 'doom-badger t)
+          (load-theme 'doom-acario-dark t)
+  ;;    (load-theme 'doom-bluloco-light t)
+      ;; Enable flashing mode-line on errors
+      (doom-themes-visual-bell-config)
+      ;; Enable custom neotree theme (all-the-icons must be installed!)
+      ;;(doom-themes-neotree-config)
+      ;; or for treemacs users
+      ;;(setq doom-themes-treemacs-theme "doom-atom") ; use "doom-colors" for less minimal icon theme
+      ;;(doom-themes-treemacs-config)
+      ;; Corrects (and improves) org-mode's native fontification.
+      (doom-themes-org-config))
 
-  ;; Enable flashing mode-line on errors
-  (doom-themes-visual-bell-config)
-  ;; Enable custom neotree theme (all-the-icons must be installed!)
-  ;;(doom-themes-neotree-config)
-  ;; or for treemacs users
-  ;;(setq doom-themes-treemacs-theme "doom-atom") ; use "doom-colors" for less minimal icon theme
-  ;;(doom-themes-treemacs-config)
-  ;; Corrects (and improves) org-mode's native fontification.
-  (doom-themes-org-config))
-
-(require 'doom-modeline)
-(doom-modeline-mode)
+    (require 'doom-modeline)
+    (doom-modeline-mode)
 
 ;;M-x all-the-icons-install-fonts
 (use-package all-the-icons
-  :demand t
-  :ensure t)
-(require 'all-the-icons)
+:if (display-graphic-p))
+;; (use-package all-the-icons
+;;   :demand t
+;;   :ensure t)
+;; (require 'all-the-icons)
 
 (use-package dashboard
   :ensure t
   :config
-  (dashboard-setup-startup-hook)
-  :custom
-    (setq dashboard-icon-type 'all-the-icons)
-    (setq dashboard-set-heading-icons t)
-    (setq dashboard-set-file-icons t))
-
+  (dashboard-setup-startup-hook))
+;;(require 'all-the-icons)
+  (setq dashboard-icon-type 'all-the-icons)
+  (setq dashboard-set-file-icons t)
+  (require 'dashboard)
+  (setq dashboard-set-heading-icons t)
+  (setq dashboard-icon-type 'all-the-icons)
+  (setq dashboard-heading-icons '((recents   . "history")
+                              (bookmarks . "bookmark")
+                              (agenda    . "calendar")
+                              (projects  . "rocket")
+                              (registers . "database")))
     ; Set the title
-    (setq dashboard-banner-logo-title "Welcome to Emacs Dashboard")
+  (setq dashboard-banner-logo-title "Welcome to Emacs Dashboard")
     ;; Set the banner
-    (setq dashboard-startup-banner 'logo)
+  (setq dashboard-startup-banner 'logo)
     ;; Value can be:
     ;;  - 'official which displays the official emacs logo.
     ;;  - 'logo which displays an alternative emacs logo.
@@ -255,20 +355,20 @@
     ;; To disable shortcut "jump" indicators for each section, set
     ;;(setq dashboard-show-shortcuts nil)
     (setq dashboard-items '((recents   . 5)
-			    (bookmarks . 5)
-			    (projects  . 5)
-			    (agenda    . 5)
-			    (registers . 5)))
+			      (bookmarks . 5)
+			      (projects  . 5)
+			      (agenda    . 5)
+			      (registers . 5)))
     (setq dashboard-startupify-list '(dashboard-insert-banner
-				      dashboard-insert-newline
-				      dashboard-insert-banner-title
-				      dashboard-insert-newline
-				      dashboard-insert-navigator
-				      dashboard-insert-newline
-				      dashboard-insert-init-info
-				      dashboard-insert-items
-				      dashboard-insert-newline
-				      dashboard-insert-footer))
+					dashboard-insert-newline
+					dashboard-insert-banner-title
+					dashboard-insert-newline
+					dashboard-insert-navigator
+					dashboard-insert-newline
+					dashboard-insert-init-info
+					dashboard-insert-items
+					dashboard-insert-newline
+					dashboard-insert-footer))
     (setq dashboard-navigation-cycle t)
 (dashboard-open)
 
@@ -298,6 +398,7 @@
 (setq company-minimum-prefix-length 1) ;; Minimalna długość prefiksu do aktywacji autouzupełniania
 
 (global-set-key (kbd "C-x w") 'elfeed)
+  (setq elfeed-search-title-max-width 170)
 
 (setq elfeed-feeds '(("http://nullprogram.com/feed/" emacs)
         ("https://planet.emacslife.com/atom.xml" emacs)
@@ -308,6 +409,7 @@
         ("https://wydarzenia.interia.pl/nauka/feed" news)
         ("https://www.computerworld.pl/news?rss" it)
         ("https://antyweb.pl/feed" it)
+        ("https://chip.com/feed" it)
         ("https://itsfoss.com/feed" it linux)
         ("https://linux.com/feed" linux)
         ("https://lnwn.net/headlines/newrss" linux)
@@ -316,7 +418,9 @@
         ("https://www.wykop.pl/rss/" news wykop)
         ("https://www.tvn24.pl/najnowsze.xml" news tvn)
         ("https://wydarzenia.interia.pl/feed" interia news)
+	("https://wiadomosci.wp.pl/feed" wp news)
         ("https://www.polsatnews.pl/rss/wszystkie.xml" news polsat)
+	("https://spidersweb.pl/api/post/feed/feed-gn" it spidersweb)
         ("http://wiadomosci.onet.pl/.feed" news onet)))
 
 (setq browse-url-browser-function 'eww-browse-url)
@@ -324,6 +428,43 @@
 ;;       browse-url-generic-program "qutebrowser")
 (global-set-key (kbd "C-c u") 'browse-url-at-point)
 (global-set-key (kbd "C-c e") 'qutebrowser)
+
+;; (when (not (display-graphic-p)) ;; tylko jeśli nie GUI
+;; ;; (defun my/shr-image-to-alt-or-url (spec)
+;; ;;   "Zastępuje obrazek tekstem alternatywnym lub URL-em."
+;; ;;   (let ((alt (plist-get spec :alt))
+;; ;;         (url (plist-get spec :url)))
+;; ;;     (insert (or alt url "[obrazek]"))))
+;; (defun my/shr-image-to-alt-or-url (spec)
+;;   "Zastępuje obrazek tekstem alternatywnym lub URL-em, ale zachowuje metadane."
+;;   (let* ((alt (plist-get spec :alt))
+;;        (url (plist-get spec :url))
+;;        (text (or alt url "[obrazek]"))
+;;        (start (point)))
+;;   (insert text)
+;;   (add-text-properties
+;;    start (point)
+;;    `(shr-url ,url help-echo ,url face link))))
+  
+;; ;;(setq  shr-external-rendering-functions
+;;   ;;    '((img . my/shr-image-to-alt-or-url)))
+;; )
+
+;; (defun my/eww-open-image-external ()
+;; "Jeśli link to obrazek, otwórz go zewnętrznym programem graficznym."
+;; (interactive)
+;; (let ((url (get-text-property (point) 'shr-url)))
+;;   (when (and url (string-match-p "\\.\\(png\\|jpe?g\\|gif\\|webp\\)$" url))
+;;     (start-process "image-viewer" nil "kitty" "+kitten" "icat" url)
+;;     ;;(start-process "image-viewer" nil "feh" url)
+;;     )))
+
+;; (with-eval-after-load 'eww
+;;   (define-key eww-mode-map (kbd "I") #'my/eww-open-image-external))
+
+;; ;;(add-hook 'eww-mode-hook
+;;   ;;      (lambda ()
+;;     ;;      (local-set-key (kbd "I") #'my/eww-open-image-external)))
 
 ;; (use-package elfeed-goodies
 ;;   :ensure t
@@ -369,14 +510,22 @@
 ;; (add-hook 'leb-mode-hook 'my-leb-mode-setup)
 
 (use-package avy
-  :ensure t)
-(global-set-key (kbd "C-\"") 'avy-goto-char-2)
+    :ensure t)
+;;  (global-set-key (kbd "C-c s") 'avy-goto-char-2)
+  (global-set-key (kbd "<f5>") 'avy-goto-char-2)
 
 ;; (use-package python-mode
 ;;   :ensure nil
 ;;   ;hook (python-mode . lap-deferred)
 ;;   :custom
 ;;   (python-shell-interpreter "python3"))
+
+(use-package lsp-mode
+:ensure t
+:hook
+(python-mode . lsp)
+:config
+(setq lsp-prefer-flymake nil)) ;; jeśli używasz flycheck
 
 (with-eval-after-load 'ox-latex
 (add-to-list 'org-latex-classes
@@ -391,8 +540,24 @@
                ("\\paragraph{%s}" . "\\paragraph*{%s}")
                ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))))
 
-;; (use-package zen-mode
-;;   :ensure t          )
+(use-package yasnippet
+  :ensure t
+  :config
+    (yas-global-mode 1)    
+  )
+
+(use-package yasnippet-snippets
+  :ensure t )
+
+;;  (use-package visual-fill-column
+  ;;  :ensure t)
+  
+;;  (use-package writeroom-mode
+  ;;  :ensure t
+    ;;:after visual-fill-column
+   ;; :config
+    ;; tu możesz dodać konfigurację writeroom-mode, np.
+;;    (setq writeroom-width 80))
 
 (global-set-key (kbd "C-c f") 'find-file-at-point)
 
@@ -403,11 +568,50 @@
 ;; Włączenie auto-fill-mode dla org-mode
 (add-hook 'org-mode-hook 'turn-on-auto-fill)
 
-(add-hook 'org-mode-hook
-	  (lambda ()
-	    (when (string-equal (file-name-nondirectory buffer-file-name) "init.org")
-	      (add-hook 'after-save-hook
-			(lambda ()
-			  (org-babel-tangle)
-			  (message "Custom init.el loaded successfully!"))
-			'run-at-end 'only-this-buffer))))
+(global-set-key (kbd "M-p") 'pop-global-mark)
+;; (global-set-key (kbd "M-n") 'point-redo)
+
+(set-fringe-mode '(20 . 0))
+
+;;  (setq-default fill-column 80)
+  (setq-default display-fill-column-indicator-column 80)
+
+  (add-hook 'prog-mode-hook #'display-fill-column-indicator-mode)
+  (add-hook 'text-mode-hook #'display-fill-column-indicator-mode)
+
+  (set-face-attribute 'fill-column-indicator nil
+                      :foreground "gray20")
+
+(global-hl-line-mode 1)
+(set-face-background 'hl-line "#1a1a1a") ; ciemne tło linii
+
+;; Zmniejsz krok skalowania tekstu
+(setq text-scale-mode-step 1.02)
+
+;; Skróty klawiszowe (opcjonalnie)
+(global-set-key (kbd "C-=") 'text-scale-increase)
+(global-set-key (kbd "C--") 'text-scale-decrease)
+(global-set-key (kbd "C-0") (lambda () (interactive) (text-scale-set 0)))
+
+;; (add-hook 'org-mode-hook
+;; 	  (lambda ()
+;; 	    (when (string-equal (file-name-nondirectory buffer-file-name) "init.org")
+;; 	      (add-hook 'after-save-hook
+;; 			(lambda ()
+;; 			  (org-babel-tangle)
+;; 			  (message "Custom init.el loaded successfully!"))
+;; 			'run-at-end 'only-this-buffer))))
+
+
+
+;; Automatyczne tanglowanie i ewaluacja po zapisaniu pliku `init.org`
+(defun my/org-babel-tangle-and-eval ()
+  "Tangle pliku `init.org` i ewaluuje plik `init.el`."
+  (when (string-equal (buffer-file-name)
+			(expand-file-name "~/.vanilla-emacs/init.org"))
+    (let ((org-confirm-babel-evaluate nil)) ;; Wyłącz potwierdzenie tanglowania
+	(org-babel-tangle))
+    (load-file (expand-file-name "~/.vanilla-emacs/init.el"))))
+
+;; Dodaj hook, aby wywołać tę funkcję po zapisaniu pliku `init.org`
+(add-hook 'after-save-hook #'my/org-babel-tangle-and-eval)
