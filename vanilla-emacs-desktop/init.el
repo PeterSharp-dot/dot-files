@@ -510,9 +510,9 @@
 ;; (add-hook 'leb-mode-hook 'my-leb-mode-setup)
 
 (use-package avy
-    :ensure t)
-;;  (global-set-key (kbd "C-c s") 'avy-goto-char-2)
-  (global-set-key (kbd "<f5>") 'avy-goto-char-2)
+  :ensure t)
+(global-set-key (kbd "M-s s") 'avy-goto-char-2)
+(global-set-key (kbd "M-s M-s") 'avy-goto-char-2)
 
 ;; (use-package python-mode
 ;;   :ensure nil
@@ -574,13 +574,13 @@
 (set-fringe-mode '(20 . 0))
 
 ;;  (setq-default fill-column 80)
-  (setq-default display-fill-column-indicator-column 80)
+    ;; (setq-default display-fill-column-indicator-column 80)
 
-  (add-hook 'prog-mode-hook #'display-fill-column-indicator-mode)
-  (add-hook 'text-mode-hook #'display-fill-column-indicator-mode)
+    ;; (add-hook 'prog-mode-hook #'display-fill-column-indicator-mode)
+    ;; (add-hook 'text-mode-hook #'display-fill-column-indicator-mode)
 
-  (set-face-attribute 'fill-column-indicator nil
-                      :foreground "gray20")
+    ;; (set-face-attribute 'fill-column-indicator nil
+;;                        :foreground "gray20")
 
 (global-hl-line-mode 1)
 (set-face-background 'hl-line "#1a1a1a") ; ciemne tło linii
