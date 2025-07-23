@@ -77,6 +77,8 @@
   (newline-and-indent))
 (global-set-key (kbd "M-o") 'create-line-below)
 
+(global-set-key (kbd "C-;") 'next-line)
+
 ;;Zwiększ lub zmniejsz wcięcie
 (global-set-key (kbd "C->") (lambda (start end) (interactive "r") (indent-rigidly start end 4)))
 (global-set-key (kbd "C-<") (lambda (start end) (interactive "r") (indent-rigidly start end -4)))
