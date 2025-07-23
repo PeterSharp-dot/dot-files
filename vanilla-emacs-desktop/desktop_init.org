@@ -1,0 +1,813 @@
+#+PROPERTY: header-args :tangle "init.el"
+
+* PLIK KONFIGURACYJNY 'init.el'
+Jest to moja konfiguracja dla Emacs usprawniająca działanie Vanilla Emacs.
+
+** Ważne globalne skróty klawiaturowe
+**** komentuj/odkomentuj: `M + ;`
+**** blok begin_src ... end_src w dokumencie Org: `Ctrl c Ctrl ,` (czyli przecinek)
+
+
+** Ustawienie katalogu konfiguracji Emacs
+#+begin_src emacs-lisp
+  (setq user-emacs-directory "~/.vanilla-emacs/")
+#+end_src
+
+** Ustawienie katalogu dla pakietów melpa
+#+begin_src emacs-lisp
+  (setq package-user-dir (expand-file-name "elpa" user-emacs-directory))
+  (setq package-native-compile t)
+  (native-compile-async "~/.vanilla-emacs/elpa/" 'recursively)
+#+end_src
+
+** Ustawienia wyglądu Emacs
+#+begin_src emacs-lisp
+  ;;(load-theme 'deeper-blue t)
+  ;;(setq inhibit-startup-message t)
+  ;;(load-theme 'misterioso t)
+  (menu-bar-mode -1)
+  (tool-bar-mode -1)
+  (tooltip-mode -1)
+  (scroll-bar-mode -1)
+  (setq visible-bell t)
+ 
+
+#+end_src
+
+** Numeracja wierszy
+Ta konfiguracja pozwala na numerację jedynie przy niektórych rodzajach plików.
+
+#+begin_src emacs-lisp
+  (column-number-mode)
+  (global-display-line-numbers-mode t)
+  ;; Set frame transparency
+  ;; (set-frame-parameter (selected-frame) 'alpha efs/frame-transparency)
+  ;; (add-to-list 'default-frame-alist `(alpha . ,efs/frame-transparency))
+  ;; (set-frame-parameter (selected-frame) 'fullscreen 'maximized)
+  ;; (add-to-list 'default-frame-alist '(fullscreen . maximized))
+  ;; Disable line numbers for some modes
+  (dolist (mode '(org-mode-hook
+                  elfeed-search-mode-hook
+                  elfeed-show-mode-hook
+                  eww-mode-hook
+                  dired-mode-hook		
+                  term-mode-hook
+                  shell-mode-hook
+                  treemacs-mode-hook
+                  eshell-mode-hook))
+    (add-hook mode (lambda () (display-line-numbers-mode 0))))
+#+end_src
+
+** Parowanie nawiasów
+#+begin_src emacs-lisp
+  (electric-pair-mode 1)
+#+end_src
+
+** Zapamiętanie miejsca kursora przed zamknięciem pliku
+#+begin_src emacs-lisp
+  (save-place-mode 1)
+#+end_src
+
+** Słownik dla słowa pod kursorem
+#+begin_src emacs-lisp
+  (defun my/translate-word-at-point-minibuffer ()
+    "Use `trans` to translate the word at point and display the result in the minibuffer."
+    (interactive)
+    (let* ((word (thing-at-point 'word t))
+           (cmd (format "trans :pl %s" word))
+           (output (string-trim (shell-command-to-string cmd))))
+      (if (string-empty-p output)
+          (message "Brak tłumaczenia lub błąd.")
+        (message "Tłumaczenie: %s" output))))
+
+(defun my/translate-region-or-word ()
+  "Translate selected region if active, otherwise word at point. Show result in minibuffer."
+  (interactive)
+  (let* ((text (if (use-region-p)
+                   (buffer-substring-no-properties (region-beginning) (region-end))
+                 (thing-at-point 'word t)))
+         (cmd (format "trans -brief :pl %s" (shell-quote-argument text)))
+         (output (string-trim (shell-command-to-string cmd))))
+    (if (string-empty-p output)
+        (message "Brak tłumaczenia lub błąd.")
+      (message "Tłumaczenie: %s" output))))
+
+  
+  (global-set-key (kbd "C-c t") 'my/translate-region-or-word)
+#+end_src
+
+** Czcionki
+#+begin_src emacs-lisp
+        ;; (set-frame-font "Inconsolata LGC Nerd Font-10.5" nil t)
+        ;; (set-face-attribute 'default nil :font "Inconsolata LGC Nerd Font-10.5")
+        ;; (set-face-attribute 'fixed-pitch nil :font "Inconsolata LGC Nerd Font-10.5")
+        ;; (set-face-attribute 'variable-pitch nil :font "Inconsolata LGC Nerd Font-10.5")
+        ;; ;; 
+        ;;  (set-frame-font "JetBrains Mono-10.5" nil t) ;
+        ;; (set-face-attribute 'default nil :font "JetBrains Mono-10.5")
+        ;; (set-face-attribute 'fixed-pitch nil :font "JetBrains Mono-10.5")
+        ;; (set-face-attribute 'variable-pitch nil :font "JetBrains Mono-10.5")
+ (set-frame-font "JetBrains Mono-11.5" nil t) 
+ (set-face-attribute 'default nil :font "JetBrains Mono-11.5")
+ (set-face-attribute 'fixed-pitch nil :font "JetBrains Mono-11.5")
+ (set-face-attribute 'variable-pitch nil :font "JetBrains Mono-11.5")
+  ;; (set-frame-font "EnvyCodeR Nerd Font Mono-12" nil t) 
+  ;; (set-face-attribute 'default nil :font "EnvyCodeR Nerd Font Mono-12")
+  ;; (set-face-attribute 'fixed-pitch nil :font "EnvyCodeR Nerd Font Mono-12")
+  ;; (set-face-attribute 'variable-pitch nil :font "EnvyCodeR Nerd Font Mono-12")
+
+#+end_src
+
+** Sprawdzanie pisowni
+#+begin_src emacs-lisp
+      ;; Ustaw hunspell jako domyślny program sprawdzania pisowni
+    (setq ispell-program-name "hunspell")
+    ;; Dodaj polski i angielski słownik
+    (setq ispell-local-dictionary-alist
+          '(("pl_en"
+             "[[:alpha:]]"
+             "[^[:alpha:]]"
+             "[']"
+             nil
+             ("-d" "pl_PL,en_US")
+             nil
+             utf-8)))
+    ;; Ustaw jako domyślny słownik dla buforów
+    (setq ispell-dictionary "pl_en")
+    ;; Ustaw hunspell, aby używał wielu słowników
+    (setq ispell-hunspell-dict-paths-alist
+          '(("pl_en" "/usr/share/hunspell/pl_PL.aff"
+             "/usr/share/hunspell/en_US.aff")))
+    ;; Włącz Flyspell dla tekstów
+    ;;(add-hook 'text-mode-hook 'flyspell-mode)
+    ;;(add-hook 'prog-mode-hook 'flyspell-prog-mode)
+  
+    (defun disable-flyspell-in-modeline ()
+    "Disable flyspell in the modeline."
+    (setq flyspell-mode nil))
+
+  (add-hook 'prog-mode-hook
+            (lambda ()
+              (if (string-match-p "^ " (buffer-name))
+                  (disable-flyspell-in-modeline)
+                (flyspell-prog-mode))))
+#+end_src
+
+** Funkcja tworząca nową pustą linię poniżej kursora
+#+begin_src emacs-lisp
+  (defun create-line-below ()
+  "Tworzy pustą linię poniżej kursora"
+  (interactive)
+  (move-end-of-line nil)
+  (newline-and-indent))
+(global-set-key (kbd "M-o") 'create-line-below)
+#+end_src
+
+** Skrót alternatywny dla next-line
+#+begin_src emacs-lisp
+  (global-set-key (kbd "C-;") 'next-line)
+#+end_src
+
+** Skróty dla zwiększenia/zmniejszenia wcięcia regionu
+#+begin_src emacs-lisp
+  ;;Zwiększ lub zmniejsz wcięcie
+(global-set-key (kbd "C->") (lambda (start end) (interactive "r") (indent-rigidly start end 4)))
+(global-set-key (kbd "C-<") (lambda (start end) (interactive "r") (indent-rigidly start end -4)))
+#+end_src
+
+** Dodatkowe pakiety
+*** Inicjalizacja repozytorium 'melpa'
+#+begin_src emacs-lisp
+  ;; Inicjalizacja pakietów
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+(package-initialize)
+;; package-refresh-contents
+#+end_src
+
+*** Inicjalizacja 'use-package'
+#+begin_src emacs-lisp
+  (eval-when-compile
+  (require 'use-package))
+#+end_src
+
+*** Markdown
+#+begin_src emacs-lisp
+  (use-package markdown-mode
+  :ensure t
+  :config
+    (autoload 'markdown-mode "markdown-mode"
+      "Major mode for editing Markdown files" t)
+    (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
+    (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+    (add-to-list 'auto-mode-alist '("\\.mkd\\'" . markdown-mode))
+    (add-to-list 'auto-mode-alist '("\\.mdown\\'" . markdown-mode))
+    (add-to-list 'auto-mode-alist '("\\.mkdn\\'" . markdown-mode))
+    :hook
+         ((markdown-mode . flyspell-mode)
+          (markdown-mode . visual-line-mode))
+)
+#+end_src
+
+*** Flycheck
+#+begin_src emacs-lisp
+  (use-package flycheck
+  :ensure t
+  :hook (after-init . global-flycheck-mode)
+)
+#+end_src
+
+*** Dot-mode
+#+begin_src emacs-lisp
+  (use-package dot-mode
+  :ensure t
+  :hook (find-file . dot-mode-on)
+  :bind
+      ("C-." . dot-mode-execute)
+      ("C-M-." . dot-mode-override))
+#+end_src
+
+*** Which-key
+#+begin_src emacs-lisp
+  (use-package which-key
+  :ensure t
+  :config
+      (which-key-mode)
+)
+#+end_src
+
+*** Org-mode
+**** Org -superstar
+#+begin_src emacs-lisp
+  (use-package org-superstar
+  :ensure t
+  :config
+      (add-hook 'org-mode-hook (lambda () (org-superstar-mode 1)))
+      ;; This is usually the default, but keep in mind it must be nil
+      (setq org-hide-leading-stars nil)
+      ;; This line is necessary.
+      (setq org-superstar-leading-bullet ?\s)
+      ;; If you use Org Indent you also need to add this, otherwise the
+      ;; above has no effect while Indent is enabled.
+      (setq org-indent-mode-turns-on-hiding-stars nil)
+      ;;(setq org-superstar-headline-bullets-list '("🞊" "🞚" "○" "🞍")))
+      ;;(setq org-superstar-headline-bullets-list '(" " " " "" "")) )
+      ;;(setq org-superstar-headline-bullets-list '(" " " " "" "")) )
+      (setq org-superstar-headline-bullets-list '("󰐾" "" "○" "" "")) )
+  (setq org-hide-emphasis-markers t)
+  #+end_src
+**** Czcionki dla nagłówków  w org-mode
+#+begin_src emacs-lisp
+  (custom-set-faces
+ '(org-level-1 ((t (:inherit default :weight bold :height 2.0 :family "JetBrains Mono" :foreground "#eeeeee"))))
+ '(org-level-2 ((t (:inherit default :weight bold :height 1.1 :family "JetBrains Mono" :foreground "#aaaaaa"))))
+ '(org-level-3 ((t (:inherit default :weight bold :height 1.0 :family "JetBrains Mono" :foreground "#aaaaaa"))))
+ '(org-level-4 ((t (:inherit default :weight bold :height 0.9 :family "JetBrains Mono" :foreground "#aaaaaa"))))
+ '(org-level-5 ((t (:inherit default :weight normal :slant italic :height 1.0 :family "JetBrains Mono" :foreground "#888888"))))
+ '(org-level-6 ((t (:inherit default :weight bold :height 1.0 :family "JetBrains Mono"))))
+ '(org-level-7 ((t (:inherit default :weight bold :height 1.0 :family "JetBrains Mono"))))
+ '(org-level-8 ((t (:inherit default :weight bold :height 1.0 :family "JetBrains Mono")))))
+#+end_src
+
+**** Wcięcia tekstu w org-mode
+#+begin_src emacs-lisp
+  (add-hook 'org-mode-hook 'org-indent-mode)
+  (setq org-adapt-indentation t)
+  (setq org-startup-indented t)
+#+end_src
+
+**** Kolor dla cyfr w plikach org
+#+begin_src emacs-lisp
+;; Tworzymy nową twarz dla cyfr
+(defface my/org-number-face
+  '((t (:foreground "#606060")))
+  "Face for numbers in Org mode.")
+
+;; Funkcja dodająca wyróżnianie cyfr w org-mode
+(defun my/org-highlight-numbers ()
+  "Highlight numbers in Org mode using a custom face."
+  (font-lock-add-keywords
+   nil
+   '(("\\b[0-9]+\\b" . 'my/org-number-face))))
+
+;; Dodajemy funkcję do hooka org-mode
+(add-hook 'org-mode-hook 'my/org-highlight-numbers)
+#+end_src
+
+**** Kolor dla skrótów ksiąg biblii w plikach org
+#+begin_src emacs-lisp
+;; Twarz dla wybranych skrótów biblijnych, np. Ge, Eze
+(defface my/org-bible-keyword-face
+  '((t (:foreground "#343434")))
+  "Face for selected Bible keywords in Org mode.")
+
+;; Funkcja dodająca wyróżnianie słów Ge i Eze w org-mode
+(defun my/org-highlight-bible-keywords ()
+  "Highlight selected Bible keywords in Org mode using a custom face."
+  (font-lock-add-keywords
+   nil
+   '(("\\b\\(Ge\\|Je\\|Ex\\|Le\\|Nu\\|Dt\\|Jos\\|Jdg\\|Sa\\|Ki\\|Ch\\|Ezr\\|Ne\\|Es\\|Job\\|Ps\\|Pr\\|Ec\\|SoS\\|Da\\|Ho\\|Isa\\|Eze\\|Am\\|Mic\\|Jon|Na\\|Hab\\|Zep\\|Hag\\|Zec\\|Mal\\)\\b" . 'my/org-bible-keyword-face))))
+
+;; Dodanie do hooka org-mode
+(add-hook 'org-mode-hook 'my/org-highlight-bible-keywords)
+#+end_src
+
+*** Ivy
+#+begin_src emacs-lisp
+  (use-package ivy
+  :ensure t
+  :config
+  (ivy-mode 1)
+  (global-set-key (kbd "C-c C-r") 'ivy-resume)
+;;  (global-set-key (kbd "C-l") 'ivy-alt-done)
+  (setq ivy-use-virtual-buffers t)
+  (setq ivy-count-format "(%d/%d) ")
+  (setq enable-recursive-minibufferst t)
+)
+#+end_src
+
+*** Counsel
+#+begin_src emacs-lisp
+  (use-package counsel
+  :ensure t
+  :after ivy
+  :config  (counsel-mode 1)
+  :bind (("M-x" . counsel-M-x)
+         ("C-x C-f" . counsel-find-file)
+         ("C-c j" . counsel-git-grep)
+         ("C-c k" . counsel-ag)
+         ("C-c g" . counsel-git)
+         ("C-c l" . counsel-locate)
+         ;;("C-S-o" . counsel-rhythmbox)
+         )
+)
+#+end_src
+
+*** Swiper
+#+begin_src emacs-lisp
+    (use-package swiper
+    :ensure t
+    :after ivy
+  ;;  :bind (("C-s" . swiper))
+    )
+#+end_src
+
+*** Doom-modeline
+
+#+begin_src emacs-lisp
+  (use-package doom-modeline
+  :ensure t
+  :hook (after-init . doom-modeline-mode))
+#+end_src
+
+*** Rainbow-delimiters
+#+begin_src emacs-lisp
+  (use-package rainbow-delimiters
+  :ensure t
+  :hook (prog-mode . rainbow-delimiters-mode)) 
+#+end_src
+
+*** Ivy-rich
+#+begin_src emacs-lisp
+  ;; dokumentacja w minibuffer w momencie M-x
+(use-package ivy-rich
+  :ensure t
+  :init (ivy-rich-mode 1))
+#+end_src
+
+*** Helpful
+#+begin_src emacs-lisp
+  (use-package helpful
+  :ensure t
+  :commands (helpful-callable helpful-variable helpful-command helpful-key)
+  :custom
+  (counsel-describe-function-function #'helpful-callable)
+  (counsel-describe-variable-function #'helpful-variable)
+  :bind
+  ([remap describe-function] . counsel-describe-function)
+  ([remap describe-command] . helpful-command)
+  ([remap describe-variable] . counsel-describe-variable)
+  ([remap describe-key] . helpful-key))
+#+end_src
+
+*** Doom-themes
+#+begin_src emacs-lisp
+      (use-package doom-themes
+      :ensure t
+      :config
+      ;; Global settings (defaults)
+      (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
+            doom-themes-enable-italic t) ; if nil, italics is universally disabled
+      ;;(load-theme 'doom-tokyo-night t)
+    ;;  (load-theme 'doom-Iosvkem t)
+;;      (load-theme 'doom-badger t)
+          (load-theme 'doom-acario-dark t)
+  ;;    (load-theme 'doom-bluloco-light t)
+      ;; Enable flashing mode-line on errors
+      (doom-themes-visual-bell-config)
+      ;; Enable custom neotree theme (all-the-icons must be installed!)
+      ;;(doom-themes-neotree-config)
+      ;; or for treemacs users
+      ;;(setq doom-themes-treemacs-theme "doom-atom") ; use "doom-colors" for less minimal icon theme
+      ;;(doom-themes-treemacs-config)
+      ;; Corrects (and improves) org-mode's native fontification.
+      (doom-themes-org-config))
+
+    (require 'doom-modeline)
+    (doom-modeline-mode)
+#+end_src
+
+*** All-the-icons
+#+begin_src emacs-lisp
+    ;;M-x all-the-icons-install-fonts
+  (use-package all-the-icons
+  :if (display-graphic-p))
+  ;; (use-package all-the-icons
+  ;;   :demand t
+  ;;   :ensure t)
+  ;; (require 'all-the-icons)
+#+end_src
+
+*** Dashboard
+#+begin_src emacs-lisp
+  (use-package dashboard
+    :ensure t
+    :config
+    (dashboard-setup-startup-hook))
+  ;;(require 'all-the-icons)
+    (setq dashboard-icon-type 'all-the-icons)
+    (setq dashboard-set-file-icons t)
+    (require 'dashboard)
+    (setq dashboard-set-heading-icons t)
+    (setq dashboard-icon-type 'all-the-icons)
+    (setq dashboard-heading-icons '((recents   . "history")
+                                (bookmarks . "bookmark")
+                                (agenda    . "calendar")
+                                (projects  . "rocket")
+                                (registers . "database")))
+      ; Set the title
+    (setq dashboard-banner-logo-title "Welcome to Emacs Dashboard")
+      ;; Set the banner
+    (setq dashboard-startup-banner 'logo)
+      ;; Value can be:
+      ;;  - 'official which displays the official emacs logo.
+      ;;  - 'logo which displays an alternative emacs logo.
+      ;;  - an integer which displays one of the text banners
+      ;;    (see dashboard-banners-directory files).
+      ;;  - a string that specifies a path for a custom banner
+      ;;    currently supported types are gif/image/text/xbm.
+      ;;  - a cons of 2 strings which specifies the path of an image to use
+      ;;    and other path of a text file to use if image isn't supported.
+      ;;    ("path/to/image/file/image.png" . "path/to/text/file/text.txt").
+      ;;  - a list that can display an random banner,
+      ;;    supported values are: string (filepath), 'official, 'logo and integers.
+
+      ;; Content is not centered by default. To center, set
+      (setq dashboard-center-content t)
+      ;; vertically center content
+      (setq dashboard-vertically-center-content t)
+
+      ;; To disable shortcut "jump" indicators for each section, set
+      ;;(setq dashboard-show-shortcuts nil)
+      (setq dashboard-items '((recents   . 5)
+			      (bookmarks . 5)
+			      (projects  . 5)
+			      (agenda    . 5)
+			      (registers . 5)))
+      (setq dashboard-startupify-list '(dashboard-insert-banner
+					dashboard-insert-newline
+					dashboard-insert-banner-title
+					dashboard-insert-newline
+					dashboard-insert-navigator
+					dashboard-insert-newline
+					dashboard-insert-init-info
+					dashboard-insert-items
+					dashboard-insert-newline
+					dashboard-insert-footer))
+      (setq dashboard-navigation-cycle t)
+  (dashboard-open)
+#+end_src
+
+*** Company
+#+begin_src emacs-lisp
+  (use-package company
+  :ensure t
+  :config
+  ;; (add-hook 'after-init-hook 'global-company-mode)
+  ;; :hook (after-init . global-company-mode)
+  )
+(global-company-mode 1)
+(global-set-key (kbd "M-/") 'company-complete)
+#+end_src
+
+*** Company-files
+#+begin_src emacs-lisp
+  (use-package company-files
+  :ensure nil
+  :config
+  ;; Dodaj company-files do listy backendów
+  (add-to-list 'company-backends 'company-files))
+#+end_src
+
+*** Company-dabbrev
+#+begin_src emacs-lisp
+  (use-package company-dabbrev
+  :ensure nil
+  :config
+  ;; Dodaj company-dabbrev do listy backendów
+(add-to-list 'company-backends 'company-dabbrev))
+#+end_src
+
+*** Konfiguracja dla company-mode
+#+begin_src emacs-lisp
+  ;; Konfiguracja company-mode
+(setq company-idle-delay 0.2) ;; Czas oczekiwania na wyświetlenie podpowiedzi
+(setq company-minimum-prefix-length 1) ;; Minimalna długość prefiksu do aktywacji autouzupełniania
+#+end_src
+
+*** Elfeed
+#+begin_src emacs-lisp
+    (global-set-key (kbd "C-x w") 'elfeed)
+    (setq elfeed-search-title-max-width 170)
+
+  (setq elfeed-feeds '(("http://nullprogram.com/feed/" emacs)
+          ("https://planet.emacslife.com/atom.xml" emacs)
+          ("https://www.archlinux.org/feeds/news/" arch)
+          ("https://www.linuxjournal.com/node/feed" linux)
+          ("http://www.dobreprogramy.pl/rss/rss_news.xml" it)
+          ("https://geekweek.interia.pl/feed" it)
+          ("https://wydarzenia.interia.pl/nauka/feed" news)
+          ("https://www.computerworld.pl/news?rss" it)
+          ("https://antyweb.pl/feed" it)
+          ("https://chip.com/feed" it)
+          ("https://itsfoss.com/feed" it linux)
+          ("https://linux.com/feed" linux)
+          ("https://lnwn.net/headlines/newrss" linux)
+          ("https://www.kalilinux.in/feeds/posts/default" linux cyber)
+          ("http://feeds.feedburner.com/wPolitycepl" news wpolityce)
+          ("https://www.wykop.pl/rss/" news wykop)
+          ("https://www.tvn24.pl/najnowsze.xml" news tvn)
+          ("https://wydarzenia.interia.pl/feed" interia news)
+  	("https://wiadomosci.wp.pl/feed" wp news)
+          ("https://www.polsatnews.pl/rss/wszystkie.xml" news polsat)
+  	("https://spidersweb.pl/api/post/feed/feed-gn" it spidersweb)
+          ("http://wiadomosci.onet.pl/.feed" news onet)))
+
+#+end_src
+
+*** Konfiguracja dla browser
+#+begin_src emacs-lisp
+    (setq browse-url-browser-function 'eww-browse-url)
+  ;; (setq browse-url-browser-function 'browse-url-generic
+  ;;       browse-url-generic-program "qutebrowser")
+  (global-set-key (kbd "C-c u") 'browse-url-at-point)
+  (global-set-key (kbd "C-c e") 'qutebrowser)
+
+  ;; (when (not (display-graphic-p)) ;; tylko jeśli nie GUI
+  ;; ;; (defun my/shr-image-to-alt-or-url (spec)
+  ;; ;;   "Zastępuje obrazek tekstem alternatywnym lub URL-em."
+  ;; ;;   (let ((alt (plist-get spec :alt))
+  ;; ;;         (url (plist-get spec :url)))
+  ;; ;;     (insert (or alt url "[obrazek]"))))
+  ;; (defun my/shr-image-to-alt-or-url (spec)
+  ;;   "Zastępuje obrazek tekstem alternatywnym lub URL-em, ale zachowuje metadane."
+  ;;   (let* ((alt (plist-get spec :alt))
+  ;;        (url (plist-get spec :url))
+  ;;        (text (or alt url "[obrazek]"))
+  ;;        (start (point)))
+  ;;   (insert text)
+  ;;   (add-text-properties
+  ;;    start (point)
+  ;;    `(shr-url ,url help-echo ,url face link))))
+    
+  ;; ;;(setq  shr-external-rendering-functions
+  ;;   ;;    '((img . my/shr-image-to-alt-or-url)))
+  ;; )
+
+  ;; (defun my/eww-open-image-external ()
+  ;; "Jeśli link to obrazek, otwórz go zewnętrznym programem graficznym."
+  ;; (interactive)
+  ;; (let ((url (get-text-property (point) 'shr-url)))
+  ;;   (when (and url (string-match-p "\\.\\(png\\|jpe?g\\|gif\\|webp\\)$" url))
+  ;;     (start-process "image-viewer" nil "kitty" "+kitten" "icat" url)
+  ;;     ;;(start-process "image-viewer" nil "feh" url)
+  ;;     )))
+
+  ;; (with-eval-after-load 'eww
+  ;;   (define-key eww-mode-map (kbd "I") #'my/eww-open-image-external))
+
+  ;; ;;(add-hook 'eww-mode-hook
+  ;;   ;;      (lambda ()
+  ;;     ;;      (local-set-key (kbd "I") #'my/eww-open-image-external)))
+
+#+end_src
+
+*** Elfeed-goodies
+#+begin_src emacs-lisp
+  ;; (use-package elfeed-goodies
+;;   :ensure t
+;;   )
+;; (require 'elfeed)
+;; (require 'elfeed-goodies)
+;; (elfeed-goodies/setup)
+;; (setq elfeed-goodies/entry-pane-size 0.5)
+
+;;   :init
+;;   (elfeed-goodies/setup)
+;;   :config
+;;   (setq elfeed-goodies/entry-pane-size 0.5))
+;;You can customise some aspects of the package with M-x customize-group elfeed-goodies.
+#+end_src
+
+
+*** Konfiguracja dla rozszerzenia .leb
+#+begin_src emacs-lisp
+  ;; ;; Definicja nowego trybu major dla plików .leb
+;; (define-derived-mode leb-mode fundamental-mode "LEB"
+;;   "Major mode for editing LEB files.")
+
+;; ;; Dodanie asocjacji rozszerzenia .leb z trybem leb-mode
+;; (add-to-list 'auto-mode-alist '("\\.leb\\'" . leb-mode))
+
+;; ;; Definiowanie własnej twarzy z kolorem #222222
+;; (defface leb-mode-custom-face
+;;   '((t (:foreground "#555555")))
+;;   "Custom face for text between < and > in leb-mode.")
+
+;; ;; Funkcja ustawień specjalnych dla trybu leb-mode
+;; (defun my-leb-mode-setup ()
+;;   ;; Przykład: ustawienie szerokości wcięcia na 4 spacje
+;;   (setq tab-width 4)
+;;   (setq indent-tabs-mode nil)
+  
+;;   ;; Kolorowanie cyfr
+;;   (font-lock-add-keywords nil
+;;     '(("\\b[0-9]+\\b" . font-lock-constant-face)))
+
+;;    ;; Kolorowanie tekstu między '<' i '>'
+;;   (font-lock-add-keywords nil
+;;     `((,(rx "<" (group (0+ (not (any ">")))) ">") 0 'leb-mode-custom-face prepend)))
+;;   )
+;; ;; Dodanie funkcji ustawień do hooka trybu leb-mode
+;; (add-hook 'leb-mode-hook 'my-leb-mode-setup)
+#+end_src
+
+
+*** Avy
+#+begin_src emacs-lisp
+    (use-package avy
+    :ensure t)
+  (global-set-key (kbd "M-s s") 'avy-goto-char-2)
+  (global-set-key (kbd "M-s M-s") 'avy-goto-char-2)
+#+end_src
+
+*** Python
+#+begin_src emacs-lisp
+  ;; (use-package python-mode
+;;   :ensure nil
+;;   ;hook (python-mode . lap-deferred)
+;;   :custom
+;;   (python-shell-interpreter "python3"))
+#+end_src
+
+*** lsp-mode
+#+begin_src emacs-lisp
+  (use-package lsp-mode
+  :ensure t
+  :hook
+  (python-mode . lsp)
+  :config
+  (setq lsp-prefer-flymake nil)) ;; jeśli używasz flycheck
+#+end_src
+
+
+*** Konfiguracja dla latex w plikach org
+#+begin_src emacs-lisp
+  (with-eval-after-load 'ox-latex
+(add-to-list 'org-latex-classes
+             '("org-plain-latex"
+               "\\documentclass{article}
+           [NO-DEFAULT-PACKAGES]
+           [PACKAGES]
+           [EXTRA]"
+               ("\\section{%s}" . "\\section*{%s}")
+               ("\\subsection{%s}" . "\\subsection*{%s}")
+               ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+               ("\\paragraph{%s}" . "\\paragraph*{%s}")
+               ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))))
+#+end_src
+
+
+*** Yasnippet
+#+begin_src emacs-lisp
+  (use-package yasnippet
+    :ensure t
+    :config
+      (yas-global-mode 1)    
+    )
+
+#+end_src
+
+*** Yasnippet-snippets
+#+begin_src emacs-lisp
+	(use-package yasnippet-snippets
+	  :ensure t )
+#+end_src
+*** Writeroom
+    Zainstalowałem przez interfej Melpa, bo miałem problem z instalacją poniższą.
+#+begin_src emacs-lisp
+;;  (use-package visual-fill-column
+  ;;  :ensure t)
+  
+;;  (use-package writeroom-mode
+  ;;  :ensure t
+    ;;:after visual-fill-column
+   ;; :config
+    ;; tu możesz dodać konfigurację writeroom-mode, np.
+;;    (setq writeroom-width 80))
+#+end_src
+*** Skrót find-file-at-point
+#+begin_src emacs-lisp
+  (global-set-key (kbd "C-c f") 'find-file-at-point)
+#+end_src
+
+*** Konfiguracja szerokości linii dla plików tekstowych i org
+#+begin_src emacs-lisp
+  ;; Ustawienie maksymalnej szerokości linii na 80 znaków
+(setq-default fill-column 80)
+;; Włączenie auto-fill-mode dla tekstu
+(add-hook 'text-mode-hook 'turn-on-auto-fill)
+;; Włączenie auto-fill-mode dla org-mode
+(add-hook 'org-mode-hook 'turn-on-auto-fill)
+#+end_src
+
+*** Jak Ctrl-o w Vim
+#+begin_src emacs-lisp
+  (global-set-key (kbd "M-p") 'pop-global-mark)
+  ;; (global-set-key (kbd "M-n") 'point-redo)
+#+end_src
+
+
+*** Marginesy dla tekstu
+#+begin_src emacs-lisp
+  (set-fringe-mode '(20 . 0))
+#+end_src
+
+*** Pasek pionowy z prawej strony
+#+begin_src emacs-lisp
+  ;;  (setq-default fill-column 80)
+    ;; (setq-default display-fill-column-indicator-column 80)
+
+    ;; (add-hook 'prog-mode-hook #'display-fill-column-indicator-mode)
+    ;; (add-hook 'text-mode-hook #'display-fill-column-indicator-mode)
+
+    ;; (set-face-attribute 'fill-column-indicator nil
+;;                        :foreground "gray20")
+
+#+end_src
+
+***  Cursor line
+#+begin_src emacs-lisp
+(global-hl-line-mode 1)
+(set-face-background 'hl-line "#1a1a1a") ; ciemne tło linii
+#+end_src
+
+*** Skalowanie czcionki
+#+begin_src emacs-lisp
+;; Zmniejsz krok skalowania tekstu
+(setq text-scale-mode-step 1.02)
+
+;; Skróty klawiszowe (opcjonalnie)
+(global-set-key (kbd "C-=") 'text-scale-increase)
+(global-set-key (kbd "C--") 'text-scale-decrease)
+(global-set-key (kbd "C-0") (lambda () (interactive) (text-scale-set 0)))
+#+end_src
+
+** Automatyzacja tanglowania
+Hook, dzięki któremu wywołanie funkcji ~org-babel-tangle~ nastąpi automatycznie,
+przy zapisie pliku ~init.org~
+
+#+begin_src emacs-lisp
+  ;; (add-hook 'org-mode-hook
+  ;; 	  (lambda ()
+  ;; 	    (when (string-equal (file-name-nondirectory buffer-file-name) "init.org")
+  ;; 	      (add-hook 'after-save-hook
+  ;; 			(lambda ()
+  ;; 			  (org-babel-tangle)
+  ;; 			  (message "Custom init.el loaded successfully!"))
+  ;; 			'run-at-end 'only-this-buffer))))
+
+
+
+  ;; Automatyczne tanglowanie i ewaluacja po zapisaniu pliku `init.org`
+  (defun my/org-babel-tangle-and-eval ()
+    "Tangle pliku `init.org` i ewaluuje plik `init.el`."
+    (when (string-equal (buffer-file-name)
+			(expand-file-name "~/.vanilla-emacs/init.org"))
+      (let ((org-confirm-babel-evaluate nil)) ;; Wyłącz potwierdzenie tanglowania
+	(org-babel-tangle))
+      (load-file (expand-file-name "~/.vanilla-emacs/init.el"))))
+
+  ;; Dodaj hook, aby wywołać tę funkcję po zapisaniu pliku `init.org`
+  (add-hook 'after-save-hook #'my/org-babel-tangle-and-eval)
+  #+end_src
