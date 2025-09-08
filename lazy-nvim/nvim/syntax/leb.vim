@@ -51,8 +51,9 @@ hi def link bibleTitle2 String
 hi def link bibleSlash Search
 "hi def link cBracket Label
 hi def link squereBracket Tag
-highlight tyldeBracket guibg=NONE guifg=NONE gui=italic
+highlight tyldeBracket guibg=NONE guifg=#495e61 gui=italic
 hi def link astericBold Title
 "hi def link astericItalic Comment
-hi def link floorUnderline Underlined
+" hi def link floorUnderline Underlined
+highlight floorUnderline gui=italic gui=underline guifg=#495e61
 highlight lebSpecial guibg=NONE guifg=#524c6b gui=italic
