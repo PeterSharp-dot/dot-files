@@ -22,10 +22,10 @@ setopt HIST_IGNORE_ALL_DUPS
 bindkey -e
 
 # Prompt for spelling correction of commands.
-#setopt CORRECT
+setopt CORRECT
 
 # Customize spelling correction prompt.
-#SPROMPT='zsh: correct %F{red}%R%f to %F{green}%r%f [nyae]? '
+SPROMPT='zsh: correct %F{red}%R%f to %F{green}%r%f [nyae]? '
 
 # Remove path separator from WORDCHARS.
 WORDCHARS=${WORDCHARS//[\/]}
@@ -46,7 +46,8 @@ zstyle ':zim:prompt-pwd' git-root yes
 zstyle ':zim:prompt-pwd:fish-style' dir-length 1
 zstyle ':zim:prompt-pwd:separator' format '❯'
 
-PS1='$(prompt-pwd)❯ '
+PS1='> '
+RPS1='[%F{green}%~%f]'
 #
 # git
 #
@@ -170,6 +171,7 @@ export BAT_THEME="Solarized (light)"
 export QT_QPA_PLATFORMTHEME=qt5ct
 export NOTES="/home/peter/notes/"
 export VK_ICD_FILENAMES="/usr/share/vulkan/icd.d/radeon_icd.x86_64.json"
+export HYPRSHOT_DIR="/home/peter/pictures/screens/"
 #set -gx MESA_GLTHREAD true
 #set -gx MESA_GLSL_CACHE_DISABLE true
 #set -gx MESA_EXTENSION_MAX_YEAR 2020
@@ -217,6 +219,12 @@ tra() {
   clear && trans :pl $argv -show-translation-phonetics | bat -p --color always
 }
 
+fl(){
+  fzf_launcher.sh
+}
+
+eval "$(zoxide init zsh)"
+
 #alias ls='lsd --color=always'
 alias ls='ls --color=auto'
 alias l1='lsd -1 --color=always'
@@ -244,3 +252,5 @@ alias dot='~/dot-files/'
 alias dots='~/dot-files/'
 alias con='~/.config/'
 alias conf='~/.config/'
+alias img='kitty +kitten icat'
+# alias mpv='mpv --ytdl-raw-options=format="bestvideo[height<=1080]+bestaudio"'
