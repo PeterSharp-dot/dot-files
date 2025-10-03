@@ -1,0 +1,2 @@
+#!/usr/bin/sh
+slstatus -s | dwl -s 'sh -c /home/peter/.config/dwl/dwl_autostart.sh'
