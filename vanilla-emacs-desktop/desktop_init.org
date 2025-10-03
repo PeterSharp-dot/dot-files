@@ -719,6 +719,8 @@ Ta konfiguracja pozwala na numerację jedynie przy niektórych rodzajach plików
 ;;  (use-package visual-fill-column
   ;;  :ensure t)
   
+  ;; Uruchamia podświetlanie przy wejściu w tryb org-mode
+   (add-hook 'org-mode-hook 'my/highlight-org-numbers)
 ;;  (use-package writeroom-mode
   ;;  :ensure t
     ;;:after visual-fill-column

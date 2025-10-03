@@ -166,12 +166,19 @@ export EDITOR=nvim
 export VISUAL=nvim
 #export FZF_DEFAULT_COMMAND='ag --hidden --depth 4 --ignore .git -f -g ""'
 #source fzf --zsh
-export BAT_THEME="Solarized (light)"
+export BAT_THEME="Solarized (light) auto:always"
 # export XDG_CURRENT_DESKTOP=KDE
 export QT_QPA_PLATFORMTHEME=qt5ct
 export NOTES="/home/peter/notes/"
 export VK_ICD_FILENAMES="/usr/share/vulkan/icd.d/radeon_icd.x86_64.json"
 export HYPRSHOT_DIR="/home/peter/pictures/screens/"
+
+# Ustawienia XDG Base Directory, jeśli nie istnieją
+export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+export XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
+export XDG_CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}"
+export XDG_STATE_HOME="${XDG_STATE_HOME:-$HOME/.local/state}"
+
 #set -gx MESA_GLTHREAD true
 #set -gx MESA_GLSL_CACHE_DISABLE true
 #set -gx MESA_EXTENSION_MAX_YEAR 2020
@@ -254,3 +261,13 @@ alias con='~/.config/'
 alias conf='~/.config/'
 alias img='kitty +kitten icat'
 # alias mpv='mpv --ytdl-raw-options=format="bestvideo[height<=1080]+bestaudio"'
+
+# Color for man pages
+export GROFF_NO_SGR=1
+export LESS_TERMCAP_mb=$'\e[1;31m'
+export LESS_TERMCAP_md=$'\e[1;36m'
+export LESS_TERMCAP_me=$'\e[0m'
+export LESS_TERMCAP_so=$'\e[1;44;33m'
+export LESS_TERMCAP_se=$'\e[0m'
+export LESS_TERMCAP_us=$'\e[1;32m'
+export LESS_TERMCAP_ue=$'\e[0m'
